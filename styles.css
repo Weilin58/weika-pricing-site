@@ -143,8 +143,8 @@ h1:focus {
 [data-route="prewedding"] .card-image { background: linear-gradient(135deg, #f2a4a4, #e67b7b); }
 [data-route="event"] .card-image { background: linear-gradient(135deg, #9fd3f3, #6cb3df); }
 
-/* ✅ 婚紗攝影卡片：改為使用圖片 */
-[data-route="wedding"] .card-image {
+/* ✅ 婚紗攝影卡片：改為使用圖片（正確掛在 prewedding） */
+[data-route="prewedding"] .card-image {
   background: url("images/wedding_01.jpg") center/cover no-repeat;
 }
 
