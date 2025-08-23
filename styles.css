@@ -57,6 +57,11 @@ h2 { font-size: var(--font-size-h2); }
 a { color: var(--color-primary); text-decoration: none; transition: color var(--transition-speed) ease; }
 a:hover { color: var(--color-primary-dark); }
 
+/* 🔧 修正 focus 狀態：保留鍵盤可見，但隱藏藍框 */
+h1:focus {
+  outline: none;
+}
+
 /* 跳到主要內容（無障礙） */
 .skip-link{
   position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
