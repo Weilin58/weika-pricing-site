@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>衛卡攝影影像工作室 - 攝影服務</title>
+  <meta name="description" content="提供個人寫真、婚紗攝影、活動紀錄等專業攝影服務。" />
+
+  <!-- Open Graph / 分享預覽 -->
+  <meta property="og:title" content="衛卡攝影影像工作室 - 攝影服務" />
+  <meta property="og:description" content="提供個人寫真、婚紗攝影、活動紀錄等專業攝影服務。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/8e7ab5/ffffff&text=Weika+Photo" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"衛卡攝影影像工作室",
+    "image":"https://dummyimage.com/1200x630/8e7ab5/ffffff&text=Weika+Photo",
+    "address":{ "@type":"PostalAddress", "addressRegion":"臺灣", "addressLocality":"台南市" },
+    "url":"https://example.com",
+    "sameAs":["https://instagram.com/weika_58"],
+    "priceRange":"$$",
+    "areaServed":"TW"
+  }
+  </script>
+
+  <!-- 外部樣式 -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 跳到主要內容（鍵盤可用） -->
+  <a href="#main-content" class="skip-link">跳到主要內容</a>
+
+  <!-- 導覽列 -->
+  <nav class="navbar" aria-label="主要導覽">
+    <a class="navbar-brand" href="#home" aria-label="網站首頁">衛卡攝影影像工作室</a>
+    <ul class="nav-links" id="nav-links" role="menubar"></ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="切換導覽選單" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Toast -->
+  <div id="toast">找不到頁面，已帶你回主頁</div>
+
+  <!-- 主內容 -->
+  <main class="main-content" id="main-content">
+    <!-- Home -->
+    <section class="page-section" data-route="home" aria-labelledby="home-title">
+      <div class="page-header">
+        <h1 id="home-title" tabindex="-1">衛卡攝影影像工作室</h1>
+        <p>捕捉生活中的每一個光影故事。專業、有溫度的影像紀錄。</p>
+      </div>
+      <div class="card-grid" id="home-card-grid" aria-label="分頁卡片清單"></div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="page-section" data-route="pricing" aria-labelledby="pricing-title">
+      <a href="#home" class="back-to-home">回到主頁</a>
+      <h1 id="pricing-title" tabindex="-1">服務報價</h1>
+      <div class="pricing-table" id="pricing-table"></div>
+      <h2 style="text-align:center; margin-top: var(--spacing-5);">更多方案</h2>
+      <p style="text-align:center; color: var(--color-secondary);">婚紗攝影、活動及婚禮紀錄，將根據您的需求提供客製化報價，歡迎 <a href="#policy">查看規則與內容</a>。</p>
+    </section>
+
+    <!-- Policy -->
+    <section class="page-section" data-route="policy" aria-labelledby="policy-title">
+      <a href="#home" class="back-to-home">回到主頁</a>
+      <h1 id="policy-title" tabindex="-1">規則與內容</h1>
+      <h2>成品內容</h2>
+      <ul>
+        <li><strong>專業調色：</strong> 提供 30-60 張風格調色電子檔。</li>
+        <li><strong>精緻修圖：</strong> 由您自選 10 張進行深度精修（膚質、身形、細節調整）。</li>
+      </ul>
+      <h2>檔案交付</h2>
+      <ul>
+        <li><strong>雲端硬碟：</strong> 成品透過 Google Drive 交付，檔案保留 30 日。</li>
+        <li><strong>加購 USB：</strong> 可加價 NT$300 選購 USB 隨身碟。</li>
+      </ul>
+      <h2>預約與費用</h2>
+      <ul>
+        <li><strong>訂金：</strong> 確認預約將收取總報價之 50% 作為訂金。</li>
+        <li><strong>交通費：</strong> 每公里 NT$7；若計算未滿 NT$100 則不收取。</li>
+        <li><strong>額外費用：</strong> 攝影棚租借、妝髮造型等費用，實報實銷。</li>
+        <li><strong>毛片：</strong> 原則不提供；如需加購，全數 NT$2,000。</li>
+      </ul>
+      <h2>聯絡方式</h2>
+      <p>Instagram：@weika_58 ｜ Email: example@vika-photo.com ｜ Phone: 0912-345-678</p>
+    </section>
+
+    <!-- 各獨立頁：模板式（方案卡 + QA） -->
+    <section class="page-section" data-route="solo" aria-labelledby="solo-title">
+      <a href="#home" class="back-to-home">回到主頁</a>
+      <h1 id="solo-title" tabindex="-1">個人寫真</h1>
+      <div class="pricing-card" id="solo-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
+      <div class="qa-section">
+        <h2>常見 QA</h2>
+        <details class="qa-item"><summary>拍攝地點可以自己決定嗎？</summary><p>可以！可討論最適合您的風格場景，戶外（海邊/公園/街拍）或室內（咖啡廳/棚）。</p></details>
+        <details class="qa-item"><summary>需要自己準備服裝嗎？</summary><p>建議 1–2 套簡約色系，搭配一深一淺；拍攝前可提供搭配建議。</p></details>
+      </div>
+    </section>
+
+    <section class="page-section" data-route="couple" aria-labelledby="couple-title">
+      <a href="#home" class="back-to-home">回到主頁</a>
+      <h1 id="couple-title" tabindex="-1">雙人寫真</h1>
+      <div class="pricing-card" id="couple-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
+      <div class="qa-section">
+        <h2>常見 QA</h2>
+        <details class="qa-item"><summary>寵物可以一起入鏡嗎？</summary><p>非常歡迎！請事先告知以便準備，讓畫面更有溫度。</p></details>
+      </div>
+    </section>
+
+    <section class="page-section" data-route="group" aria-labelledby="group-title">
+      <a href="#home" class="back-to-home">回到主頁</a>
+      <h1 id="group-title" tabindex="-1">3–6 人團體</h1>
+      <div class="pricing-card" id="group-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
+      <div class="qa-section">
+        <h2>常見 QA</h2>
+        <details class="qa-item"><summary>適合拍攝畢業照嗎？</summary><p>非常適合！我們可設計活潑且具紀念性的拍攝方案。</p></details>
+      </div>
+    </section>
+
+    <section class="page-section" data-route="prewedding" aria-labelledby="prewedding-title">
+      <a href="#home" class="back-to-home">回到主頁</a>
+      <h1 id="prewedding-title" tabindex="-1">婚紗攝影</h1>
+      <p style="text-align:center;color:var(--color-secondary)">依拍攝時數、地點、禮服等需求客製報價，歡迎洽詢。</p>
+      <div class="qa-section">
+        <h2>常見 QA</h2>
+        <details class="qa-item"><summary>服務包含哪些項目？</summary><p>可含攝影師、造型師、禮服、棚租/外景移動、精修相本等，亦可彈性調整。</p></details>
+      </div>
+    </section>
+
+    <section class="page-section" data-route="event" aria-labelledby="event-title">
+      <a href="#home" class="back-to-home">回到主頁</a>
+      <h1 id="event-title" tabindex="-1">活動紀錄</h1>
+      <p style="text-align:center;color:var(--color-secondary)">商業活動、講座、展演與派對，依規模/時數/流程提供精準報價。</p>
+      <div class="qa-section">
+        <h2>常見 QA</h2>
+        <details class="qa-item"><summary>最晚多久前需要預約？</summary><p>建議至少活動前一個月預約，以保留檔期並充足溝通。</p></details>
+      </div>
+    </section>
+
+    <section class="page-section" data-route="wedding" aria-labelledby="wedding-title">
+      <a href="#home" class="back-to-home">回到主頁</a>
+      <h1 id="wedding-title" tabindex="-1">婚禮紀錄</h1>
+      <p style="text-align:center;color:var(--color-secondary)">單/雙儀式、宴客、迎娶等皆可彈性安排，完整保存動人時刻。</p>
+      <div class="qa-section">
+        <h2>常見 QA</h2>
+        <details class="qa-item"><summary>會有雙攝影師嗎？</summary><p>可依賓客數與流程複雜度建議第二攝影，提升覆蓋與安全性。</p></details>
+      </div>
+    </section>
+
+    <!-- 回頂按鈕 -->
+    <button id="backTop" class="back-top" aria-label="回到頂端" title="回到頂端">↑</button>
+  </main>
+
+  <footer style="text-align:center;color:var(--color-secondary);padding:var(--spacing-5) 0;">
+    © <span id="year"></span> 衛卡攝影影像工作室 · Instagram @weika_58
+  </footer>
+
+  <!-- 外部腳本 -->
+  <script src="script.js"></script>
+</body>
+</html>
