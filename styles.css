@@ -142,7 +142,12 @@ h1:focus {
 [data-route="group"] .card-image { background: linear-gradient(135deg, #f8cb9c, #f2a46d); }
 [data-route="prewedding"] .card-image { background: linear-gradient(135deg, #f2a4a4, #e67b7b); }
 [data-route="event"] .card-image { background: linear-gradient(135deg, #9fd3f3, #6cb3df); }
-[data-route="wedding"] .card-image { background: linear-gradient(135deg, #ffd3e1, #f3a6c1); }
+
+/* ✅ 婚紗攝影卡片：改為使用圖片 */
+[data-route="wedding"] .card-image {
+  background: url("images/wedding_01.jpg") center/cover no-repeat;
+}
+
 .card-content { padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column; }
 .card-content h3 { margin: 0 0 var(--spacing-2); }
 .card-content p { color: var(--color-secondary); flex-grow: 1; margin-bottom: var(--spacing-3); }
