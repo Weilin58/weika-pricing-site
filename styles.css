@@ -28,9 +28,6 @@
   --transition-speed: 280ms;
 }
 
-/* 不自適應深色——永遠白底 */
-
-/* 減少動效偏好 */
 @media (prefers-reduced-motion: reduce){
   * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
 }
@@ -52,10 +49,8 @@ h2 { font-size: var(--font-size-h2); }
 a { color: var(--color-primary); text-decoration: none; transition: color var(--transition-speed) ease; }
 a:hover { color: var(--color-primary-dark); }
 
-/* 🔧 修正 focus 狀態：保留鍵盤可見，但隱藏藍框 */
 h1:focus { outline: none; }
 
-/* 跳到主要內容（無障礙） */
 .skip-link{
   position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
 }
@@ -64,9 +59,7 @@ h1:focus { outline: none; }
   background:#000; color:#fff; padding:8px 12px; border-radius:8px;
 }
 
-/* =========================
-   2) 導覽列 Navbar（含手機漢堡）
-   ========================= */
+/* Navbar */
 .navbar {
   position: fixed; top: 0; left: 0; width: 100%; height: 80px;
   background-color: rgba(255, 255, 255, 0.9);
@@ -90,7 +83,6 @@ h1:focus { outline: none; }
 .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
 .nav-toggle.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-/* 手機選單 */
 @media (max-width: 768px) {
   body { padding-top: 60px; }
   .navbar { height: 60px; }
@@ -105,9 +97,7 @@ h1:focus { outline: none; }
   .nav-toggle { display: block; }
 }
 
-/* =========================
-   3) 主內容與頁面容器
-   ========================= */
+/* 主內容 */
 .main-content { padding: var(--spacing-3); max-width: 1060px; margin: 0 auto; position: relative; }
 .page-section { display: none; opacity: 0; transform: translateY(6px); transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease; }
 .page-section.is-active { display: block; opacity: 1; transform: none; }
@@ -117,20 +107,16 @@ h1:focus { outline: none; }
 .page-header { margin-bottom: var(--spacing-4); text-align: center; border-bottom: 1px solid var(--color-border); padding-bottom: var(--spacing-4); }
 .page-header h1 { margin-bottom: var(--spacing-1); }
 
-/* 回主頁按鈕 */
 .back-to-home { display: inline-block; margin-bottom: var(--spacing-4); color: var(--color-secondary); }
 .back-to-home:hover { text-decoration: underline; }
 .back-to-home::before { content: '‹ '; }
 
-/* =========================
-   4) 主頁卡片
-   ========================= */
+/* 卡片（首頁） */
 .card-grid { display: grid; gap: var(--spacing-4); grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .card { background-color: var(--color-white); border-radius: var(--border-radius); box-shadow: var(--box-shadow); overflow: hidden; display: flex; flex-direction: column; transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease; border: 1px solid var(--color-border); }
 .card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12); }
 .card[role="button"]:focus-visible{ outline: 3px solid rgba(142,122,181,.45); outline-offset: 2px; }
 
-/* 圖片區塊：固定 3:2 比例 */
 .card-image {
   aspect-ratio: 3 / 2;
   background-position: center;
@@ -138,7 +124,6 @@ h1:focus { outline: none; }
   background-repeat: no-repeat;
 }
 
-/* ✅ 以你的實際檔名帶圖 */
 [data-route="solo"] .card-image       { background-image: url("images/portrait_01.jpg"); }
 [data-route="couple"] .card-image     { background-image: url("images/couple_01.jpg"); }
 [data-route="group"] .card-image      { background-image: url("images/group_01.jpg"); }
@@ -149,13 +134,22 @@ h1:focus { outline: none; }
 .card-content { padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column; }
 .card-content h3 { margin: 0 0 var(--spacing-2); }
 .card-content p { color: var(--color-secondary); flex-grow: 1; margin-bottom: var(--spacing-3); }
-/* 主頁按鈕改為灰黑 */
 .card-link { display: block; color: var(--color-white); background-color: #222; text-align: center; padding: var(--spacing-2); border-radius: var(--border-radius); font-weight: 600; }
 .card-link:hover { background-color: #000; color: var(--color-white); }
 
-/* =========================
-   5) 報價與方案卡片 + QA
-   ========================= */
+/* 小頁行動按鈕 */
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+}
+.btn:hover { background: #000; }
+
+/* 報價與方案卡片 + FAQ */
 .pricing-table { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--spacing-4); }
 .pricing-card { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: var(--spacing-4); text-align: center; background: var(--color-white); box-shadow: var(--box-shadow); }
 .pricing-card h3 { color: var(--color-primary); }
@@ -167,17 +161,11 @@ h1:focus { outline: none; }
 .qa-item:last-child { border-bottom: none; }
 .qa-item summary { font-weight: 600; cursor: pointer; }
 
-/* =========================
-   6) RWD 補充（列印另見最下）
-   ========================= */
 @media (max-width: 768px) {
   h1 { font-size: 2rem; }
   h2 { font-size: 1.5rem; }
 }
 
-/* =========================
-   7) 列印樣式（A4 友善）
-   ========================= */
 @media print {
   @page{ size: A4; margin: 14mm }
   body { padding-top: 0; background-color: var(--color-white); color: #000; }
@@ -192,15 +180,11 @@ h1:focus { outline: none; }
   a { color: #000; text-decoration: none; }
 }
 
-/* =========================
-   8) Toast（未知路由等提示） & 回頂按鈕
-   ========================= */
 #toast {
   position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
   background: #1a1a1a; color: #fff; padding: 10px 14px; border-radius: 10px;
   opacity: 0; pointer-events: none; transition: opacity .25s ease; z-index: 2000;
 }
-
 .back-top{
   position:fixed; right:24px; bottom:24px; width:44px; height:44px;
   border-radius:50%; border:1px solid var(--color-border); background:#111; color:#fff;

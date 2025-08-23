@@ -11,6 +11,7 @@ const CONFIG = {
     home:      { title:'衛卡攝影影像工作室｜首頁', desc:'捕捉生活中的每一個光影故事。專業、有溫度的影像紀錄。' },
     pricing:   { title:'服務報價｜衛卡攝影影像工作室', desc:'個人寫真、雙人寫真、團體寫真與客製化專案之費用說明。' },
     contact:   { title:'聯絡我們｜衛卡攝影影像工作室', desc:'Instagram、Email、電話等聯絡方式。' },
+    faq:       { title:'常見問題 Q&A｜衛卡攝影影像工作室', desc:'拍攝前準備、改期、地點、預約與服務內容等常見問答。' },
     solo:      { title:'個人寫真｜衛卡攝影影像工作室', desc:'自然互動、氣質寫真，打造你的專屬形象。' },
     couple:    { title:'雙人寫真｜衛卡攝影影像工作室', desc:'以互動畫面記錄兩人默契與情感的流動。' },
     group:     { title:'3–6 人團體｜衛卡攝影影像工作室', desc:'朋友、家庭、團隊合照，愉快而自然的群像時刻。' },
@@ -19,12 +20,13 @@ const CONFIG = {
     wedding:   { title:'婚禮紀錄｜衛卡攝影影像工作室', desc:'以紀實視角捕捉儀式與宴客的每個感動片刻。' },
   }
 };
-const routes = ['home','pricing','contact','solo','couple','group','prewedding','event','wedding'];
+const routes = ['home','pricing','contact','faq','solo','couple','group','prewedding','event','wedding'];
 
 const NAV = [
   { route:'home', text:'主頁' },
   { route:'pricing', text:'服務報價' },
-  { route:'contact', text:'聯絡我們' },
+  { route:'faq', text:'常見QA' },
+  { route:'contact', text:'預約檔期' },          // ← 顯示文字改成「預約檔期」
   { url:'https://weikaphoto.myportfolio.com/', text:'查看作品集', external:true }
 ];
 
@@ -114,10 +116,21 @@ function buildPricing(){
       `;
     }
   });
+
+  // 子頁方案卡（prewedding/event/wedding）：顯示「客製報價」
+  ['prewedding','event','wedding'].forEach(route=>{
+    const el = document.getElementById(`${route}-plan`);
+    if (el) {
+      el.innerHTML = `
+        <h3>方案價格</h3>
+        <div class="price">客製報價</div>
+        <p>依需求提供專案估價，歡迎與我討論。</p>
+      `;
+    }
+  });
 }
 
-/* ====== 條款區塊 ====== */
-/* A. 一般方案（個人 / 雙人 / 團體）— 使用預設條款（抬頭改「方案內容」） */
+/* ====== 條款區塊（維持原本注入規則） ====== */
 const DEFAULT_POLICY_HTML = `
   <section class="policy-block" aria-label="方案內容" style="margin-top: var(--spacing-4);">
     <h3>方案內容</h3>
@@ -141,7 +154,6 @@ const DEFAULT_POLICY_HTML = `
   </section>
 `;
 
-/* B. 婚紗攝影 — 專案訂製（抬頭改「方案內容」、精修張數文字調整、刪除快修精選） */
 const POLICY_PREWEDDING_HTML = `
   <section class="policy-block" aria-label="婚紗攝影方案內容" style="margin-top: var(--spacing-4);">
     <h3>方案內容</h3>
@@ -166,7 +178,6 @@ const POLICY_PREWEDDING_HTML = `
   </section>
 `;
 
-/* C. 活動紀錄 — 專案訂製（抬頭改「方案內容」、移除動態延伸與企業需求、去除精修字眼、毛片描述調整） */
 const POLICY_EVENT_HTML = `
   <section class="policy-block" aria-label="活動紀錄方案內容" style="margin-top: var(--spacing-4);">
     <h3>方案內容</h3>
@@ -189,7 +200,6 @@ const POLICY_EVENT_HTML = `
   </section>
 `;
 
-/* D. 婚禮紀錄 — 專案訂製（抬頭改「方案內容」、移除相本與輸出、去除精修字眼） */
 const POLICY_WEDDING_HTML = `
   <section class="policy-block" aria-label="婚禮紀錄方案內容" style="margin-top: var(--spacing-4);">
     <h3>方案內容</h3>
@@ -213,7 +223,7 @@ const POLICY_WEDDING_HTML = `
   </section>
 `;
 
-/* 將條款注入到各方案頁（保留原本 QA） */
+/* 將條款注入到各方案頁（保留現在「無 QA」的結構） */
 function attachPolicyBlocks(){
   // 一般方案：solo/couple/group → 條款放在價格卡後方
   ['solo','couple','group'].forEach(route=>{
@@ -226,25 +236,20 @@ function attachPolicyBlocks(){
   });
 
   // 專案訂製：prewedding / event / wedding
-  // 需求：先顯示「方案內容」，再顯示「常見QA」
-  const routeToHTML = {
-    prewedding: POLICY_PREWEDDING_HTML,
-    event:      POLICY_EVENT_HTML,
-    wedding:    POLICY_WEDDING_HTML
-  };
+  // 需求：頁面下方要保留「預約檔期」按鈕；條款要在按鈕前面（確保按鈕永遠最下）
+  const routeToHTML = { prewedding: POLICY_PREWEDDING_HTML, event: POLICY_EVENT_HTML, wedding: POLICY_WEDDING_HTML };
   Object.keys(routeToHTML).forEach(route=>{
-    const qa = document.querySelector(`.page-section[data-route="${route}"] .qa-section`);
     const sectionEl = document.querySelector(`.page-section[data-route="${route}"]`);
     if (sectionEl) {
       const wrapper = document.createElement('div');
       wrapper.innerHTML = routeToHTML[route];
       const policyNode = wrapper.firstElementChild;
 
-      if (qa) {
-        // 把「方案內容」插在 QA 之前
-        qa.insertAdjacentElement('beforebegin', policyNode);
+      const actions = sectionEl.querySelector('.section-actions');
+      if (actions) {
+        // 把「方案內容」插在按鈕之前，讓按鈕自然留在頁面最下方
+        actions.insertAdjacentElement('beforebegin', policyNode);
       } else {
-        // 沒有 QA 就放在該頁面最下方
         sectionEl.insertAdjacentElement('beforeend', policyNode);
       }
     }
@@ -368,7 +373,7 @@ function init(){
   setupMobileMenu();
   setupBackTop();
 
-  // 將條款分發到各方案頁
+  // 條款注入
   attachPolicyBlocks();
 
   const lastVisited = sessionStorage.getItem('lastVisitedRoute');
