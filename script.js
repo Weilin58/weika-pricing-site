@@ -24,6 +24,7 @@ const NAV = [
   { route:'home', text:'主頁' },
   { route:'pricing', text:'服務報價' },
   { route:'policy', text:'規則與內容' },
+  { url:'https://weikaphoto.myportfolio.com/', text:'查看作品集', external:true }
 ];
 const HOME_CARDS = [
   { route:'solo', title:'個人寫真', desc:'留下屬於自己的獨一無二。' },
@@ -50,7 +51,15 @@ function buildNav(){
   navLinksContainer.innerHTML = '';
   NAV.forEach(item => {
     const li = document.createElement('li');
-    li.innerHTML = `<a href="#${item.route}" role="menuitem">${item.text}</a>`;
+
+    if (item.external) {
+      // 🔗 外部連結（另開新視窗）
+      li.innerHTML = `<a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.text}</a>`;
+    } else {
+      // 📌 內部路由（SPA 用 #route）
+      li.innerHTML = `<a href="#${item.route}" role="menuitem">${item.text}</a>`;
+    }
+
     navLinksContainer.appendChild(li);
   });
 }
