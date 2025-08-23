@@ -26,12 +26,12 @@ const NAV = [
   { route:'policy', text:'規則與內容' },
 ];
 const HOME_CARDS = [
-  { route:'solo', title:'個人寫真', desc:'紀錄屬於自己的獨特時刻。' },
-  { route:'couple', title:'雙人寫真', desc:'捕捉您們之間的甜蜜互動。' },
+  { route:'solo', title:'個人寫真', desc:'留下屬於自己的獨一無二。' },
+  { route:'couple', title:'雙人寫真', desc:'捕捉你們之間的甜蜜互動。' },
   { route:'group', title:'團體寫真', desc:'留下充滿歡笑的共同回憶。' },
   { route:'prewedding', title:'婚紗攝影', desc:'規劃您們的夢想婚紗照。' },
-  { route:'event', title:'活動紀錄', desc:'專業的動態與靜態活動紀錄。' },
-  { route:'wedding', title:'婚禮紀錄', desc:'紀實生命中最重要的一天。' },
+  { route:'event', title:'活動紀錄', desc:'以細膩視角記錄最自然與感動的畫面。' },
+  { route:'wedding', title:'婚禮紀錄', desc:'用鏡頭紀錄婚禮中的真情流露，留下屬於你們最珍貴的一天。' },
 ];
 
 // 工具：台幣格式
