@@ -137,15 +137,19 @@ h1:focus {
 .card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12); }
 .card[role="button"]:focus-visible{ outline: 3px solid rgba(142,122,181,.45); outline-offset: 2px; }
 .card-image { height: 180px; background-size: cover; background-position: center; }
+
+/* 其它卡片仍用漸層 */
 [data-route="solo"] .card-image { background: linear-gradient(135deg, #bbaae0, #8e7ab5); }
 [data-route="couple"] .card-image { background: linear-gradient(135deg, #a6d4a9, #7fcba0); }
 [data-route="group"] .card-image { background: linear-gradient(135deg, #f8cb9c, #f2a46d); }
-[data-route="prewedding"] .card-image { background: linear-gradient(135deg, #f2a4a4, #e67b7b); }
 [data-route="event"] .card-image { background: linear-gradient(135deg, #9fd3f3, #6cb3df); }
 
-/* ✅ 婚紗攝影卡片：改為使用圖片（正確掛在 prewedding） */
+/* ✅ 婚紗攝影卡片（prewedding）改用圖片 */
 [data-route="prewedding"] .card-image {
-  background: url("images/wedding_01.jpg") center/cover no-repeat;
+  background-image: url("images/wedding_01.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .card-content { padding: var(--spacing-4); flex-grow: 1; display: flex; flex-direction: column; }
