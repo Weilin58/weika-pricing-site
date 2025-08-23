@@ -136,7 +136,7 @@ h1:focus {
 .card { background-color: var(--color-white); border-radius: var(--border-radius); box-shadow: var(--box-shadow); overflow: hidden; display: flex; flex-direction: column; transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease; border: 1px solid var(--color-border); }
 .card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12); }
 .card[role="button"]:focus-visible{ outline: 3px solid rgba(142,122,181,.45); outline-offset: 2px; }
-.card-image { height: 180px; background-size: cover; background-position: center; }
+.card-image {aspect-ratio: 3 / 2;   /* 改為 3:2 比例 */background-size: cover;background-position: center;}
 
 /* 其它卡片仍用漸層 */
 [data-route="solo"] .card-image { background: linear-gradient(135deg, #bbaae0, #8e7ab5); }
