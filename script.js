@@ -66,9 +66,10 @@ function buildHomeCards(){
     a.setAttribute('role','button');
     a.setAttribute('tabindex','0');
     a.setAttribute('aria-label', card.title);
+    a.setAttribute('data-route', card.route); // ✅ 讓外層卡片帶 data-route
     a.innerHTML = `
       <div class="card-image"></div>
-      <div class="card-content" data-route="${card.route}">
+      <div class="card-content">
         <h3>${card.title}</h3>
         <p>${card.desc}</p>
         <span class="card-link">了解更多</span>
