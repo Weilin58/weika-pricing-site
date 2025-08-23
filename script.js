@@ -62,7 +62,7 @@ function buildNav(){
   });
 }
 
-// 首頁卡片（按鈕文案改為：查看方案）
+// 首頁卡片（按鈕文案：查看方案）
 function buildHomeCards(){
   if(!homeCardGrid) return;
   homeCardGrid.innerHTML = '';
@@ -117,10 +117,10 @@ function buildPricing(){
 }
 
 /* ====== 條款區塊 ====== */
-/* A. 一般方案（個人 / 雙人 / 團體）— 使用預設條款 */
+/* A. 一般方案（個人 / 雙人 / 團體）— 使用預設條款（抬頭改「方案內容」） */
 const DEFAULT_POLICY_HTML = `
-  <section class="policy-block" aria-label="服務規則與內容" style="margin-top: var(--spacing-4);">
-    <h3>規則與內容</h3>
+  <section class="policy-block" aria-label="方案內容" style="margin-top: var(--spacing-4);">
+    <h3>方案內容</h3>
     <h4>成品內容</h4>
     <ul>
       <li><strong>專業調色：</strong> 提供 30–60 張風格調色電子檔。</li>
@@ -141,13 +141,13 @@ const DEFAULT_POLICY_HTML = `
   </section>
 `;
 
-/* B. 婚紗攝影 — 專案訂製 */
+/* B. 婚紗攝影 — 專案訂製（抬頭改「方案內容」、精修張數文字調整、刪除快修精選） */
 const POLICY_PREWEDDING_HTML = `
-  <section class="policy-block" aria-label="婚紗攝影規則與內容" style="margin-top: var(--spacing-4);">
-    <h3>規則與內容</h3>
+  <section class="policy-block" aria-label="婚紗攝影方案內容" style="margin-top: var(--spacing-4);">
+    <h3>方案內容</h3>
     <h4>成品內容（專案訂製）</h4>
     <ul>
-      <li><strong>精修張數：</strong> 依方案客製（建議 20–60 張），提供風格統一之精修。</li>
+      <li><strong>精修張數：</strong> 依方案客製（建議至少20張），提供風格統一之精修。</li>
       <li><strong>相本／成冊：</strong> 可加購 10×10 或 12×12 相本、裱框與謝卡套組。</li>
       <li><strong>拍攝配置：</strong> 禮服件數、造型次數、外景點數、棚租等皆可彈性調整。</li>
     </ul>
@@ -155,7 +155,6 @@ const POLICY_PREWEDDING_HTML = `
     <ul>
       <li><strong>雲端交付：</strong> 精修與風格調色檔案提供雲端下載（保留 30 日）。</li>
       <li><strong>實體交付：</strong> 相本／相框依客製品項製作，交期視廠商作業而定（約 21–45 天）。</li>
-      <li><strong>快修精選：</strong> 可加購 10–20 張於 3–5 工作日內交付作社群公告使用。</li>
       <li><strong>媒體備份：</strong> 可加購 USB／行動硬碟備份。</li>
     </ul>
     <h4>預約與費用</h4>
@@ -167,45 +166,42 @@ const POLICY_PREWEDDING_HTML = `
   </section>
 `;
 
-/* C. 活動紀錄 — 專案訂製 */
+/* C. 活動紀錄 — 專案訂製（抬頭改「方案內容」、移除動態延伸與企業需求、去除精修字眼、毛片描述調整） */
 const POLICY_EVENT_HTML = `
-  <section class="policy-block" aria-label="活動紀錄規則與內容" style="margin-top: var(--spacing-4);">
-    <h3>規則與內容</h3>
+  <section class="policy-block" aria-label="活動紀錄方案內容" style="margin-top: var(--spacing-4);">
+    <h3>方案內容</h3>
     <h4>成品內容（專案訂製）</h4>
     <ul>
       <li><strong>重點花絮：</strong> 講者特寫、互動合照、攤位／展演、觀眾反應等主題化精選。</li>
       <li><strong>合照規劃：</strong> 可依需求製作貴賓合影清單與流程引導，提升現場效率。</li>
-      <li><strong>動態延伸：</strong> 可加購短影音剪輯（Reels／Shorts）、活動回顧影片。</li>
     </ul>
     <h4>成品交付（專案訂製）</h4>
     <ul>
       <li><strong>快修精選：</strong> 依方案提供 10–20 張於 24–72 小時交付，供行銷曝光。</li>
-      <li><strong>完整交件：</strong> 全部精修與風格調色檔案，約 7–14 天交付雲端。</li>
-      <li><strong>企業需求：</strong> 可應需求提供授權書、檔名規格、分類資料夾與封面圖。</li>
+      <li><strong>完整交件：</strong> 全數調色成品，約 7–14 天交付雲端。</li>
     </ul>
     <h4>預約與費用</h4>
     <ul>
       <li><strong>訂金：</strong> 確認檔期後收取 50% 訂金；活動超時依每小時計價。</li>
       <li><strong>交通／加班：</strong> 交通與停車費另計；夜間或跨縣市請先告知以利安排。</li>
-      <li><strong>原始檔：</strong> 原則不提供；如需額外交付 RAW，依場次與容量另報價。</li>
+      <li><strong>毛片：</strong> 不提供毛片；如需加購，依場次與容量另報價。</li>
     </ul>
   </section>
 `;
 
-/* D. 婚禮紀錄 — 專案訂製 */
+/* D. 婚禮紀錄 — 專案訂製（抬頭改「方案內容」、移除相本與輸出、去除精修字眼） */
 const POLICY_WEDDING_HTML = `
-  <section class="policy-block" aria-label="婚禮紀錄規則與內容" style="margin-top: var(--spacing-4);">
-    <h3>規則與內容</h3>
+  <section class="policy-block" aria-label="婚禮紀錄方案內容" style="margin-top: var(--spacing-4);">
+    <h3>方案內容</h3>
     <h4>成品內容（專案訂製）</h4>
     <ul>
       <li><strong>全日／半日：</strong> 迎娶、儀式、宴客流程完整紀錄；可加購雙攝影配置。</li>
       <li><strong>合照清單：</strong> 可事先提供親友合影清單，現場依流程引導完成。</li>
-      <li><strong>相本與輸出：</strong> 可加購相本、相框、謝卡或婚禮看板輸出。</li>
     </ul>
     <h4>成品交付（專案訂製）</h4>
     <ul>
       <li><strong>快修精選：</strong> 10–20 張於婚禮後 48–72 小時交付，供社群公告。</li>
-      <li><strong>完整交件：</strong> 全部精修與風格調色檔案於 21–45 天雲端交付。</li>
+      <li><strong>完整交件：</strong> 全數調色成品於 21–45 天雲端交付。</li>
       <li><strong>媒體備份：</strong> 可加購 USB／行動硬碟備份；檔案雲端保留 30 日。</li>
     </ul>
     <h4>預約與費用</h4>
@@ -219,7 +215,7 @@ const POLICY_WEDDING_HTML = `
 
 /* 將條款注入到各方案頁（保留原本 QA） */
 function attachPolicyBlocks(){
-  // 一般方案：solo/couple/group → 預設條款放在價格卡後
+  // 一般方案：solo/couple/group → 條款放在價格卡後方
   ['solo','couple','group'].forEach(route=>{
     const plan = document.getElementById(`${route}-plan`);
     if (plan) {
@@ -229,19 +225,28 @@ function attachPolicyBlocks(){
     }
   });
 
-  // 專案訂製：prewedding / event / wedding → 客製條款放在頁面最下方（若有 QA，插在 QA 後）
+  // 專案訂製：prewedding / event / wedding
+  // 需求：先顯示「方案內容」，再顯示「常見QA」
   const routeToHTML = {
     prewedding: POLICY_PREWEDDING_HTML,
     event:      POLICY_EVENT_HTML,
     wedding:    POLICY_WEDDING_HTML
   };
   Object.keys(routeToHTML).forEach(route=>{
-    const sec = document.querySelector(`.page-section[data-route="${route}"] .qa-section`);
-    const anchor = sec || document.querySelector(`.page-section[data-route="${route}"]`);
-    if (anchor) {
+    const qa = document.querySelector(`.page-section[data-route="${route}"] .qa-section`);
+    const sectionEl = document.querySelector(`.page-section[data-route="${route}"]`);
+    if (sectionEl) {
       const wrapper = document.createElement('div');
       wrapper.innerHTML = routeToHTML[route];
-      anchor.insertAdjacentElement('afterend', wrapper.firstElementChild);
+      const policyNode = wrapper.firstElementChild;
+
+      if (qa) {
+        // 把「方案內容」插在 QA 之前
+        qa.insertAdjacentElement('beforebegin', policyNode);
+      } else {
+        // 沒有 QA 就放在該頁面最下方
+        sectionEl.insertAdjacentElement('beforeend', policyNode);
+      }
     }
   });
 }
