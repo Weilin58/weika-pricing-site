@@ -229,29 +229,22 @@ function attachPolicyBlocks(){
     }
   });
 
- // 專案訂製：prewedding / event / wedding → 客製條款放在 QA 之前（若沒有 QA 才放頁面最下方）
-const routeToHTML = {
-  prewedding: POLICY_PREWEDDING_HTML,
-  event:      POLICY_EVENT_HTML,
-  wedding:    POLICY_WEDDING_HTML
-};
-Object.keys(routeToHTML).forEach(route=>{
-  const sec = document.querySelector(`.page-section[data-route="${route}"] .qa-section`);
-  const sectionEl = document.querySelector(`.page-section[data-route="${route}"]`);
-  if (sectionEl) {
-    const wrapper = document.createElement('div');
-    wrapper.innerHTML = routeToHTML[route];
-    const policyNode = wrapper.firstElementChild;
-
-    if (sec) {
-      //  有 QA：把條款放在 QA 前面
-      sec.insertAdjacentElement('beforebegin', policyNode);
-    } else {
-      //  沒有 QA：把條款放在該頁面 section 的最後
-      sectionEl.insertAdjacentElement('beforeend', policyNode);
+  // 專案訂製：prewedding / event / wedding → 客製條款放在頁面最下方（若有 QA，插在 QA 後）
+  const routeToHTML = {
+    prewedding: POLICY_PREWEDDING_HTML,
+    event:      POLICY_EVENT_HTML,
+    wedding:    POLICY_WEDDING_HTML
+  };
+  Object.keys(routeToHTML).forEach(route=>{
+    const sec = document.querySelector(`.page-section[data-route="${route}"] .qa-section`);
+    const anchor = sec || document.querySelector(`.page-section[data-route="${route}"]`);
+    if (anchor) {
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = routeToHTML[route];
+      anchor.insertAdjacentElement('afterend', wrapper.firstElementChild);
     }
-  }
-});
+  });
+}
 
 // 導覽 active 狀態
 function updateNavActiveState(activeRoute) {
