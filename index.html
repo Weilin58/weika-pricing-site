@@ -26,21 +26,19 @@
   }
   </script>
 
-  <!-- 外部樣式 -->
-<link rel="stylesheet" href="styles.css?v=6">
+  <!-- 外部樣式（避快取） -->
+  <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body>
   <!-- 跳到主要內容（鍵盤可用） -->
   <a href="#main-content" class="skip-link">跳到主要內容</a>
 
-  <!-- 導覽列 -->
+  <!-- 導覽列（內容由 script.js 動態生成） -->
   <nav class="navbar" aria-label="主要導覽">
     <a class="navbar-brand" href="#home" aria-label="網站首頁">衛卡攝影影像工作室</a>
     <ul class="nav-links" id="nav-links" role="menubar"></ul>
     <button class="nav-toggle" id="nav-toggle" aria-label="切換導覽選單" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
   </nav>
 
@@ -64,30 +62,16 @@
       <h1 id="pricing-title" tabindex="-1">服務報價</h1>
       <div class="pricing-table" id="pricing-table"></div>
       <h2 style="text-align:center; margin-top: var(--spacing-5);">更多方案</h2>
-      <p style="text-align:center; color: var(--color-secondary);">婚紗攝影、活動及婚禮紀錄，將根據您的需求提供客製化報價，歡迎 <a href="#policy">查看規則與內容</a>。</p>
+      <p style="text-align:center; color: var(--color-secondary);">
+        婚紗攝影、活動及婚禮紀錄，將根據您的需求提供客製化報價，歡迎
+        <a href="#contact">查看聯絡方式</a>。
+      </p>
     </section>
 
-    <!-- Policy -->
-    <section class="page-section" data-route="policy" aria-labelledby="policy-title">
+    <!-- Contact（原 policy 改名為 contact，僅保留聯絡方式） -->
+    <section class="page-section" data-route="contact" aria-labelledby="contact-title">
       <a href="#home" class="back-to-home">回到主頁</a>
-      <h1 id="policy-title" tabindex="-1">規則與內容</h1>
-      <h2>成品內容</h2>
-      <ul>
-        <li><strong>專業調色：</strong> 提供 30-60 張風格調色電子檔。</li>
-        <li><strong>精緻修圖：</strong> 由您自選 10 張進行深度精修（膚質、身形、細節調整）。</li>
-      </ul>
-      <h2>檔案交付</h2>
-      <ul>
-        <li><strong>雲端硬碟：</strong> 成品透過 Google Drive 交付，檔案保留 30 日。</li>
-        <li><strong>加購 USB：</strong> 可加價 NT$300 選購 USB 隨身碟。</li>
-      </ul>
-      <h2>預約與費用</h2>
-      <ul>
-        <li><strong>訂金：</strong> 確認預約將收取總報價之 50% 作為訂金。</li>
-        <li><strong>交通費：</strong> 每公里 NT$7；若計算未滿 NT$100 則不收取。</li>
-        <li><strong>額外費用：</strong> 攝影棚租借、妝髮造型等費用，實報實銷。</li>
-        <li><strong>毛片：</strong> 一般來說不會提供原始毛片，如有特別需求，加購全數毛片，均酌收轉檔費用為 NT$2,000。</li>
-      </ul>
+      <h1 id="contact-title" tabindex="-1">聯絡我們</h1>
       <h2>聯絡方式</h2>
       <p>Instagram：@weika_58 ｜ Email: weikaphotography@gmail.com ｜ Phone: 0926-189-353</p>
     </section>
@@ -99,7 +83,7 @@
       <div class="pricing-card" id="solo-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
       <div class="qa-section">
         <h2>常見 QA</h2>
-        <details class="qa-item"><summary>拍攝地點可以自己決定嗎？</summary><p>可以！可討論最適合您的風格場景，戶外（海邊/公園/街拍）或室內（咖啡廳/棚）。</p></details>
+        <details class="qa-item><summary>拍攝地點可以自己決定嗎？</summary><p>可以！可討論最適合您的風格場景，戶外（海邊/公園/街拍）或室內（咖啡廳/棚）。</p></details>
         <details class="qa-item"><summary>需要自己準備服裝嗎？</summary><p>建議 1–2 套簡約色系，搭配一深一淺；拍攝前可提供搭配建議。</p></details>
       </div>
     </section>
@@ -162,7 +146,7 @@
     © <span id="year"></span> 衛卡攝影影像工作室 · Instagram @weika_58
   </footer>
 
-  <!-- 外部腳本 -->
-  <script src="script.js?v=6"></script>
+  <!-- 外部腳本（避快取） -->
+  <script src="script.js?v=11"></script>
 </body>
 </html>

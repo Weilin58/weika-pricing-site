@@ -3,36 +3,38 @@
 // =========================
 const CONFIG = {
   pricing: [
-    { route:'solo',   name:'個人寫真', price:2000, hours:'1~1.5hr', desc:'適合個人形象、紀念日或日常紀錄。' },
-    { route:'couple', name:'雙人寫真', price:3500, hours:'1~1.5hr', desc:'適合情侶、閨蜜、親子或好友。' },
+    { route:'solo',   name:'個人寫真',   price:2000, hours:'1~1.5hr', desc:'適合個人形象、紀念日或日常紀錄。' },
+    { route:'couple', name:'雙人寫真',   price:3500, hours:'1~1.5hr', desc:'適合情侶、閨蜜、親子或好友。' },
     { route:'group',  name:'3–6人團體', price:5000, hours:'1~1.5hr', desc:'適合家庭、朋友團體。' },
   ],
   pages: {
-    home:  { title:'衛卡攝影影像工作室｜首頁', desc:'捕捉生活中的每一個光影故事。專業、有溫度的影像紀錄。' },
-    pricing:{ title:'服務報價｜衛卡攝影影像工作室', desc:'個人寫真、雙人寫真、團體寫真與客製化專案之費用說明。' },
-    policy: { title:'規則與內容｜衛卡攝影影像工作室', desc:'交付內容、預約與改期、保存與授權等條款說明。' },
-    solo:   { title:'個人寫真｜衛卡攝影影像工作室', desc:'自然互動、氣質寫真，打造你的專屬形象。' },
-    couple: { title:'雙人寫真｜衛卡攝影影像工作室', desc:'以互動畫面記錄兩人默契與情感的流動。' },
-    group:  { title:'3–6 人團體｜衛卡攝影影像工作室', desc:'朋友、家庭、團隊合照，愉快而自然的群像時刻。' },
+    home:      { title:'衛卡攝影影像工作室｜首頁', desc:'捕捉生活中的每一個光影故事。專業、有溫度的影像紀錄。' },
+    pricing:   { title:'服務報價｜衛卡攝影影像工作室', desc:'個人寫真、雙人寫真、團體寫真與客製化專案之費用說明。' },
+    contact:   { title:'聯絡我們｜衛卡攝影影像工作室', desc:'Instagram、Email、電話等聯絡方式。' },
+    solo:      { title:'個人寫真｜衛卡攝影影像工作室', desc:'自然互動、氣質寫真，打造你的專屬形象。' },
+    couple:    { title:'雙人寫真｜衛卡攝影影像工作室', desc:'以互動畫面記錄兩人默契與情感的流動。' },
+    group:     { title:'3–6 人團體｜衛卡攝影影像工作室', desc:'朋友、家庭、團隊合照，愉快而自然的群像時刻。' },
     prewedding:{ title:'婚紗攝影｜衛卡攝影影像工作室', desc:'以光影與場景述說兩人的篇章，可全案客製。' },
-    event:  { title:'活動紀錄｜衛卡攝影影像工作室', desc:'商業活動、講座、展演與派對，完整保存重點瞬間。' },
-    wedding:{ title:'婚禮紀錄｜衛卡攝影影像工作室', desc:'以紀實視角捕捉儀式與宴客的每個感動片刻。' },
+    event:     { title:'活動紀錄｜衛卡攝影影像工作室', desc:'商業活動、講座、展演與派對，完整保存重點瞬間。' },
+    wedding:   { title:'婚禮紀錄｜衛卡攝影影像工作室', desc:'以紀實視角捕捉儀式與宴客的每個感動片刻。' },
   }
 };
-const routes = ['home','pricing','policy','solo','couple','group','prewedding','event','wedding'];
+const routes = ['home','pricing','contact','solo','couple','group','prewedding','event','wedding'];
+
 const NAV = [
   { route:'home', text:'主頁' },
   { route:'pricing', text:'服務報價' },
-  { route:'policy', text:'規則與內容' },
+  { route:'contact', text:'聯絡我們' },
   { url:'https://weikaphoto.myportfolio.com/', text:'查看作品集', external:true }
 ];
+
 const HOME_CARDS = [
-  { route:'solo', title:'個人寫真', desc:'留下屬於自己的獨一無二。' },
-  { route:'couple', title:'雙人寫真', desc:'捕捉你們之間的甜蜜互動。' },
+  { route:'solo', title:'個人寫真', desc:'紀錄屬於自己的獨特時刻。' },
+  { route:'couple', title:'雙人寫真', desc:'捕捉您們之間的甜蜜互動。' },
   { route:'group', title:'團體寫真', desc:'留下充滿歡笑的共同回憶。' },
   { route:'prewedding', title:'婚紗攝影', desc:'規劃您們的夢想婚紗照。' },
-  { route:'event', title:'活動紀錄', desc:'以細膩視角記錄最自然與感動的畫面。' },
-  { route:'wedding', title:'婚禮紀錄', desc:'用鏡頭紀錄婚禮中的真情流露，留下屬於你們最珍貴的一天。' },
+  { route:'event', title:'活動紀錄', desc:'專業的動態與靜態活動紀錄。' },
+  { route:'wedding', title:'婚禮紀錄', desc:'紀實生命中最重要的一天。' },
 ];
 
 // 工具：台幣格式
@@ -44,27 +46,23 @@ const homeCardGrid = document.getElementById('home-card-grid');
 const mainContent = document.getElementById('main-content');
 const yearEl = document.getElementById('year');
 const toastEl = document.getElementById('toast');
-yearEl.textContent = new Date().getFullYear();
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// 產生導覽列
+// 產生導覽列（保留外部作品集）
 function buildNav(){
   navLinksContainer.innerHTML = '';
   NAV.forEach(item => {
     const li = document.createElement('li');
-
     if (item.external) {
-      // 🔗 外部連結（另開新視窗）
       li.innerHTML = `<a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.text}</a>`;
     } else {
-      // 📌 內部路由（SPA 用 #route）
       li.innerHTML = `<a href="#${item.route}" role="menuitem">${item.text}</a>`;
     }
-
     navLinksContainer.appendChild(li);
   });
 }
 
-// 首頁卡片
+// 首頁卡片（按鈕文案改為：查看方案）
 function buildHomeCards(){
   if(!homeCardGrid) return;
   homeCardGrid.innerHTML = '';
@@ -75,13 +73,13 @@ function buildHomeCards(){
     a.setAttribute('role','button');
     a.setAttribute('tabindex','0');
     a.setAttribute('aria-label', card.title);
-    a.setAttribute('data-route', card.route); // ✅ 讓外層卡片帶 data-route
+    a.setAttribute('data-route', card.route);
     a.innerHTML = `
       <div class="card-image"></div>
       <div class="card-content">
         <h3>${card.title}</h3>
         <p>${card.desc}</p>
-        <span class="card-link">了解更多</span>
+        <span class="card-link">查看方案</span>
       </div>`;
     a.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); a.click(); } });
     homeCardGrid.appendChild(a);
@@ -118,6 +116,136 @@ function buildPricing(){
   });
 }
 
+/* ====== 條款區塊 ====== */
+/* A. 一般方案（個人 / 雙人 / 團體）— 使用預設條款 */
+const DEFAULT_POLICY_HTML = `
+  <section class="policy-block" aria-label="服務規則與內容" style="margin-top: var(--spacing-4);">
+    <h3>規則與內容</h3>
+    <h4>成品內容</h4>
+    <ul>
+      <li><strong>專業調色：</strong> 提供 30–60 張風格調色電子檔。</li>
+      <li><strong>精緻修圖：</strong> 自選 10 張進行深度精修（膚質、身形、細節調整）。</li>
+    </ul>
+    <h4>成品交付</h4>
+    <ul>
+      <li><strong>雲端交付：</strong> 透過 Google Drive 提供下載，檔案保留 30 日。</li>
+      <li><strong>加購 USB：</strong> 可加價 NT$300 選購 USB 隨身碟。</li>
+    </ul>
+    <h4>預約與費用</h4>
+    <ul>
+      <li><strong>訂金：</strong> 確認預約收取總報價 50% 訂金。</li>
+      <li><strong>交通費：</strong> 每公里 NT$7；若計算未滿 NT$100 則不收取。</li>
+      <li><strong>額外費用：</strong> 攝影棚租借、妝髮造型等費用，實報實銷。</li>
+      <li><strong>毛片：</strong> 原則不提供；如需加購，全數 NT$2,000。</li>
+    </ul>
+  </section>
+`;
+
+/* B. 婚紗攝影 — 專案訂製 */
+const POLICY_PREWEDDING_HTML = `
+  <section class="policy-block" aria-label="婚紗攝影規則與內容" style="margin-top: var(--spacing-4);">
+    <h3>規則與內容</h3>
+    <h4>成品內容（專案訂製）</h4>
+    <ul>
+      <li><strong>精修張數：</strong> 依方案客製（建議 20–60 張），提供風格統一之精修。</li>
+      <li><strong>相本／成冊：</strong> 可加購 10×10 或 12×12 相本、裱框與謝卡套組。</li>
+      <li><strong>拍攝配置：</strong> 禮服件數、造型次數、外景點數、棚租等皆可彈性調整。</li>
+    </ul>
+    <h4>成品交付（專案訂製）</h4>
+    <ul>
+      <li><strong>雲端交付：</strong> 精修與風格調色檔案提供雲端下載（保留 30 日）。</li>
+      <li><strong>實體交付：</strong> 相本／相框依客製品項製作，交期視廠商作業而定（約 21–45 天）。</li>
+      <li><strong>快修精選：</strong> 可加購 10–20 張於 3–5 工作日內交付作社群公告使用。</li>
+      <li><strong>媒體備份：</strong> 可加購 USB／行動硬碟備份。</li>
+    </ul>
+    <h4>預約與費用</h4>
+    <ul>
+      <li><strong>訂金：</strong> 確認檔期後收取總額 50% 訂金；餘款於成品驗收前結清。</li>
+      <li><strong>交通／場租：</strong> 外縣市交通與場地費用另計；如需包車另報價。</li>
+      <li><strong>毛片：</strong> 原則不提供；如需加購全數毛片，均收轉檔與整理費用 NT$2,000。</li>
+    </ul>
+  </section>
+`;
+
+/* C. 活動紀錄 — 專案訂製 */
+const POLICY_EVENT_HTML = `
+  <section class="policy-block" aria-label="活動紀錄規則與內容" style="margin-top: var(--spacing-4);">
+    <h3>規則與內容</h3>
+    <h4>成品內容（專案訂製）</h4>
+    <ul>
+      <li><strong>重點花絮：</strong> 講者特寫、互動合照、攤位／展演、觀眾反應等主題化精選。</li>
+      <li><strong>合照規劃：</strong> 可依需求製作貴賓合影清單與流程引導，提升現場效率。</li>
+      <li><strong>動態延伸：</strong> 可加購短影音剪輯（Reels／Shorts）、活動回顧影片。</li>
+    </ul>
+    <h4>成品交付（專案訂製）</h4>
+    <ul>
+      <li><strong>快修精選：</strong> 依方案提供 10–20 張於 24–72 小時交付，供行銷曝光。</li>
+      <li><strong>完整交件：</strong> 全部精修與風格調色檔案，約 7–14 天交付雲端。</li>
+      <li><strong>企業需求：</strong> 可應需求提供授權書、檔名規格、分類資料夾與封面圖。</li>
+    </ul>
+    <h4>預約與費用</h4>
+    <ul>
+      <li><strong>訂金：</strong> 確認檔期後收取 50% 訂金；活動超時依每小時計價。</li>
+      <li><strong>交通／加班：</strong> 交通與停車費另計；夜間或跨縣市請先告知以利安排。</li>
+      <li><strong>原始檔：</strong> 原則不提供；如需額外交付 RAW，依場次與容量另報價。</li>
+    </ul>
+  </section>
+`;
+
+/* D. 婚禮紀錄 — 專案訂製 */
+const POLICY_WEDDING_HTML = `
+  <section class="policy-block" aria-label="婚禮紀錄規則與內容" style="margin-top: var(--spacing-4);">
+    <h3>規則與內容</h3>
+    <h4>成品內容（專案訂製）</h4>
+    <ul>
+      <li><strong>全日／半日：</strong> 迎娶、儀式、宴客流程完整紀錄；可加購雙攝影配置。</li>
+      <li><strong>合照清單：</strong> 可事先提供親友合影清單，現場依流程引導完成。</li>
+      <li><strong>相本與輸出：</strong> 可加購相本、相框、謝卡或婚禮看板輸出。</li>
+    </ul>
+    <h4>成品交付（專案訂製）</h4>
+    <ul>
+      <li><strong>快修精選：</strong> 10–20 張於婚禮後 48–72 小時交付，供社群公告。</li>
+      <li><strong>完整交件：</strong> 全部精修與風格調色檔案於 21–45 天雲端交付。</li>
+      <li><strong>媒體備份：</strong> 可加購 USB／行動硬碟備份；檔案雲端保留 30 日。</li>
+    </ul>
+    <h4>預約與費用</h4>
+    <ul>
+      <li><strong>訂金：</strong> 確認檔期後收取 50% 訂金；餘款於交件前結清。</li>
+      <li><strong>交通／住宿：</strong> 跨縣市或清晨日出檔期，交通與住宿費另計。</li>
+      <li><strong>毛片：</strong> 原則不提供；如需加購全數毛片，收轉檔與整理費用 NT$2,000。</li>
+    </ul>
+  </section>
+`;
+
+/* 將條款注入到各方案頁（保留原本 QA） */
+function attachPolicyBlocks(){
+  // 一般方案：solo/couple/group → 預設條款放在價格卡後
+  ['solo','couple','group'].forEach(route=>{
+    const plan = document.getElementById(`${route}-plan`);
+    if (plan) {
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = DEFAULT_POLICY_HTML;
+      plan.insertAdjacentElement('afterend', wrapper.firstElementChild);
+    }
+  });
+
+  // 專案訂製：prewedding / event / wedding → 客製條款放在頁面最下方（若有 QA，插在 QA 後）
+  const routeToHTML = {
+    prewedding: POLICY_PREWEDDING_HTML,
+    event:      POLICY_EVENT_HTML,
+    wedding:    POLICY_WEDDING_HTML
+  };
+  Object.keys(routeToHTML).forEach(route=>{
+    const sec = document.querySelector(`.page-section[data-route="${route}"] .qa-section`);
+    const anchor = sec || document.querySelector(`.page-section[data-route="${route}"]`);
+    if (anchor) {
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = routeToHTML[route];
+      anchor.insertAdjacentElement('afterend', wrapper.firstElementChild);
+    }
+  });
+}
+
 // 導覽 active 狀態
 function updateNavActiveState(activeRoute) {
   document.querySelectorAll('#nav-links a').forEach(link => {
@@ -147,9 +275,7 @@ function applyRouteMeta(route){
 // 路由處理
 const allRoutes = routes.slice();
 let currentActiveSection = null;
-function getRouteFromHash(){
-  return (location.hash || '#home').replace('#','');
-}
+function getRouteFromHash(){ return (location.hash || '#home').replace('#',''); }
 function showRoute(route){
   if(!allRoutes.includes(route)){
     toast(); route='home'; location.hash = '#home';
@@ -168,13 +294,12 @@ function showRoute(route){
   target.classList.add('is-active');
   currentActiveSection = target;
 
-  // 導覽、Meta、焦點（避免自動捲動感）
+  // 導覽、Meta、焦點
   updateNavActiveState(route);
   applyRouteMeta(route);
   const h1 = target.querySelector('h1');
   if(h1){ h1.focus({ preventScroll:true }); }
 
-  // 記錄路由
   try{ sessionStorage.setItem('lastVisitedRoute', route); }catch(e){}
 }
 
@@ -201,7 +326,6 @@ function setupMobileMenu(){
     navToggle.classList.toggle('is-open', open);
     navToggle.setAttribute('aria-expanded', String(open));
   });
-  // 點擊連結、按 ESC、外點收合
   navLinksContainer.addEventListener('click', (e)=>{ if(e.target.tagName==='A'){
     navLinksContainer.classList.remove('is-open');
     navToggle.classList.remove('is-open');
@@ -239,17 +363,15 @@ function init(){
   setupMobileMenu();
   setupBackTop();
 
-  // 若無 hash，嘗試用 sessionStorage 記憶的頁
+  // 將條款分發到各方案頁
+  attachPolicyBlocks();
+
   const lastVisited = sessionStorage.getItem('lastVisitedRoute');
   if(!location.hash && lastVisited && routes.includes(lastVisited)){
     location.hash = `#${lastVisited}`;
   }
-
-  // 初始路由 + 查詢參數
   applyQueryOptions();
   handleRouteChange();
-
-  // 監聽變化
   window.addEventListener('hashchange', handleRouteChange);
 }
 
