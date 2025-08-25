@@ -26,7 +26,7 @@ const NAV = [
   { route:'home', text:'主頁' },
   { route:'pricing', text:'服務報價' },
   { route:'faq', text:'常見QA' },
-  { route:'contact', text:'預約檔期' },          // ← 顯示文字改成「預約檔期」
+  { route:'contact', text:'預約檔期' },
   { url:'https://weikaphoto.myportfolio.com/', text:'查看作品集', external:true }
 ];
 
@@ -38,6 +38,16 @@ const HOME_CARDS = [
   { route:'event', title:'活動紀錄', desc:'專業的動態與靜態活動紀錄。' },
   { route:'wedding', title:'婚禮紀錄', desc:'紀實生命中最重要的一天。' },
 ];
+
+/* === 新增：每個首頁卡片對應的輪播圖片清單 === */
+const HOME_CARD_IMAGES = {
+  solo:      ['images/portrait_01.jpg','images/portrait_02.jpg','images/portrait_03.jpg'],
+  couple:    ['images/couple_01.jpg','images/couple_02.jpg','images/couple_03.jpg'],
+  group:     ['images/group_01.jpg','images/group_02.jpg','images/group_03.jpg'],
+  prewedding:['images/wedding_01.jpg','images/wedding_02.jpg','images/wedding_03.jpg'],
+  event:     ['images/event_01.jpg','images/event_02.jpg','images/event_03.jpg'],
+  wedding:   ['images/weddingday_01.jpg','images/weddingday_02.jpg','images/weddingday_03.jpg'],
+};
 
 // 工具：台幣格式
 const nt = n => `NT$${Number(n).toLocaleString('zh-TW')}`;
@@ -85,7 +95,76 @@ function buildHomeCards(){
       </div>`;
     a.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); a.click(); } });
     homeCardGrid.appendChild(a);
+
+    /* 新增：為這張卡片啟用輪播 */
+    initCardSlider(a, HOME_CARD_IMAGES[card.route] || []);
   });
+}
+
+/* === 新增：初始化單張卡片輪播 === */
+function initCardSlider(cardAnchorEl, images, intervalMs = 3800){
+  const imgWrap = cardAnchorEl.querySelector('.card-image');
+  if (!imgWrap || !images || images.length === 0) return;
+
+  const slideA = document.createElement('div'); slideA.className = 'card-slide is-active';
+  const slideB = document.createElement('div'); slideB.className = 'card-slide';
+  imgWrap.appendChild(slideA); imgWrap.appendChild(slideB);
+
+  // 指示點
+  const dots = document.createElement('div'); dots.className = 'card-dots';
+  const dotEls = images.map((_,i)=> {
+    const d = document.createElement('span'); d.className='card-dot'+(i===0?' is-active':'');
+    d.addEventListener('click', (e)=>{ e.stopPropagation(); goTo(i); });
+    dots.appendChild(d); return d;
+  });
+  imgWrap.appendChild(dots);
+
+  // 左右切換（桌機）
+  const prev = document.createElement('button'); prev.className='card-nav prev'; prev.setAttribute('aria-label','上一張'); prev.textContent='‹';
+  const next = document.createElement('button'); next.className='card-nav next'; next.setAttribute('aria-label','下一張'); next.textContent='›';
+  prev.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); goTo(curr-1); });
+  next.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); goTo(curr+1); });
+  imgWrap.appendChild(prev); imgWrap.appendChild(next);
+
+  // 初始狀態
+  let curr = 0, usingA = true, timer = null;
+  slideA.style.backgroundImage = `url("${images[0]}")`;
+
+  // 自動輪播
+  const start = ()=> { stop(); timer = setInterval(()=> goTo(curr+1), intervalMs); };
+  const stop  = ()=> { if (timer) { clearInterval(timer); timer = null; } };
+
+  // 切換
+  function goTo(idx){
+    const nextIdx = (idx + images.length) % images.length;
+    const preload = new Image(); preload.src = images[nextIdx]; // 預先載入避免閃爍
+
+    const show = usingA ? slideB : slideA;
+    show.style.backgroundImage = `url("${images[nextIdx]}")`;
+
+    slideA.classList.toggle('is-active', !usingA);
+    slideB.classList.toggle('is-active', usingA);
+    usingA = !usingA;
+    curr = nextIdx;
+
+    dotEls.forEach((d,i)=> d.classList.toggle('is-active', i===curr));
+  }
+
+  // 觸控滑動（手機）
+  let touchX = null;
+  imgWrap.addEventListener('touchstart', (e)=>{ touchX = e.touches[0].clientX; stop(); }, {passive:true});
+  imgWrap.addEventListener('touchend', (e)=>{
+    if (touchX == null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) { dx > 0 ? goTo(curr-1) : goTo(curr+1); }
+    touchX = null; start();
+  });
+
+  // 滑鼠移入暫停、移出繼續
+  imgWrap.addEventListener('mouseenter', stop);
+  imgWrap.addEventListener('mouseleave', start);
+
+  start();
 }
 
 // 報價（資料驅動）
@@ -247,7 +326,6 @@ function attachPolicyBlocks(){
 
       const actions = sectionEl.querySelector('.section-actions');
       if (actions) {
-        // 把「方案內容」插在按鈕之前，讓按鈕自然留在頁面最下方
         actions.insertAdjacentElement('beforebegin', policyNode);
       } else {
         sectionEl.insertAdjacentElement('beforeend', policyNode);
@@ -293,18 +371,15 @@ function showRoute(route){
   const target = document.querySelector(`.page-section[data-route="${route}"]`);
   if(!target || target===currentActiveSection) { applyRouteMeta(route); updateNavActiveState(route); return; }
 
-  // 隱藏舊頁
   if(currentActiveSection){
     currentActiveSection.classList.add('is-leaving');
     currentActiveSection.classList.remove('is-active');
     setTimeout(()=> currentActiveSection.classList.remove('is-leaving'),
       parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--transition-speed')));
   }
-  // 顯示新頁
   target.classList.add('is-active');
   currentActiveSection = target;
 
-  // 導覽、Meta、焦點
   updateNavActiveState(route);
   applyRouteMeta(route);
   const h1 = target.querySelector('h1');
