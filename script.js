@@ -39,7 +39,7 @@ const HOME_CARDS = [
   { route:'wedding', title:'婚禮紀錄', desc:'紀實生命中最重要的一天。' },
 ];
 
-/* === 新增：每個首頁卡片對應的輪播圖片清單 === */
+/* === 每個首頁卡片對應的輪播圖片清單 === */
 const HOME_CARD_IMAGES = {
   solo:      ['images/portrait_01.jpg','images/portrait_02.jpg','images/portrait_03.jpg'],
   couple:    ['images/couple_01.jpg','images/couple_02.jpg','images/couple_03.jpg'],
@@ -96,12 +96,12 @@ function buildHomeCards(){
     a.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); a.click(); } });
     homeCardGrid.appendChild(a);
 
-    /* 新增：為這張卡片啟用輪播 */
+    /* 為這張卡片啟用輪播 */
     initCardSlider(a, HOME_CARD_IMAGES[card.route] || []);
   });
 }
 
-/* === 新增：初始化單張卡片輪播 === */
+/* === 初始化單張卡片輪播 === */
 function initCardSlider(cardAnchorEl, images, intervalMs = 3800){
   const imgWrap = cardAnchorEl.querySelector('.card-image');
   if (!imgWrap || !images || images.length === 0) return;
@@ -315,7 +315,7 @@ function attachPolicyBlocks(){
   });
 
   // 專案訂製：prewedding / event / wedding
-  // 需求：頁面下方要保留「預約檔期」按鈕；條款要在按鈕前面（確保按鈕永遠最下）
+  // 條款在頁面底部的「預約檔期」按鈕前
   const routeToHTML = { prewedding: POLICY_PREWEDDING_HTML, event: POLICY_EVENT_HTML, wedding: POLICY_WEDDING_HTML };
   Object.keys(routeToHTML).forEach(route=>{
     const sectionEl = document.querySelector(`.page-section[data-route="${route}"]`);
@@ -360,6 +360,14 @@ function applyRouteMeta(route){
   if(m) m.setAttribute('content', meta.desc);
 }
 
+/* === 新增：回頂工具函式（多瀏覽器保險） === */
+function scrollToTop(){
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  // 兼容某些舊瀏覽器
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
 // 路由處理
 const allRoutes = routes.slice();
 let currentActiveSection = null;
@@ -382,8 +390,15 @@ function showRoute(route){
 
   updateNavActiveState(route);
   applyRouteMeta(route);
+
   const h1 = target.querySelector('h1');
-  if(h1){ h1.focus({ preventScroll:true }); }
+  if(h1){
+    // 聚焦但不要自動捲動
+    h1.focus({ preventScroll:true });
+  }
+
+  // 重要：完成顯示後強制回到頂端（避免任何自動捲動殘留）
+  requestAnimationFrame(scrollToTop);
 
   try{ sessionStorage.setItem('lastVisitedRoute', route); }catch(e){}
 }
