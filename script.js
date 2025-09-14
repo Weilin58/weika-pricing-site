@@ -3,7 +3,7 @@
 // =========================
 const CONFIG = {
   pricing: [
-    { route:'solo',   name:'個人寫真',   price:2000, hours:'1~1.5hr', desc:'適合個人形象、紀念日或日常紀錄。' },
+    { route:'solo',   name:'個人寫真',   price:2400, hours:'1~1.5hr', desc:'適合個人形象、紀念日或日常紀錄。' },
     { route:'couple', name:'雙人寫真',   price:3500, hours:'1~1.5hr', desc:'適合情侶、閨蜜、親子或好友。' },
     { route:'group',  name:'3–6人團體', price:5000, hours:'1~1.5hr', desc:'適合家庭、朋友團體。' },
   ],
@@ -210,6 +210,8 @@ function buildPricing(){
 }
 
 /* ====== 條款區塊（維持原本注入規則） ====== */
+const BUYOUT_LI = `<li><strong>買斷不公開：</strong> 若您不希望本次作品用於作品集／網站／社群展示，可加購 NT$2,000；此為不公開展示之授權，非著作財產權讓與，攝影師仍保留著作人格權與合理存檔權。</li>`;
+
 const DEFAULT_POLICY_HTML = `
   <section class="policy-block" aria-label="方案內容" style="margin-top: var(--spacing-4);">
     <h3>方案內容</h3>
@@ -225,6 +227,7 @@ const DEFAULT_POLICY_HTML = `
     </ul>
     <h4>預約與費用</h4>
     <ul>
+      ${BUYOUT_LI}
       <li><strong>訂金：</strong> 確認預約收取總報價 50% 訂金。</li>
       <li><strong>交通費：</strong> 每公里 NT$7；若計算未滿 NT$100 則不收取。</li>
       <li><strong>額外費用：</strong> 攝影棚租借、妝髮造型等費用，實報實銷。</li>
@@ -250,6 +253,7 @@ const POLICY_PREWEDDING_HTML = `
     </ul>
     <h4>預約與費用</h4>
     <ul>
+      ${BUYOUT_LI}
       <li><strong>訂金：</strong> 確認檔期後收取總額 50% 訂金；餘款於成品驗收前結清。</li>
       <li><strong>交通／場租：</strong> 外縣市交通與場地費用另計；如需包車另報價。</li>
       <li><strong>毛片：</strong> 原則不提供；如需加購全數毛片，均收轉檔與整理費用 NT$2,000。</li>
@@ -272,6 +276,7 @@ const POLICY_EVENT_HTML = `
     </ul>
     <h4>預約與費用</h4>
     <ul>
+      ${BUYOUT_LI}
       <li><strong>訂金：</strong> 確認檔期後收取 50% 訂金；活動超時依每小時計價。</li>
       <li><strong>交通／加班：</strong> 交通與停車費另計；夜間或跨縣市請先告知以利安排。</li>
       <li><strong>毛片：</strong> 不提供毛片；如需加購，依場次與容量另報價。</li>
@@ -295,6 +300,7 @@ const POLICY_WEDDING_HTML = `
     </ul>
     <h4>預約與費用</h4>
     <ul>
+      ${BUYOUT_LI}
       <li><strong>訂金：</strong> 確認檔期後收取 50% 訂金；餘款於交件前結清。</li>
       <li><strong>交通／住宿：</strong> 跨縣市或清晨日出檔期，交通與住宿費另計。</li>
       <li><strong>毛片：</strong> 原則不提供；如需加購全數毛片，收轉檔與整理費用 NT$2,000。</li>
