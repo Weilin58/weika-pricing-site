@@ -45,12 +45,16 @@
 </head>
 <body>
   <!-- 跳到主要內容（鍵盤可用） -->
-  <a href="#main-content" class="skip-link">跳到主要內容</a>
+  <a href="#main-content" class="skip-link" id="skip-link">跳到主要內容</a>
 
   <!-- 導覽列（內容由 script.js 動態生成） -->
   <nav class="navbar" aria-label="主要導覽">
-    <a class="navbar-brand" href="#home" aria-label="網站首頁">衛卡攝影影像工作室</a>
+    <a class="navbar-brand" href="#home" aria-label="網站首頁" id="navbar-brand">衛卡攝影影像工作室</a>
     <ul class="nav-links" id="nav-links" role="menubar"></ul>
+    <div class="language-selector" id="language-selector">
+      <button class="language-button" id="language-button" aria-haspopup="listbox" aria-expanded="false">Language</button>
+      <ul class="language-menu" id="language-menu" role="listbox"></ul>
+    </div>
     <button class="nav-toggle" id="nav-toggle" aria-label="切換導覽選單" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -65,7 +69,7 @@
     <section class="page-section" data-route="home" aria-labelledby="home-title">
       <div class="page-header">
         <h1 id="home-title" tabindex="-1">衛卡攝影影像工作室</h1>
-        <p>捕捉生活中的每一個光影故事。專業、有溫度的影像紀錄。</p>
+        <p id="home-subtitle">捕捉生活中的每一個光影故事。專業、有溫度的影像紀錄。</p>
       </div>
       <div class="card-grid" id="home-card-grid" aria-label="分頁卡片清單"></div>
     </section>
@@ -75,8 +79,8 @@
       <a href="#home" class="back-to-home">回到主頁</a>
       <h1 id="pricing-title" tabindex="-1">服務報價</h1>
       <div class="pricing-table" id="pricing-table"></div>
-      <h2 style="text-align:center; margin-top: var(--spacing-5);">更多方案</h2>
-      <p style="text-align:center; color: var(--color-secondary);">
+      <h2 id="pricing-more-heading" style="text-align:center; margin-top: var(--spacing-5);">更多方案</h2>
+      <p id="pricing-more-description" style="text-align:center; color: var(--color-secondary);">
         婚紗攝影、活動及婚禮紀錄，將根據您的需求提供客製化報價，歡迎
         <a href="#contact">查看聯絡方式</a>。
       </p>
@@ -86,26 +90,15 @@
     <section class="page-section" data-route="contact" aria-labelledby="contact-title">
       <a href="#home" class="back-to-home">回到主頁</a>
       <h1 id="contact-title" tabindex="-1">聯絡我們</h1>
-      <h2>聯絡方式</h2>
-      <p>Instagram：@weika_58 ｜ Email: weikaphotography@gmail.com ｜ Phone: 0926-189-353</p>
+      <h2 id="contact-subtitle">聯絡方式</h2>
+      <p id="contact-description">Instagram：@weika_58 ｜ Email: weikaphotography@gmail.com ｜ Phone: 0926-189-353</p>
     </section>
 
     <!-- FAQ -->
     <section class="page-section" data-route="faq" aria-labelledby="faq-title">
       <a href="#home" class="back-to-home">回到主頁</a>
       <h1 id="faq-title" tabindex="-1">常見問題（Q&A）</h1>
-      <div class="qa-section">
-        <details class="qa-item"><summary>Q1：拍攝前需要化妝或髮型設計嗎？</summary><p>A：可以自行準備妝髮，也能額外安排專業造型師協助（將另行收費），讓整體風格更完整。</p></details>
-        <details class="qa-item"><summary>Q2：如果我不太會擺姿勢，攝影師會引導嗎？</summary><p>A：完全不用擔心！我會在現場一步步引導，幫助你放鬆心情，展現最自然的狀態。</p></details>
-        <details class="qa-item"><summary>Q3：拍攝地點可以自己選嗎？還是由攝影師建議？</summary><p>A：地點可以由你自由決定，如果暫時沒有想法，我也會根據你的需求與風格提供合適建議，一起討論最適合的拍攝場景。</p></details>
-        <details class="qa-item"><summary>Q4：如果遇到下雨，戶外拍攝怎麼辦？</summary><p>A：若天氣不佳，可以提前改期，或更換至室內棚拍/咖啡廳等場所。我們會事先討論替代方案，確保拍攝順利。</p></details>
-        <details class="qa-item"><summary>Q5：需要自己準備服裝嗎？</summary><p>A：建議以自備為主，這樣能展現最符合你個人風格的樣貌；若需要搭配建議，也可以和我討論。</p></details>
-        <details class="qa-item"><summary>Q6：寵物可以一起入鏡嗎？</summary><p>A：非常歡迎！只要事先告知，我會幫忙規劃拍攝方式，讓畫面更有溫度。</p></details>
-        <details class="qa-item"><summary>Q7：想拍攝學士服照（畢業照），怎麼收費？</summary><p>A：依照人數選擇對應方案即可，與個人或雙人寫真方案相同。</p></details>
-        <details class="qa-item"><summary>Q8：最晚需要多久以前預約？</summary><p>A：由於行程及檔期有限，建議至少提前 1 個月 完成預約。若是婚紗拍攝，考量到相本與小卡製作，建議至少 3 個月前 預約，以保留檔期。</p></details>
-        <details class="qa-item"><summary>Q9：活動紀錄及婚禮紀錄，會有雙攝影師嗎？</summary><p>A：當活動或婚禮規模較大時，可以適度安排雙攝影師共同拍攝，報價也會依需求調整。</p></details>
-        <details class="qa-item"><summary>Q10：請問有錄影服務嗎？</summary><p>A：目前僅提供平面攝影，尚未提供動態錄影服務。</p></details>
-      </div>
+      <div class="qa-section" id="faq-list"></div>
     </section>
 
     <!-- 各獨立頁（小卡） -->
@@ -140,7 +133,7 @@
       <a href="#home" class="back-to-home">回到主頁</a>
       <h1 id="prewedding-title" tabindex="-1">婚紗攝影</h1>
       <div class="pricing-card" id="prewedding-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
-      <p style="text-align:center;color:var(--color-secondary)">依拍攝時數、地點、禮服等需求客製報價，歡迎洽詢。</p>
+      <p id="prewedding-note" style="text-align:center;color:var(--color-secondary)">依拍攝時數、地點、禮服等需求客製報價，歡迎洽詢。</p>
       <!-- 按鈕固定在最下方；條款會插在此按鈕前面 -->
       <div class="section-actions" style="text-align:center;">
         <a href="#contact" class="btn">預約檔期</a>
@@ -151,7 +144,7 @@
       <a href="#home" class="back-to-home">回到主頁</a>
       <h1 id="event-title" tabindex="-1">活動紀錄</h1>
       <div class="pricing-card" id="event-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
-      <p style="text-align:center;color:var(--color-secondary)">商業活動、講座、展演與派對，依規模/時數/流程提供精準報價。</p>
+      <p id="event-note" style="text-align:center;color:var(--color-secondary)">商業活動、講座、展演與派對，依規模/時數/流程提供精準報價。</p>
       <div class="section-actions" style="text-align:center;">
         <a href="#contact" class="btn">預約檔期</a>
       </div>
@@ -161,7 +154,7 @@
       <a href="#home" class="back-to-home">回到主頁</a>
       <h1 id="wedding-title" tabindex="-1">婚禮紀錄</h1>
       <div class="pricing-card" id="wedding-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
-      <p style="text-align:center;color:var(--color-secondary)">單/雙儀式、宴客、迎娶等皆可彈性安排，完整保存動人時刻。</p>
+      <p id="wedding-note" style="text-align:center;color:var(--color-secondary)">單/雙儀式、宴客、迎娶等皆可彈性安排，完整保存動人時刻。</p>
       <div class="section-actions" style="text-align:center;">
         <a href="#contact" class="btn">預約檔期</a>
       </div>
@@ -171,11 +164,12 @@
     <button id="backTop" class="back-top" aria-label="回到頂端" title="回到頂端">↑</button>
   </main>
 
-  <footer style="text-align:center;color:var(--color-secondary);padding:var(--spacing-5) 0;">
+  <footer style="text-align:center;color:var(--color-secondary);padding:var(--spacing-5) 0;" id="site-footer">
     © <span id="year"></span> 衛卡攝影影像工作室 · Instagram @weika_58
   </footer>
 
-  <!-- 外部腳本（更新版本號 v=14 以破快取） -->
-  <script src="script.js?v=15"></script>
+  <!-- 外部腳本（更新版本號以破快取） -->
+  <script src="i18n.js?v=1"></script>
+  <script src="script.js?v=16"></script>
 </body>
 </html>
