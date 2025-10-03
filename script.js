@@ -347,13 +347,29 @@ function initCardSlider(cardAnchorEl, images, intervalMs = 3800){
 
   function goTo(idx){
     const nextIdx = (idx + images.length) % images.length;
+    if(nextIdx === curr) return;
+
     const preload = new Image(); preload.src = images[nextIdx];
 
-    const show = usingA ? slideB : slideA;
-    show.style.backgroundImage = `url("${images[nextIdx]}")`;
+    const incoming = usingA ? slideB : slideA;
+    const outgoing = usingA ? slideA : slideB;
 
-    slideA.classList.toggle('is-active', !usingA);
-    slideB.classList.toggle('is-active', usingA);
+    incoming.style.backgroundImage = `url("${images[nextIdx]}")`;
+
+    const handleLeaveEnd = (e)=>{
+      if(e.propertyName !== 'opacity') return;
+      outgoing.classList.remove('is-leaving');
+      outgoing.removeEventListener('transitionend', handleLeaveEnd);
+    };
+
+    outgoing.addEventListener('transitionend', handleLeaveEnd);
+
+    incoming.classList.add('is-active');
+    outgoing.classList.add('is-leaving');
+    requestAnimationFrame(()=>{
+      outgoing.classList.remove('is-active');
+    });
+
     usingA = !usingA;
     curr = nextIdx;
 

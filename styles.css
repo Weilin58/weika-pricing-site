@@ -183,9 +183,22 @@ h1:focus { outline: none; }
 .card-slide {
   position: absolute; inset: 0;
   background-position: center; background-size: cover; background-repeat: no-repeat;
-  opacity: 0; transition: opacity 420ms ease;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 520ms ease, transform 720ms ease;
+  z-index: 0;
+  pointer-events: none;
 }
-.card-slide.is-active { opacity: 1; }
+.card-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+.card-slide.is-leaving {
+  opacity: 0;
+  transform: scale(1.02);
+  z-index: 1;
+}
 
 /* 點點指示器 */
 .card-dots {
