@@ -534,6 +534,12 @@ img {
   z-index: 0;
 }
 
+.hero-card.is-static {
+  transform: none;
+  transform-style: flat;
+  transition: none;
+}
+
 .hero-card::before {
   content: '';
   position: absolute;

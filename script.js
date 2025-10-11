@@ -1,12 +1,33 @@
 const routes = ['home','contact','faq','solo','couple','group','prewedding','event','wedding'];
 
 const HOME_CARD_IMAGES = {
-  solo:       { prefix: 'images/portrait_', max: 6, scanLimit: 12 },
-  couple:     { prefix: 'images/couple_', max: 8, scanLimit: 12 },
-  group:      { prefix: 'images/group_', max: 4, scanLimit: 8 },
-  prewedding: { prefix: 'images/wedding_', max: 8, scanLimit: 12 },
-  event:      { prefix: 'images/event_', max: 6, scanLimit: 10 },
-  wedding:    { prefix: 'images/weddingday_', max: 6, scanLimit: 10 }
+  solo: [
+    'images/portrait_01.jpg',
+    'images/portrait_02.jpg',
+    'images/portrait_03.jpg'
+  ],
+  couple: [
+    'images/couple_01.jpg',
+    'images/couple_02.jpg',
+    'images/couple_03.jpg',
+    'images/couple_04.jpg',
+    'images/couple_05.jpg'
+  ],
+  group: [
+    'images/group_01.jpg'
+  ],
+  prewedding: [
+    'images/wedding_01.jpg',
+    'images/wedding_02.jpg',
+    'images/wedding_03.jpg',
+    'images/wedding_04.jpg'
+  ],
+  event: [
+    'images/event_01.jpg'
+  ],
+  wedding: [
+    'images/weddingday_01.jpg'
+  ]
 };
 
 const navLinksContainer = document.getElementById('nav-links');
@@ -28,59 +49,12 @@ let languageMenuOpen = false;
 let defaultToastMessage = '';
 let revealObserver = null;
 
-function imageExists(src){
-  return new Promise(resolve => {
-    if(!src){
-      resolve(false);
-      return;
-    }
-    const img = new Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = src;
-  });
-}
-
 async function resolveCardImages(route){
   const config = HOME_CARD_IMAGES[route];
   if(!config){
     return [];
   }
-
-  if(Array.isArray(config)){
-    const results = await Promise.all(config.map(src => imageExists(src).then(ok => ok ? src : null)));
-    return results.filter(Boolean);
-  }
-
-  const {
-    prefix,
-    extension = '.jpg',
-    start = 1,
-    max = 6,
-    scanLimit = start + 10,
-    pad = 2,
-    maxMisses = 2
-  } = config;
-
-  const images = [];
-  let misses = 0;
-  let index = start;
-  const upperBound = Math.max(scanLimit, start + max + maxMisses);
-
-  while(images.length < max && index <= upperBound && misses <= maxMisses){
-    const padded = String(index).padStart(pad, '0');
-    const candidate = `${prefix}${padded}${extension}`;
-    const exists = await imageExists(candidate);
-    if(exists){
-      images.push(candidate);
-      misses = 0;
-    } else {
-      misses += 1;
-    }
-    index += 1;
-  }
-
-  return images;
+  return Array.isArray(config) ? config.slice() : [];
 }
 
 function getLangData(){
@@ -443,125 +417,168 @@ function buildHomeHighlights(){
   });
 }
 
-async function initCardSlider(cardAnchorEl, route, intervalMs = 3800){
+function initCardSlider(cardAnchorEl, route, intervalMs = 3800){
   const imgWrap = cardAnchorEl.querySelector('.card-image');
   if(!imgWrap) return;
 
-  const images = await resolveCardImages(route);
-  if(!cardAnchorEl.isConnected || !images.length){
-    if(imgWrap && !images.length){
-      imgWrap.classList.add('card-image--empty');
+  let initialized = false;
+
+  const loadSlider = async () => {
+    if(initialized || !cardAnchorEl.isConnected) return;
+    initialized = true;
+
+    const images = await resolveCardImages(route);
+    if(!cardAnchorEl.isConnected || !images.length){
+      if(imgWrap && !images.length){
+        imgWrap.classList.add('card-image--empty');
+      }
+      return;
     }
-    return;
-  }
 
-  const slideA = document.createElement('div');
-  slideA.className = 'card-slide is-active';
-  slideA.style.backgroundImage = `url("${images[0]}")`;
-  imgWrap.appendChild(slideA);
+    const slideA = document.createElement('div');
+    slideA.className = 'card-slide is-active';
+    slideA.style.backgroundImage = `url("${images[0]}")`;
+    imgWrap.appendChild(slideA);
 
-  if(images.length === 1){
-    return;
-  }
+    if(images.length === 1){
+      return;
+    }
 
-  const slideB = document.createElement('div');
-  slideB.className = 'card-slide';
-  imgWrap.appendChild(slideB);
+    const slideB = document.createElement('div');
+    slideB.className = 'card-slide';
+    imgWrap.appendChild(slideB);
 
-  const dots = document.createElement('div');
-  dots.className = 'card-dots';
-  const dotEls = images.map((_, i) => {
-    const d = document.createElement('span');
-    d.className = 'card-dot' + (i === 0 ? ' is-active' : '');
-    d.addEventListener('click', (e)=>{
-      e.stopPropagation();
-      goTo(i);
+    const dots = document.createElement('div');
+    dots.className = 'card-dots';
+    const dotEls = images.map((_, i) => {
+      const d = document.createElement('span');
+      d.className = 'card-dot' + (i === 0 ? ' is-active' : '');
+      d.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        goTo(i);
+      });
+      dots.appendChild(d);
+      return d;
     });
-    dots.appendChild(d);
-    return d;
-  });
-  imgWrap.appendChild(dots);
+    imgWrap.appendChild(dots);
 
-  const prev = document.createElement('button');
-  prev.className = 'card-nav prev';
-  prev.setAttribute('aria-label','Previous slide');
-  prev.textContent = '‹';
-  const next = document.createElement('button');
-  next.className = 'card-nav next';
-  next.setAttribute('aria-label','Next slide');
-  next.textContent = '›';
-  prev.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); goTo(curr-1); });
-  next.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); goTo(curr+1); });
-  imgWrap.appendChild(prev);
-  imgWrap.appendChild(next);
+    const prev = document.createElement('button');
+    prev.className = 'card-nav prev';
+    prev.setAttribute('aria-label','Previous slide');
+    prev.textContent = '‹';
+    const next = document.createElement('button');
+    next.className = 'card-nav next';
+    next.setAttribute('aria-label','Next slide');
+    next.textContent = '›';
+    imgWrap.appendChild(prev);
+    imgWrap.appendChild(next);
 
-  let curr = 0;
-  let usingA = true;
-  let timer = null;
+    let curr = 0;
+    let usingA = true;
+    let timer = null;
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const start = ()=>{
-    stop();
-    timer = setInterval(()=> goTo(curr + 1), intervalMs);
-  };
-
-  const stop = ()=>{
-    if(timer){
-      clearInterval(timer);
-      timer = null;
-    }
-  };
-
-  function goTo(idx){
-    const nextIdx = (idx + images.length) % images.length;
-    if(nextIdx === curr) return;
-
-    const preload = new Image();
-    preload.src = images[nextIdx];
-
-    const incoming = usingA ? slideB : slideA;
-    const outgoing = usingA ? slideA : slideB;
-
-    incoming.style.backgroundImage = `url("${images[nextIdx]}")`;
-
-    const handleLeaveEnd = (e)=>{
-      if(e.propertyName !== 'opacity') return;
-      outgoing.classList.remove('is-leaving');
-      outgoing.removeEventListener('transitionend', handleLeaveEnd);
+    const stop = ()=>{
+      if(timer){
+        clearInterval(timer);
+        timer = null;
+      }
     };
 
-    outgoing.addEventListener('transitionend', handleLeaveEnd);
+    const start = ()=>{
+      if(prefersReducedMotion) return;
+      stop();
+      timer = setInterval(()=> goTo(curr + 1), intervalMs);
+    };
 
-    incoming.classList.add('is-active');
-    outgoing.classList.add('is-leaving');
-    requestAnimationFrame(()=>{
-      outgoing.classList.remove('is-active');
-    });
+    function goTo(idx){
+      const nextIdx = (idx + images.length) % images.length;
+      if(nextIdx === curr) return;
 
-    usingA = !usingA;
-    curr = nextIdx;
+      const preload = new Image();
+      preload.src = images[nextIdx];
 
-    dotEls.forEach((d, i)=> d.classList.toggle('is-active', i === curr));
-  }
+      const incoming = usingA ? slideB : slideA;
+      const outgoing = usingA ? slideA : slideB;
 
-  let touchX = null;
-  imgWrap.addEventListener('touchstart', (e)=>{
-    touchX = e.touches[0].clientX;
-    stop();
-  }, { passive: true });
-  imgWrap.addEventListener('touchend', (e)=>{
-    if(touchX == null) return;
-    const dx = e.changedTouches[0].clientX - touchX;
-    if(Math.abs(dx) > 40){
-      dx > 0 ? goTo(curr - 1) : goTo(curr + 1);
+      incoming.style.backgroundImage = `url("${images[nextIdx]}")`;
+
+      const handleLeaveEnd = (e)=>{
+        if(e.propertyName !== 'opacity') return;
+        outgoing.classList.remove('is-leaving');
+        outgoing.removeEventListener('transitionend', handleLeaveEnd);
+      };
+
+      outgoing.addEventListener('transitionend', handleLeaveEnd);
+
+      incoming.classList.add('is-active');
+      outgoing.classList.add('is-leaving');
+      requestAnimationFrame(()=>{
+        outgoing.classList.remove('is-active');
+      });
+
+      usingA = !usingA;
+      curr = nextIdx;
+
+      dotEls.forEach((d, i)=> d.classList.toggle('is-active', i === curr));
     }
-    touchX = null;
+
+    prev.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); goTo(curr - 1); });
+    next.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); goTo(curr + 1); });
+
+    if(!prefersReducedMotion){
+      let touchX = null;
+      imgWrap.addEventListener('touchstart', (e)=>{
+        touchX = e.touches[0].clientX;
+        stop();
+      }, { passive: true });
+      imgWrap.addEventListener('touchend', (e)=>{
+        if(touchX == null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        if(Math.abs(dx) > 40){
+          dx > 0 ? goTo(curr - 1) : goTo(curr + 1);
+        }
+        touchX = null;
+        start();
+      });
+
+      imgWrap.addEventListener('mouseenter', stop);
+      imgWrap.addEventListener('mouseleave', start);
+
+      const onVisibilityChange = () => {
+        if(document.hidden){
+          stop();
+        } else {
+          start();
+        }
+      };
+      document.addEventListener('visibilitychange', onVisibilityChange);
+    }
+
     start();
-  });
+  };
 
-  imgWrap.addEventListener('mouseenter', stop);
-  imgWrap.addEventListener('mouseleave', start);
+  const scheduleLoad = () => {
+    if(typeof window.requestIdleCallback === 'function'){
+      window.requestIdleCallback(()=> loadSlider(), { timeout: 1200 });
+    } else {
+      requestAnimationFrame(()=> loadSlider());
+    }
+  };
 
-  start();
+  if('IntersectionObserver' in window){
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          observer.disconnect();
+          scheduleLoad();
+        }
+      });
+    }, { rootMargin: '200px 0px' });
+    observer.observe(cardAnchorEl);
+  } else {
+    scheduleLoad();
+  }
 }
 
 function buildPricing(){
@@ -781,8 +798,25 @@ function setupBackTop(){
 function setupHeroCardTilt(){
   const heroCard = document.getElementById('hero-card');
   if(!heroCard) return;
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isCoarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  if(prefersReducedMotion || isCoarsePointer){
+    heroCard.classList.add('is-static');
+    heroCard.style.setProperty('--hero-card-rotate-x', '0deg');
+    heroCard.style.setProperty('--hero-card-rotate-y', '0deg');
+    heroCard.style.setProperty('--mouse-x', '50%');
+    heroCard.style.setProperty('--mouse-y', '50%');
+    return;
+  }
   const maxRotation = 14;
-  const update = (x, y, rect) => {
+  let rafId = null;
+  let pendingEvent = null;
+
+  const update = () => {
+    if(!pendingEvent) return;
+    const rect = heroCard.getBoundingClientRect();
+    const x = pendingEvent.clientX - rect.left;
+    const y = pendingEvent.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     const rotateX = ((y - centerY) / centerY) * -maxRotation;
@@ -791,19 +825,29 @@ function setupHeroCardTilt(){
     heroCard.style.setProperty('--hero-card-rotate-y', `${rotateY.toFixed(2)}deg`);
     heroCard.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
     heroCard.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+    rafId = null;
   };
 
   heroCard.addEventListener('pointermove', (event) => {
-    const rect = heroCard.getBoundingClientRect();
-    update(event.clientX - rect.left, event.clientY - rect.top, rect);
+    pendingEvent = event;
+    if(rafId) return;
+    rafId = requestAnimationFrame(update);
   });
 
-  heroCard.addEventListener('pointerleave', () => {
+  const reset = () => {
     heroCard.style.setProperty('--hero-card-rotate-x', '0deg');
     heroCard.style.setProperty('--hero-card-rotate-y', '0deg');
     heroCard.style.setProperty('--mouse-x', '50%');
     heroCard.style.setProperty('--mouse-y', '50%');
-  });
+    pendingEvent = null;
+    if(rafId){
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  };
+
+  heroCard.addEventListener('pointerleave', reset);
+  heroCard.addEventListener('pointercancel', reset);
 }
 
 function setupRevealObserver(){
