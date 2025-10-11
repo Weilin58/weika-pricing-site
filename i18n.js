@@ -20,7 +20,6 @@ const I18N = {
     },
     nav: [
       { route: 'home', text: '主頁' },
-      { route: 'pricing', text: '服務報價' },
       { route: 'faq', text: '常見 QA' },
       { route: 'contact', text: '預約檔期' },
       { url: 'https://weikaphoto.myportfolio.com/', text: '查看作品集', external: true }
@@ -28,6 +27,25 @@ const I18N = {
     home: {
       title: '衛卡攝影影像工作室',
       subtitle: '捕捉生活中的每一個光影故事。專業、有溫度的影像紀錄。',
+      scrollCue: '向下滑動探索方案導覽',
+      heroCard: {
+        label: 'Signature Portraits',
+        title: '捕捉瞬間',
+        description: '自然光與細膩風格的交錯，讓每次按下快門都成為你專屬的人生片段。'
+      },
+      sectionIntro: {
+        eyebrow: 'DAYLIGHT STORIES',
+        heading: '以日系日常感，留住你柔軟的光影節奏',
+        description: '擅長運用自然光與簡潔配色，記錄細微表情與呼吸；從前置溝通、服裝建議到拍攝引導，都以輕鬆節奏陪你完成耐看的生活影像。',
+        features: [
+          { title: '柔光構圖', desc: '善用窗邊與戶外自然光，搭配留白構圖，畫面乾淨透亮又充滿空氣感。' },
+          { title: '舒服節奏', desc: '聊天式引導幫你放鬆，不必擔心姿勢，真實互動即可留下細膩神情。' },
+          { title: '溫度調色', desc: '維持霧感色調與自然膚色，附上沖印與佈置建議，讓影像融入日常。' }
+        ]
+      },
+      planGuideEyebrow: 'PORTFOLIO ROUTES',
+      planGuideTitle: '方案導覽',
+      planGuideDescription: '點擊取得方案報價資訊。',
       cards: [
         { route: 'solo', title: '個人寫真', desc: '紀錄屬於自己的獨特時刻。' },
         { route: 'couple', title: '雙人寫真', desc: '捕捉您們之間的甜蜜互動。' },
@@ -39,6 +57,7 @@ const I18N = {
     },
     pricing: {
       title: '服務報價',
+      subtitle: '精準對應拍攝情境的完整方案，所有價格皆包含調色交件。',
       moreHeading: '更多方案',
       moreDescription: '婚紗攝影、活動及婚禮紀錄，將根據您的需求提供客製化報價，歡迎 <a href="#contact">查看聯絡方式</a>。',
       planCardHeading: '方案價格',
@@ -58,7 +77,9 @@ const I18N = {
     contact: {
       title: '聯絡我們',
       subtitle: '聯絡方式',
-      description: 'Instagram：@weika_58 ｜ Email：weikaphotography@gmail.com ｜ Phone：0926-189-353'
+      description: 'Instagram：@weika_58 ｜ Email：weikaphotography@gmail.com ｜ Phone：0926-189-353',
+      ctaEmail: '立即寫信',
+      ctaInstagram: 'Instagram'
     },
     faq: {
       title: '常見問題（Q&A）',
@@ -206,7 +227,6 @@ const I18N = {
     },
     nav: [
       { route: 'home', text: 'Home' },
-      { route: 'pricing', text: 'Pricing' },
       { route: 'faq', text: 'FAQ' },
       { route: 'contact', text: 'Contact' },
       { url: 'https://weikaphoto.myportfolio.com/', text: 'View portfolio', external: true }
@@ -214,6 +234,25 @@ const I18N = {
     home: {
       title: 'Weika Photography Studio',
       subtitle: 'Capturing every chapter of your story with warm, professional imagery.',
+      scrollCue: 'Scroll to explore the plan guide',
+      heroCard: {
+        label: 'Signature Portraits',
+        title: 'Hold The Moment',
+        description: 'A balance of soft daylight and intentional direction turns fleeting expressions into timeless keepsakes.'
+      },
+      sectionIntro: {
+        eyebrow: 'DAYLIGHT STORIES',
+        heading: 'Soft, everyday imagery crafted in a gentle palette',
+        description: 'Natural light and minimal styling keep every frame honest. From mood-boarding and wardrobe notes to relaxed directing on set, each session flows like an easy conversation.',
+        features: [
+          { title: 'Soft Light Framing', desc: 'Windows and quiet streets become diffused light sources for airy, balanced compositions.' },
+          { title: 'Calm Pacing', desc: 'Prompt-led guidance keeps you at ease—no rigid posing, just natural movements and real expressions.' },
+          { title: 'Warm-Toned Finish', desc: 'Mist-hued grading with true-to-skin tones, plus display suggestions so every image lives beautifully at home.' }
+        ]
+      },
+      planGuideEyebrow: 'PORTFOLIO ROUTES',
+      planGuideTitle: 'Plan Guide',
+      planGuideDescription: 'Tap a narrative card to view plan details and pricing.',
       cards: [
         { route: 'solo', title: 'Solo Portraits', desc: 'Celebrate your unique personality.' },
         { route: 'couple', title: 'Couple Portraits', desc: 'Freeze the sweet moments between you two.' },
@@ -225,6 +264,7 @@ const I18N = {
     },
     pricing: {
       title: 'Pricing',
+      subtitle: 'Tailored collections for every scenario—each rate includes meticulous color grading.',
       moreHeading: 'More services',
       moreDescription: 'Pre-wedding, event, and wedding coverage are fully customized. <a href="#contact">Get in touch for a quote</a>.',
       planCardHeading: 'Plan details',
@@ -244,7 +284,9 @@ const I18N = {
     contact: {
       title: 'Contact',
       subtitle: 'How to reach me',
-      description: 'Instagram: @weika_58 ｜ Email: weikaphotography@gmail.com ｜ Phone: +886-926-189-353'
+      description: 'Instagram: @weika_58 ｜ Email: weikaphotography@gmail.com ｜ Phone: +886-926-189-353',
+      ctaEmail: 'Email Now',
+      ctaInstagram: 'Instagram'
     },
     faq: {
       title: 'Frequently asked questions',
@@ -392,7 +434,6 @@ const I18N = {
     },
     nav: [
       { route: 'home', text: 'ホーム' },
-      { route: 'pricing', text: '料金' },
       { route: 'faq', text: 'よくある質問' },
       { route: 'contact', text: 'お問い合わせ' },
       { url: 'https://weikaphoto.myportfolio.com/', text: '作品を見る', external: true }
@@ -400,6 +441,25 @@ const I18N = {
     home: {
       title: 'WEIKAフォトスタジオ',
       subtitle: '物語のひとコマひとコマを、あたたかく丁寧な写真で残します。',
+      scrollCue: '下へスクロールしてプラン案内へ',
+      heroCard: {
+        label: 'Signature Portraits',
+        title: '今だけの瞬間を捉える',
+        description: '柔らかな自然光と繊細な演出で、何気ない表情をあなたらしい物語として残します。'
+      },
+      sectionIntro: {
+        eyebrow: 'DAYLIGHT STORIES',
+        heading: 'やわらかな日常を淡い色でそっと写し出す',
+        description: '自然光とミニマルなスタイリングで、さりげない表情や呼吸感まで丁寧に記録。事前ヒアリングや衣装アドバイスから当日のリードまで、リラックスしたテンポで進めます。',
+        features: [
+          { title: 'ソフトライティング', desc: '窓辺や街角の光を生かし、余白を活かしたクリーンな構図で空気感を残します。' },
+          { title: '穏やかな進行', desc: '会話を交え自然な動きを引き出すことで、緊張がほどけた柔らかな表情に。' },
+          { title: 'やさしい色調整', desc: '透明感のある色合いと肌色を整え、プリントや飾り方のヒントもお届けします。' }
+        ]
+      },
+      planGuideEyebrow: 'PORTFOLIO ROUTES',
+      planGuideTitle: 'プランガイド',
+      planGuideDescription: '気になるカードをタップして料金の詳細をご覧ください。',
       cards: [
         { route: 'solo', title: 'ソロポートレート', desc: '自分らしさを美しく残すプラン。' },
         { route: 'couple', title: 'カップルフォト', desc: 'ふたりの距離感や空気感をそのままに。' },
@@ -411,6 +471,7 @@ const I18N = {
     },
     pricing: {
       title: '料金プラン',
+      subtitle: 'シーンに寄り添うわかりやすい料金設定。すべてのプランにカラー調整を含みます。',
       moreHeading: 'その他のサービス',
       moreDescription: '前撮り・イベント・結婚式の撮影は完全オーダーメイドです。<a href="#contact">お問い合わせはこちら</a>。',
       planCardHeading: 'プラン詳細',
@@ -430,7 +491,9 @@ const I18N = {
     contact: {
       title: 'お問い合わせ',
       subtitle: '連絡先',
-      description: 'Instagram：@weika_58 ｜ Email：weikaphotography@gmail.com ｜ Phone：+886-926-189-353'
+      description: 'Instagram：@weika_58 ｜ Email：weikaphotography@gmail.com ｜ Phone：+886-926-189-353',
+      ctaEmail: 'メールを送る',
+      ctaInstagram: 'Instagram'
     },
     faq: {
       title: 'よくある質問',
@@ -578,7 +641,6 @@ const I18N = {
     },
     nav: [
       { route: 'home', text: '홈' },
-      { route: 'pricing', text: '가격' },
       { route: 'faq', text: 'FAQ' },
       { route: 'contact', text: '문의하기' },
       { url: 'https://weikaphoto.myportfolio.com/', text: '포트폴리오 보기', external: true }
@@ -586,6 +648,25 @@ const I18N = {
     home: {
       title: 'WEIKA 사진 스튜디오',
       subtitle: '따뜻하고 전문적인 촬영으로 당신의 순간을 이야기로 남깁니다.',
+      scrollCue: '아래로 스크롤하여 플랜 가이드를 살펴보세요',
+      heroCard: {
+        label: 'Signature Portraits',
+        title: '순간을 담다',
+        description: '자연광과 세심한 디렉팅으로 짧은 찰나의 표정도 당신만의 이야기로 남깁니다.'
+      },
+      sectionIntro: {
+        eyebrow: 'DAYLIGHT STORIES',
+        heading: '은은한 파스텔 감도로 기록하는 일상의 결',
+        description: '자연광과 미니멀한 스타일링으로 사소한 표정과 숨결까지 담아냅니다. 사전 상담과 의상 제안, 현장 리드까지 편안한 흐름으로 진행합니다.',
+        features: [
+          { title: '소프트 라이팅', desc: '창가와 거리의 자연광을 활용해 투명한 여백과 균형감 있는 구도를 만듭니다.' },
+          { title: '편안한 진행', desc: '대화하듯 촬영을 이끌어 긴장 없이 자연스러운 표정과 움직임을 담습니다.' },
+          { title: '따뜻한 색 보정', desc: '안개빛 색감과 자연스러운 피부 톤을 유지하고, 출력·전시 팁까지 함께 안내합니다.' }
+        ]
+      },
+      planGuideEyebrow: 'PORTFOLIO ROUTES',
+      planGuideTitle: '플랜 가이드',
+      planGuideDescription: '관심 있는 카드를 눌러 상세 가격 정보를 확인하세요.',
       cards: [
         { route: 'solo', title: '개인 프로필', desc: '나만의 매력을 담는 포트레이트.' },
         { route: 'couple', title: '커플 촬영', desc: '둘만의 분위기와 애정을 자연스럽게 담아요.' },
@@ -597,6 +678,7 @@ const I18N = {
     },
     pricing: {
       title: '가격 안내',
+      subtitle: '촬영 상황에 맞춘 구성으로 모든 요금에 섬세한 컬러 보정이 포함됩니다.',
       moreHeading: '맞춤형 서비스',
       moreDescription: '프리웨딩, 행사, 본식 스냅은 맞춤 견적으로 진행됩니다. <a href="#contact">문의하기</a>.',
       planCardHeading: '포함 내용',
@@ -616,7 +698,9 @@ const I18N = {
     contact: {
       title: '문의하기',
       subtitle: '연락처',
-      description: 'Instagram: @weika_58 ｜ Email: weikaphotography@gmail.com ｜ Phone: +886-926-189-353'
+      description: 'Instagram: @weika_58 ｜ Email: weikaphotography@gmail.com ｜ Phone: +886-926-189-353',
+      ctaEmail: '이메일 보내기',
+      ctaInstagram: 'Instagram'
     },
     faq: {
       title: '자주 묻는 질문',
@@ -751,4 +835,3 @@ const I18N = {
     }
   }
 };
-

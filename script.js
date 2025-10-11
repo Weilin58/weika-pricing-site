@@ -1,16 +1,17 @@
-const routes = ['home','pricing','contact','faq','solo','couple','group','prewedding','event','wedding'];
+const routes = ['home','contact','faq','solo','couple','group','prewedding','event','wedding'];
 
 const HOME_CARD_IMAGES = {
-  solo:      ['images/portrait_01.jpg','images/portrait_02.jpg','images/portrait_03.jpg'],
-  couple:    ['images/couple_01.jpg','images/couple_02.jpg','images/couple_03.jpg'],
-  group:     ['images/group_01.jpg','images/group_02.jpg','images/group_03.jpg'],
-  prewedding:['images/wedding_01.jpg','images/wedding_02.jpg','images/wedding_03.jpg'],
-  event:     ['images/event_01.jpg','images/event_02.jpg','images/event_03.jpg'],
-  wedding:   ['images/weddingday_01.jpg','images/weddingday_02.jpg','images/weddingday_03.jpg'],
+  solo:       { prefix: 'images/portrait_', max: 6, scanLimit: 12 },
+  couple:     { prefix: 'images/couple_', max: 8, scanLimit: 12 },
+  group:      { prefix: 'images/group_', max: 4, scanLimit: 8 },
+  prewedding: { prefix: 'images/wedding_', max: 8, scanLimit: 12 },
+  event:      { prefix: 'images/event_', max: 6, scanLimit: 10 },
+  wedding:    { prefix: 'images/weddingday_', max: 6, scanLimit: 10 }
 };
 
 const navLinksContainer = document.getElementById('nav-links');
 const homeCardGrid = document.getElementById('home-card-grid');
+const homeFeatureGrid = document.getElementById('home-feature-grid');
 const mainContent = document.getElementById('main-content');
 const toastEl = document.getElementById('toast');
 const skipLink = document.getElementById('skip-link');
@@ -25,6 +26,62 @@ const DEFAULT_LANG = 'zh';
 let currentLang = DEFAULT_LANG;
 let languageMenuOpen = false;
 let defaultToastMessage = '';
+let revealObserver = null;
+
+function imageExists(src){
+  return new Promise(resolve => {
+    if(!src){
+      resolve(false);
+      return;
+    }
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = src;
+  });
+}
+
+async function resolveCardImages(route){
+  const config = HOME_CARD_IMAGES[route];
+  if(!config){
+    return [];
+  }
+
+  if(Array.isArray(config)){
+    const results = await Promise.all(config.map(src => imageExists(src).then(ok => ok ? src : null)));
+    return results.filter(Boolean);
+  }
+
+  const {
+    prefix,
+    extension = '.jpg',
+    start = 1,
+    max = 6,
+    scanLimit = start + 10,
+    pad = 2,
+    maxMisses = 2
+  } = config;
+
+  const images = [];
+  let misses = 0;
+  let index = start;
+  const upperBound = Math.max(scanLimit, start + max + maxMisses);
+
+  while(images.length < max && index <= upperBound && misses <= maxMisses){
+    const padded = String(index).padStart(pad, '0');
+    const candidate = `${prefix}${padded}${extension}`;
+    const exists = await imageExists(candidate);
+    if(exists){
+      images.push(candidate);
+      misses = 0;
+    } else {
+      misses += 1;
+    }
+    index += 1;
+  }
+
+  return images;
+}
 
 function getLangData(){
   return I18N[currentLang] || I18N[DEFAULT_LANG];
@@ -185,12 +242,52 @@ function updateHomeTexts(){
   if(homeTitle) homeTitle.textContent = data.home.title;
   const homeSubtitle = document.getElementById('home-subtitle');
   if(homeSubtitle) homeSubtitle.textContent = data.home.subtitle;
+  const scrollCue = document.getElementById('scroll-guide-text');
+  if(scrollCue && data.home.scrollCue){
+    scrollCue.textContent = data.home.scrollCue;
+  }
+  const sectionEyebrow = document.getElementById('home-section-eyebrow');
+  if(sectionEyebrow && data.home.sectionIntro){
+    sectionEyebrow.textContent = data.home.sectionIntro.eyebrow;
+  }
+  const sectionHeading = document.getElementById('home-section-heading');
+  if(sectionHeading && data.home.sectionIntro){
+    sectionHeading.textContent = data.home.sectionIntro.heading;
+  }
+  const sectionDescription = document.getElementById('home-section-description');
+  if(sectionDescription && data.home.sectionIntro){
+    sectionDescription.textContent = data.home.sectionIntro.description;
+  }
+  const planGuideDesc = document.getElementById('plan-guide-description');
+  if(planGuideDesc && data.home.planGuideDescription){
+    planGuideDesc.textContent = data.home.planGuideDescription;
+  }
+  const planGuideEyebrow = document.getElementById('plan-guide-eyebrow');
+  if(planGuideEyebrow && data.home.planGuideEyebrow){
+    planGuideEyebrow.textContent = data.home.planGuideEyebrow;
+  }
+  const planGuideHeading = document.getElementById('plan-guide-heading');
+  if(planGuideHeading && data.home.planGuideTitle){
+    planGuideHeading.textContent = data.home.planGuideTitle;
+  }
+  const heroLabel = document.getElementById('hero-card-label');
+  const heroTitle = document.getElementById('hero-card-title');
+  const heroDesc = document.getElementById('hero-card-description');
+  if(data.home.heroCard){
+    if(heroLabel) heroLabel.textContent = data.home.heroCard.label;
+    if(heroTitle) heroTitle.textContent = data.home.heroCard.title;
+    if(heroDesc) heroDesc.textContent = data.home.heroCard.description;
+  }
 }
 
 function updatePricingTexts(){
   const { pricing } = getLangData();
   const title = document.getElementById('pricing-title');
   if(title) title.textContent = pricing.title;
+  const subtitle = document.getElementById('pricing-subtitle');
+  if(subtitle && pricing.subtitle){
+    subtitle.textContent = pricing.subtitle;
+  }
   const heading = document.getElementById('pricing-more-heading');
   if(heading) heading.textContent = pricing.moreHeading;
   const desc = document.getElementById('pricing-more-description');
@@ -205,6 +302,14 @@ function updateContactTexts(){
   if(subtitle) subtitle.textContent = contact.subtitle;
   const desc = document.getElementById('contact-description');
   if(desc) desc.textContent = contact.description;
+  const emailBtn = document.getElementById('contact-email-btn');
+  if(emailBtn && contact.ctaEmail){
+    emailBtn.textContent = contact.ctaEmail;
+  }
+  const igBtn = document.getElementById('contact-ig-btn');
+  if(igBtn && contact.ctaInstagram){
+    igBtn.textContent = contact.ctaInstagram;
+  }
 }
 
 function updateFaqTitle(){
@@ -240,7 +345,7 @@ function updateBackToHomeLinks(){
 
 function updateBookButtons(){
   const data = getLangData();
-  document.querySelectorAll('.page-section .btn').forEach(btn => {
+  document.querySelectorAll('.js-book-trigger').forEach(btn => {
     btn.textContent = data.buttons.bookNow;
   });
 }
@@ -294,10 +399,11 @@ function buildHomeCards(){
   const data = getLangData();
   if(!homeCardGrid) return;
   homeCardGrid.innerHTML = '';
-  data.home.cards.forEach(card => {
+  data.home.cards.forEach((card, index) => {
     const a = document.createElement('a');
     a.href = `#${card.route}`;
-    a.className = 'card';
+    a.className = 'card reveal-on-scroll';
+    a.classList.add(`delay-${(index % 4) + 1}`);
     a.setAttribute('role','button');
     a.setAttribute('tabindex','0');
     a.setAttribute('aria-label', card.title);
@@ -313,43 +419,104 @@ function buildHomeCards(){
       if(e.key==='Enter'||e.key===' '){ e.preventDefault(); a.click(); }
     });
     homeCardGrid.appendChild(a);
-    initCardSlider(a, HOME_CARD_IMAGES[card.route] || []);
+    initCardSlider(a, card.route);
   });
 }
 
-function initCardSlider(cardAnchorEl, images, intervalMs = 3800){
+function buildHomeHighlights(){
+  const data = getLangData();
+  if(!homeFeatureGrid) return;
+  const highlights = data.home.sectionIntro && Array.isArray(data.home.sectionIntro.features)
+    ? data.home.sectionIntro.features
+    : [];
+  homeFeatureGrid.innerHTML = '';
+  highlights.forEach((feature, index) => {
+    const card = document.createElement('div');
+    card.className = `feature-card reveal-on-scroll delay-${(index % 4) + 1}`;
+    const title = document.createElement('h3');
+    title.textContent = feature.title;
+    const desc = document.createElement('p');
+    desc.textContent = feature.desc;
+    card.appendChild(title);
+    card.appendChild(desc);
+    homeFeatureGrid.appendChild(card);
+  });
+}
+
+async function initCardSlider(cardAnchorEl, route, intervalMs = 3800){
   const imgWrap = cardAnchorEl.querySelector('.card-image');
-  if (!imgWrap || !images || images.length === 0) return;
+  if(!imgWrap) return;
 
-  const slideA = document.createElement('div'); slideA.className = 'card-slide is-active';
-  const slideB = document.createElement('div'); slideB.className = 'card-slide';
-  imgWrap.appendChild(slideA); imgWrap.appendChild(slideB);
+  const images = await resolveCardImages(route);
+  if(!cardAnchorEl.isConnected || !images.length){
+    if(imgWrap && !images.length){
+      imgWrap.classList.add('card-image--empty');
+    }
+    return;
+  }
 
-  const dots = document.createElement('div'); dots.className = 'card-dots';
-  const dotEls = images.map((_,i)=> {
-    const d = document.createElement('span'); d.className='card-dot'+(i===0?' is-active':'');
-    d.addEventListener('click', (e)=>{ e.stopPropagation(); goTo(i); });
-    dots.appendChild(d); return d;
+  const slideA = document.createElement('div');
+  slideA.className = 'card-slide is-active';
+  slideA.style.backgroundImage = `url("${images[0]}")`;
+  imgWrap.appendChild(slideA);
+
+  if(images.length === 1){
+    return;
+  }
+
+  const slideB = document.createElement('div');
+  slideB.className = 'card-slide';
+  imgWrap.appendChild(slideB);
+
+  const dots = document.createElement('div');
+  dots.className = 'card-dots';
+  const dotEls = images.map((_, i) => {
+    const d = document.createElement('span');
+    d.className = 'card-dot' + (i === 0 ? ' is-active' : '');
+    d.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      goTo(i);
+    });
+    dots.appendChild(d);
+    return d;
   });
   imgWrap.appendChild(dots);
 
-  const prev = document.createElement('button'); prev.className='card-nav prev'; prev.setAttribute('aria-label','Previous slide'); prev.textContent='‹';
-  const next = document.createElement('button'); next.className='card-nav next'; next.setAttribute('aria-label','Next slide'); next.textContent='›';
+  const prev = document.createElement('button');
+  prev.className = 'card-nav prev';
+  prev.setAttribute('aria-label','Previous slide');
+  prev.textContent = '‹';
+  const next = document.createElement('button');
+  next.className = 'card-nav next';
+  next.setAttribute('aria-label','Next slide');
+  next.textContent = '›';
   prev.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); goTo(curr-1); });
   next.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); goTo(curr+1); });
-  imgWrap.appendChild(prev); imgWrap.appendChild(next);
+  imgWrap.appendChild(prev);
+  imgWrap.appendChild(next);
 
-  let curr = 0, usingA = true, timer = null;
-  slideA.style.backgroundImage = `url("${images[0]}")`;
+  let curr = 0;
+  let usingA = true;
+  let timer = null;
 
-  const start = ()=> { stop(); timer = setInterval(()=> goTo(curr+1), intervalMs); };
-  const stop  = ()=> { if (timer) { clearInterval(timer); timer = null; } };
+  const start = ()=>{
+    stop();
+    timer = setInterval(()=> goTo(curr + 1), intervalMs);
+  };
+
+  const stop = ()=>{
+    if(timer){
+      clearInterval(timer);
+      timer = null;
+    }
+  };
 
   function goTo(idx){
     const nextIdx = (idx + images.length) % images.length;
     if(nextIdx === curr) return;
 
-    const preload = new Image(); preload.src = images[nextIdx];
+    const preload = new Image();
+    preload.src = images[nextIdx];
 
     const incoming = usingA ? slideB : slideA;
     const outgoing = usingA ? slideA : slideB;
@@ -373,16 +540,22 @@ function initCardSlider(cardAnchorEl, images, intervalMs = 3800){
     usingA = !usingA;
     curr = nextIdx;
 
-    dotEls.forEach((d,i)=> d.classList.toggle('is-active', i===curr));
+    dotEls.forEach((d, i)=> d.classList.toggle('is-active', i === curr));
   }
 
   let touchX = null;
-  imgWrap.addEventListener('touchstart', (e)=>{ touchX = e.touches[0].clientX; stop(); }, {passive:true});
+  imgWrap.addEventListener('touchstart', (e)=>{
+    touchX = e.touches[0].clientX;
+    stop();
+  }, { passive: true });
   imgWrap.addEventListener('touchend', (e)=>{
-    if (touchX == null) return;
+    if(touchX == null) return;
     const dx = e.changedTouches[0].clientX - touchX;
-    if (Math.abs(dx) > 40) { dx > 0 ? goTo(curr-1) : goTo(curr+1); }
-    touchX = null; start();
+    if(Math.abs(dx) > 40){
+      dx > 0 ? goTo(curr - 1) : goTo(curr + 1);
+    }
+    touchX = null;
+    start();
   });
 
   imgWrap.addEventListener('mouseenter', stop);
@@ -394,18 +567,19 @@ function initCardSlider(cardAnchorEl, images, intervalMs = 3800){
 function buildPricing(){
   const { pricing } = getLangData();
   const sec = document.getElementById('pricing-table');
-  if(!sec) return;
-  sec.innerHTML = pricing.plans.map(p => `
-    <div class="pricing-card" role="button" tabindex="0" data-link="#${p.route}">
-      <h3>${p.name}</h3>
-      <div class="price">${formatCurrency(p.price)} <small>/ ${p.hours}</small></div>
-      <p>${p.desc}</p>
-    </div>
-  `).join('');
-  sec.querySelectorAll('[role="button"]').forEach(el=>{
-    el.addEventListener('click', ()=> location.hash = el.dataset.link);
-    el.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); el.click(); } });
-  });
+  if(sec){
+    sec.innerHTML = pricing.plans.map((p, index) => `
+      <div class="pricing-card reveal-on-scroll delay-${(index % 4) + 1}" role="button" tabindex="0" data-link="#${p.route}">
+        <h3>${p.name}</h3>
+        <div class="price">${formatCurrency(p.price)} <small>/ ${p.hours}</small></div>
+        <p>${p.desc}</p>
+      </div>
+    `).join('');
+    sec.querySelectorAll('[role="button"]').forEach(el=>{
+      el.addEventListener('click', ()=> location.hash = el.dataset.link);
+      el.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); el.click(); } });
+    });
+  }
 
   pricing.plans.forEach(p => {
     const el = document.getElementById(`${p.route}-plan`);
@@ -415,6 +589,7 @@ function buildPricing(){
         <div class="price">${formatCurrency(p.price)} <small>/ ${p.hours}</small></div>
         <p>${p.desc}</p>
       `;
+      el.classList.add('reveal-on-scroll');
     }
   });
 
@@ -426,6 +601,7 @@ function buildPricing(){
         <div class="price">${pricing.customPrice}</div>
         <p>${pricing.customDescription}</p>
       `;
+      el.classList.add('reveal-on-scroll');
     }
   });
 }
@@ -437,7 +613,7 @@ function buildFAQ(){
   list.innerHTML = '';
   faq.items.forEach(item => {
     const details = document.createElement('details');
-    details.className = 'qa-item';
+    details.className = 'qa-item reveal-on-scroll';
     const summary = document.createElement('summary');
     summary.textContent = item.question;
     const p = document.createElement('p');
@@ -458,7 +634,10 @@ function attachPolicyBlocks(){
       const wrapper = document.createElement('div');
       wrapper.innerHTML = policies.default.trim();
       const policyNode = wrapper.firstElementChild;
-      if(policyNode) plan.insertAdjacentElement('afterend', policyNode);
+      if(policyNode){
+        policyNode.classList.add('reveal-on-scroll');
+        plan.insertAdjacentElement('afterend', policyNode);
+      }
     }
   });
 
@@ -471,6 +650,7 @@ function attachPolicyBlocks(){
       wrapper.innerHTML = html.trim();
       const policyNode = wrapper.firstElementChild;
       if(!policyNode) return;
+      policyNode.classList.add('reveal-on-scroll');
       const actions = sectionEl.querySelector('.section-actions');
       if (actions) {
         actions.insertAdjacentElement('beforebegin', policyNode);
@@ -545,6 +725,7 @@ function showRoute(route){
   requestAnimationFrame(scrollToTop);
 
   try{ sessionStorage.setItem('lastVisitedRoute', route); }catch(e){}
+  setupRevealObserver();
 }
 
 function handleRouteChange(){
@@ -563,27 +744,28 @@ function applyQueryOptions(){
 function setupMobileMenu(){
   const navToggle = document.getElementById('nav-toggle');
   if(!navToggle || !navLinksContainer) return;
-  navToggle.addEventListener('click', ()=>{
-    const open = !navLinksContainer.classList.contains('is-open');
+  const setMenuState = (open) => {
     navLinksContainer.classList.toggle('is-open', open);
     navToggle.classList.toggle('is-open', open);
     navToggle.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('is-menu-open', open);
+    if(open){
+      navLinksContainer.scrollTop = 0;
+    }
+  };
+  navToggle.addEventListener('click', ()=>{
+    const open = !navLinksContainer.classList.contains('is-open');
+    setMenuState(open);
   });
   navLinksContainer.addEventListener('click', (e)=>{ if(e.target.tagName==='A'){
-    navLinksContainer.classList.remove('is-open');
-    navToggle.classList.remove('is-open');
-    navToggle.setAttribute('aria-expanded','false');
+    setMenuState(false);
   }});
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){
-    navLinksContainer.classList.remove('is-open');
-    navToggle.classList.remove('is-open');
-    navToggle.setAttribute('aria-expanded','false');
+    setMenuState(false);
   }});
   document.addEventListener('click', (e)=>{
     if(!navLinksContainer.contains(e.target) && !navToggle.contains(e.target)){
-      navLinksContainer.classList.remove('is-open');
-      navToggle.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded','false');
+      setMenuState(false);
     }
   });
 }
@@ -596,10 +778,65 @@ function setupBackTop(){
   backTopButton.addEventListener('click', ()=> window.scrollTo({ top:0, behavior:'smooth' }));
 }
 
+function setupHeroCardTilt(){
+  const heroCard = document.getElementById('hero-card');
+  if(!heroCard) return;
+  const maxRotation = 14;
+  const update = (x, y, rect) => {
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -maxRotation;
+    const rotateY = ((x - centerX) / centerX) * maxRotation;
+    heroCard.style.setProperty('--hero-card-rotate-x', `${rotateX.toFixed(2)}deg`);
+    heroCard.style.setProperty('--hero-card-rotate-y', `${rotateY.toFixed(2)}deg`);
+    heroCard.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+    heroCard.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+  };
+
+  heroCard.addEventListener('pointermove', (event) => {
+    const rect = heroCard.getBoundingClientRect();
+    update(event.clientX - rect.left, event.clientY - rect.top, rect);
+  });
+
+  heroCard.addEventListener('pointerleave', () => {
+    heroCard.style.setProperty('--hero-card-rotate-x', '0deg');
+    heroCard.style.setProperty('--hero-card-rotate-y', '0deg');
+    heroCard.style.setProperty('--mouse-x', '50%');
+    heroCard.style.setProperty('--mouse-y', '50%');
+  });
+}
+
+function setupRevealObserver(){
+  if(revealObserver){
+    revealObserver.disconnect();
+  }
+  const targets = document.querySelectorAll('.reveal-on-scroll');
+  if(!targets.length) return;
+  revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.18,
+    rootMargin: '0px 0px -10% 0px'
+  });
+
+  targets.forEach(target => {
+    if(target.classList.contains('is-visible')){
+      return;
+    }
+    revealObserver.observe(target);
+  });
+}
+
 function applyLanguageContent(){
   defaultToastMessage = getLangData().toastNotFound;
   buildNav();
   buildHomeCards();
+  buildHomeHighlights();
   buildPricing();
   buildFAQ();
   attachPolicyBlocks();
@@ -607,6 +844,7 @@ function applyLanguageContent(){
   renderLanguageButton();
   renderLanguageMenu();
   applyRouteMeta(getRouteFromHash());
+  setupRevealObserver();
 }
 
 function setLanguage(lang, { save = true } = {}){
@@ -625,6 +863,7 @@ function init(){
   setLanguage(detectInitialLanguage(), { save:false });
   setupMobileMenu();
   setupBackTop();
+  setupHeroCardTilt();
 
   const lastVisited = sessionStorage.getItem('lastVisitedRoute');
   if(!location.hash && lastVisited && routes.includes(lastVisited)){

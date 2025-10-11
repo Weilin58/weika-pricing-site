@@ -24,7 +24,7 @@
   <!-- Icons -->
   <link rel="icon" type="image/png" sizes="32x32" href="images/weika-icon-180.png?v=2">
   <link rel="apple-touch-icon" href="images/weika-icon-180.png?v=2">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#050505">
 
   <script type="application/ld+json">
   {
@@ -41,7 +41,7 @@
   </script>
 
   <!-- 外部樣式（可視需要更新版本號以破快取） -->
-  <link rel="stylesheet" href="styles.css?v=11">
+  <link rel="stylesheet" href="styles.css?v=21">
 </head>
 <body>
   <!-- 跳到主要內容（鍵盤可用） -->
@@ -49,15 +49,19 @@
 
   <!-- 導覽列（內容由 script.js 動態生成） -->
   <nav class="navbar" aria-label="主要導覽">
-    <a class="navbar-brand" href="#home" aria-label="網站首頁" id="navbar-brand">衛卡攝影影像工作室</a>
-    <ul class="nav-links" id="nav-links" role="menubar"></ul>
-    <div class="language-selector" id="language-selector">
-      <button class="language-button" id="language-button" aria-haspopup="listbox" aria-expanded="false">Language</button>
-      <ul class="language-menu" id="language-menu" role="listbox"></ul>
+    <div class="navbar-left">
+      <a class="navbar-brand" href="#home" aria-label="網站首頁" id="navbar-brand">衛卡攝影影像工作室</a>
     </div>
-    <button class="nav-toggle" id="nav-toggle" aria-label="切換導覽選單" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <ul class="nav-links" id="nav-links" role="menubar"></ul>
+    <div class="nav-actions">
+      <div class="language-selector" id="language-selector">
+        <button class="language-button" id="language-button" aria-haspopup="listbox" aria-expanded="false">Language</button>
+        <ul class="language-menu" id="language-menu" role="listbox"></ul>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="切換導覽選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- Toast -->
@@ -66,97 +70,151 @@
   <!-- 主內容 -->
   <main class="main-content" id="main-content">
     <!-- Home -->
-    <section class="page-section" data-route="home" aria-labelledby="home-title">
-      <div class="page-header">
-        <h1 id="home-title" tabindex="-1">衛卡攝影影像工作室</h1>
-        <p id="home-subtitle">捕捉生活中的每一個光影故事。專業、有溫度的影像紀錄。</p>
+    <section class="page-section is-active" data-route="home" aria-labelledby="home-title">
+      <div class="section hero-section">
+        <div class="hero-copy">
+          <p class="eyebrow reveal-on-scroll delay-0">WEIKA STUDIO</p>
+          <h1 id="home-title" tabindex="-1" class="hero-title reveal-on-scroll delay-1">衛卡攝影影像工作室</h1>
+          <p id="home-subtitle" class="hero-subtitle reveal-on-scroll delay-2">捕捉生活中的每一個光影故事。專業、有溫度的影像紀錄。</p>
+          <div class="hero-actions reveal-on-scroll delay-3">
+            <a href="#contact" class="btn btn-primary js-book-trigger">預約檔期</a>
+          </div>
+        </div>
+        <div class="hero-card reveal-on-scroll delay-2" id="hero-card">
+          <div class="hero-card-content">
+            <div class="hero-card-label" id="hero-card-label">Signature Portraits</div>
+            <h2 id="hero-card-title">捕捉瞬間</h2>
+            <p id="hero-card-description">自然光與細膩風格的交錯，讓每次按下快門都成為你專屬的人生片段。</p>
+          </div>
+        </div>
       </div>
-      <div class="card-grid" id="home-card-grid" aria-label="分頁卡片清單"></div>
-    </section>
 
-    <!-- Pricing -->
-    <section class="page-section" data-route="pricing" aria-labelledby="pricing-title">
-      <a href="#home" class="back-to-home">回到主頁</a>
-      <h1 id="pricing-title" tabindex="-1">服務報價</h1>
-      <div class="pricing-table" id="pricing-table"></div>
-      <h2 id="pricing-more-heading" style="text-align:center; margin-top: var(--spacing-5);">更多方案</h2>
-      <p id="pricing-more-description" style="text-align:center; color: var(--color-secondary);">
-        婚紗攝影、活動及婚禮紀錄，將根據您的需求提供客製化報價，歡迎
-        <a href="#contact">查看聯絡方式</a>。
-      </p>
+      <div class="hero-scroll reveal-on-scroll delay-4">
+        <div class="scroll-guide" aria-hidden="true">
+          <span class="scroll-guide-line"></span>
+          <span class="scroll-guide-arrow"></span>
+        </div>
+        <span class="sr-only" id="scroll-guide-text">向下滑動探索方案導覽</span>
+      </div>
+
+      <div class="section muted-section">
+        <div class="section-header reveal-on-scroll">
+          <p class="eyebrow" id="home-section-eyebrow">DAYLIGHT STORIES</p>
+          <h2 id="home-section-heading">以日系日常感，留住你柔軟的光影節奏</h2>
+          <p id="home-section-description">擅長運用自然光與簡潔配色，記錄每個細微表情與呼吸；從前置溝通、服裝建議到拍攝引導，都以輕鬆節奏陪你完成耐看的生活影像。</p>
+        </div>
+        <div class="home-feature-grid" id="home-feature-grid">
+        </div>
+      </div>
+
+      <div class="section gallery-section" id="plan-guide">
+        <div class="section-header reveal-on-scroll">
+          <p class="eyebrow" id="plan-guide-eyebrow">PORTFOLIO ROUTES</p>
+          <h2 id="plan-guide-heading">方案導覽</h2>
+          <p id="plan-guide-description">點擊取得方案報價資訊。</p>
+        </div>
+        <div class="card-gallery" id="home-card-grid" aria-label="分頁卡片清單"></div>
+      </div>
     </section>
 
     <!-- Contact -->
     <section class="page-section" data-route="contact" aria-labelledby="contact-title">
-      <a href="#home" class="back-to-home">回到主頁</a>
-      <h1 id="contact-title" tabindex="-1">聯絡我們</h1>
-      <h2 id="contact-subtitle">聯絡方式</h2>
-      <p id="contact-description">Instagram：@weika_58 ｜ Email: weikaphotography@gmail.com ｜ Phone: 0926-189-353</p>
+      <div class="section-header">
+        <a href="#home" class="back-to-home">回到主頁</a>
+        <p class="eyebrow">CONNECT</p>
+        <h1 id="contact-title" tabindex="-1">聯絡我們</h1>
+        <h2 id="contact-subtitle">聯絡方式</h2>
+      </div>
+      <p id="contact-description" class="section-description">Instagram：@weika_58 ｜ Email: weikaphotography@gmail.com ｜ Phone: 0926-189-353</p>
+      <div class="section-actions">
+        <a href="mailto:weikaphotography@gmail.com" class="btn btn-primary" id="contact-email-btn">立即寫信</a>
+        <a href="https://instagram.com/weika_58" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" id="contact-ig-btn">Instagram</a>
+      </div>
     </section>
 
     <!-- FAQ -->
     <section class="page-section" data-route="faq" aria-labelledby="faq-title">
-      <a href="#home" class="back-to-home">回到主頁</a>
-      <h1 id="faq-title" tabindex="-1">常見問題（Q&A）</h1>
+      <div class="section-header">
+        <a href="#home" class="back-to-home">回到主頁</a>
+        <p class="eyebrow">ANSWERS</p>
+        <h1 id="faq-title" tabindex="-1">常見問題（Q&A）</h1>
+      </div>
       <div class="qa-section" id="faq-list"></div>
     </section>
 
     <!-- 各獨立頁（小卡） -->
     <section class="page-section" data-route="solo" aria-labelledby="solo-title">
-      <a href="#home" class="back-to-home">回到主頁</a>
-      <h1 id="solo-title" tabindex="-1">個人寫真</h1>
-      <div class="pricing-card" id="solo-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
-      <div class="section-actions" style="text-align:center;">
-        <a href="#contact" class="btn">預約檔期</a>
+      <div class="section-header">
+        <a href="#home" class="back-to-home">回到主頁</a>
+        <p class="eyebrow">PORTRAIT</p>
+        <h1 id="solo-title" tabindex="-1">個人寫真</h1>
+      </div>
+      <div class="pricing-card" id="solo-plan"></div>
+      <div class="section-actions">
+        <a href="#contact" class="btn btn-primary js-book-trigger">預約檔期</a>
       </div>
     </section>
 
     <section class="page-section" data-route="couple" aria-labelledby="couple-title">
-      <a href="#home" class="back-to-home">回到主頁</a>
-      <h1 id="couple-title" tabindex="-1">雙人寫真</h1>
-      <div class="pricing-card" id="couple-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
-      <div class="section-actions" style="text-align:center;">
-        <a href="#contact" class="btn">預約檔期</a>
+      <div class="section-header">
+        <a href="#home" class="back-to-home">回到主頁</a>
+        <p class="eyebrow">DUO STORY</p>
+        <h1 id="couple-title" tabindex="-1">雙人寫真</h1>
+      </div>
+      <div class="pricing-card" id="couple-plan"></div>
+      <div class="section-actions">
+        <a href="#contact" class="btn btn-primary js-book-trigger">預約檔期</a>
       </div>
     </section>
 
     <section class="page-section" data-route="group" aria-labelledby="group-title">
-      <a href="#home" class="back-to-home">回到主頁</a>
-      <h1 id="group-title" tabindex="-1">3–6 人團體</h1>
-      <div class="pricing-card" id="group-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
-      <div class="section-actions" style="text-align:center;">
-        <a href="#contact" class="btn">預約檔期</a>
+      <div class="section-header">
+        <a href="#home" class="back-to-home">回到主頁</a>
+        <p class="eyebrow">ENSEMBLE</p>
+        <h1 id="group-title" tabindex="-1">3–6 人團體</h1>
+      </div>
+      <div class="pricing-card" id="group-plan"></div>
+      <div class="section-actions">
+        <a href="#contact" class="btn btn-primary js-book-trigger">預約檔期</a>
       </div>
     </section>
 
     <section class="page-section" data-route="prewedding" aria-labelledby="prewedding-title">
-      <a href="#home" class="back-to-home">回到主頁</a>
-      <h1 id="prewedding-title" tabindex="-1">婚紗攝影</h1>
-      <div class="pricing-card" id="prewedding-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
-      <p id="prewedding-note" style="text-align:center;color:var(--color-secondary)">依拍攝時數、地點、禮服等需求客製報價，歡迎洽詢。</p>
-      <!-- 按鈕固定在最下方；條款會插在此按鈕前面 -->
-      <div class="section-actions" style="text-align:center;">
-        <a href="#contact" class="btn">預約檔期</a>
+      <div class="section-header">
+        <a href="#home" class="back-to-home">回到主頁</a>
+        <p class="eyebrow">PRE-WEDDING</p>
+        <h1 id="prewedding-title" tabindex="-1">婚紗攝影</h1>
+      </div>
+      <div class="pricing-card" id="prewedding-plan"></div>
+      <p id="prewedding-note" class="section-description">依拍攝時數、地點、禮服等需求客製報價，歡迎洽詢。</p>
+      <div class="section-actions">
+        <a href="#contact" class="btn btn-primary js-book-trigger">預約檔期</a>
       </div>
     </section>
 
     <section class="page-section" data-route="event" aria-labelledby="event-title">
-      <a href="#home" class="back-to-home">回到主頁</a>
-      <h1 id="event-title" tabindex="-1">活動紀錄</h1>
-      <div class="pricing-card" id="event-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
-      <p id="event-note" style="text-align:center;color:var(--color-secondary)">商業活動、講座、展演與派對，依規模/時數/流程提供精準報價。</p>
-      <div class="section-actions" style="text-align:center;">
-        <a href="#contact" class="btn">預約檔期</a>
+      <div class="section-header">
+        <a href="#home" class="back-to-home">回到主頁</a>
+        <p class="eyebrow">EVENT</p>
+        <h1 id="event-title" tabindex="-1">活動紀錄</h1>
+      </div>
+      <div class="pricing-card" id="event-plan"></div>
+      <p id="event-note" class="section-description">商業活動、講座、展演與派對，依規模/時數/流程提供精準報價。</p>
+      <div class="section-actions">
+        <a href="#contact" class="btn btn-primary js-book-trigger">預約檔期</a>
       </div>
     </section>
 
     <section class="page-section" data-route="wedding" aria-labelledby="wedding-title">
-      <a href="#home" class="back-to-home">回到主頁</a>
-      <h1 id="wedding-title" tabindex="-1">婚禮紀錄</h1>
-      <div class="pricing-card" id="wedding-plan" style="max-width: 420px; margin: 0 auto var(--spacing-4);"></div>
-      <p id="wedding-note" style="text-align:center;color:var(--color-secondary)">單/雙儀式、宴客、迎娶等皆可彈性安排，完整保存動人時刻。</p>
-      <div class="section-actions" style="text-align:center;">
-        <a href="#contact" class="btn">預約檔期</a>
+      <div class="section-header">
+        <a href="#home" class="back-to-home">回到主頁</a>
+        <p class="eyebrow">WEDDING DAY</p>
+        <h1 id="wedding-title" tabindex="-1">婚禮紀錄</h1>
+      </div>
+      <div class="pricing-card" id="wedding-plan"></div>
+      <p id="wedding-note" class="section-description">單/雙儀式、宴客、迎娶等皆可彈性安排，完整保存動人時刻。</p>
+      <div class="section-actions">
+        <a href="#contact" class="btn btn-primary js-book-trigger">預約檔期</a>
       </div>
     </section>
 
@@ -164,12 +222,12 @@
     <button id="backTop" class="back-top" aria-label="回到頂端" title="回到頂端">↑</button>
   </main>
 
-  <footer style="text-align:center;color:var(--color-secondary);padding:var(--spacing-5) 0;" id="site-footer">
+  <footer class="site-footer" id="site-footer">
     © <span id="year"></span> 衛卡攝影影像工作室 · Instagram @weika_58
   </footer>
 
   <!-- 外部腳本（更新版本號以破快取） -->
   <script src="i18n.js?v=1"></script>
-  <script src="script.js?v=16"></script>
+  <script src="script.js?v=21"></script>
 </body>
 </html>
