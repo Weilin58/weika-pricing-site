@@ -156,11 +156,38 @@ img {
 }
 
 .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   font-weight: 800;
   color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus-visible {
+  color: var(--color-text-primary);
+}
+
+.navbar-brand-visual {
+  display: inline-flex;
+  align-items: center;
+}
+
+.navbar-brand-text {
   font-size: 0.95rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.navbar-logo {
+  height: 48px;
+  width: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .nav-links {
@@ -532,12 +559,6 @@ img {
   transition: transform 0.28s ease, box-shadow 0.28s ease;
   overflow: visible;
   z-index: 0;
-}
-
-.hero-card.is-static {
-  transform: none;
-  transform-style: flat;
-  transition: none;
 }
 
 .hero-card::before {
@@ -933,6 +954,19 @@ img {
     padding-top: 76px;
   }
 
+  .navbar-brand {
+    gap: 0.5rem;
+  }
+
+  .navbar-logo {
+    height: 42px;
+  }
+
+  .navbar-brand-text {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+
   .navbar {
     height: 76px;
     padding: 0 var(--spacing-3);
@@ -1018,6 +1052,19 @@ img {
 @media (max-width: 560px) {
   .main-content {
     padding: 0 var(--spacing-3) var(--spacing-5);
+  }
+
+  .navbar-brand {
+    gap: 0.4rem;
+  }
+
+  .navbar-logo {
+    height: 36px;
+  }
+
+  .navbar-brand-text {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
   }
 
   .section {
