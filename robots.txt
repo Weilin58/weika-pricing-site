@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://weilin58.github.io/weika-pricing-site/sitemap.xml
