@@ -306,7 +306,7 @@ function updateContactTexts(){
   const subtitle = document.getElementById('contact-subtitle');
   if(subtitle) subtitle.textContent = contact.subtitle;
   const desc = document.getElementById('contact-description');
-  if(desc) desc.textContent = contact.description;
+  if(desc) desc.innerHTML = contact.description || '';
   const emailBtn = document.getElementById('contact-email-btn');
   if(emailBtn && contact.ctaEmail){
     emailBtn.textContent = contact.ctaEmail;
@@ -314,6 +314,15 @@ function updateContactTexts(){
   const igBtn = document.getElementById('contact-ig-btn');
   if(igBtn && contact.ctaInstagram){
     igBtn.textContent = contact.ctaInstagram;
+  }
+  const lineBtn = document.getElementById('contact-line-btn');
+  if(lineBtn){
+    if(contact.ctaLine){
+      lineBtn.textContent = contact.ctaLine;
+      lineBtn.hidden = false;
+    } else {
+      lineBtn.hidden = true;
+    }
   }
 }
 

@@ -77,9 +77,10 @@ const I18N = {
     contact: {
       title: '聯絡我們',
       subtitle: '聯絡方式',
-      description: 'Instagram：@weika_58 ｜ Email：weikaphotography@gmail.com ｜ Phone：0926-189-353',
-      ctaEmail: '立即寫信',
-      ctaInstagram: 'Instagram'
+      description: 'Instagram：@weika_58<br>Email：weikaphotography@gmail.com<br>Phone：0926-189-353<br>LINE 官方帳號：<a href="https://lin.ee/fQCRhPV" target="_blank" rel="noopener noreferrer">https://lin.ee/fQCRhPV</a>',
+      ctaEmail: '📧 立即寫信',
+      ctaInstagram: 'Instagram',
+      ctaLine: 'LINE官方帳號'
     },
     faq: {
       title: '常見問題（Q&A）',
@@ -109,7 +110,7 @@ const I18N = {
     meta: {
       home: { title: '衛卡攝影影像工作室｜首頁', desc: '捕捉生活中的每一個光影故事。專業、有溫度的影像紀錄。' },
       pricing: { title: '服務報價｜衛卡攝影影像工作室', desc: '個人寫真、雙人寫真、團體寫真與客製化專案之費用說明。' },
-      contact: { title: '聯絡我們｜衛卡攝影影像工作室', desc: 'Instagram、Email、電話等聯絡方式。' },
+      contact: { title: '聯絡我們｜衛卡攝影影像工作室', desc: 'Instagram、Email、電話與 LINE 官方帳號等聯絡方式。' },
       faq: { title: '常見問題 Q&A｜衛卡攝影影像工作室', desc: '拍攝前準備、改期、地點、預約與服務內容等常見問答。' },
       solo: { title: '個人寫真｜衛卡攝影影像工作室', desc: '自然互動、氣質寫真，打造你的專屬形象。' },
       couple: { title: '雙人寫真｜衛卡攝影影像工作室', desc: '以互動畫面記錄兩人默契與情感的流動。' },
@@ -214,8 +215,8 @@ const I18N = {
     }
   },
   en: {
-    navBrand: 'Weika Photography Studio',
-    navBrandAria: 'Weika Photography Studio home',
+    navBrand: 'WEIKA STUDIO',
+    navBrandAria: 'Weika Studio home',
     skipLink: 'Skip to main content',
     toastNotFound: 'We could not find that page. You have been taken back to home.',
     languageName: 'English',
@@ -284,9 +285,10 @@ const I18N = {
     contact: {
       title: 'Contact',
       subtitle: 'How to reach me',
-      description: 'Instagram: @weika_58 ｜ Email: weikaphotography@gmail.com ｜ Phone: +886-926-189-353',
-      ctaEmail: 'Email Now',
-      ctaInstagram: 'Instagram'
+      description: 'Instagram: @weika_58<br>Email: weikaphotography@gmail.com<br>Phone: +886-926-189-353<br>LINE Official Account: <a href="https://lin.ee/fQCRhPV" target="_blank" rel="noopener noreferrer">https://lin.ee/fQCRhPV</a>',
+      ctaEmail: '📧 Email Now',
+      ctaInstagram: 'Instagram',
+      ctaLine: 'LINE Official Account'
     },
     faq: {
       title: 'Frequently asked questions',
@@ -316,7 +318,7 @@ const I18N = {
     meta: {
       home: { title: 'Weika Photography Studio | Home', desc: 'Warm, professional photography for portraits, weddings, and events in Taiwan.' },
       pricing: { title: 'Pricing | Weika Photography Studio', desc: 'Rates for portraits plus bespoke quotes for weddings and events.' },
-      contact: { title: 'Contact | Weika Photography Studio', desc: 'Reach Weika on Instagram, email, or phone to plan your shoot.' },
+      contact: { title: 'Contact | Weika Photography Studio', desc: 'Reach Weika on Instagram, email, phone, or the LINE Official Account to plan your shoot.' },
       faq: { title: 'FAQ | Weika Photography Studio', desc: 'Answers about preparation, booking, locations, and coverage.' },
       solo: { title: 'Solo Portraits | Weika Photography Studio', desc: 'Portrait sessions that highlight your personality and confidence.' },
       couple: { title: 'Couple Portraits | Weika Photography Studio', desc: 'Celebrate the chemistry between you with relaxed, guided posing.' },
@@ -491,9 +493,10 @@ const I18N = {
     contact: {
       title: 'お問い合わせ',
       subtitle: '連絡先',
-      description: 'Instagram：@weika_58 ｜ Email：weikaphotography@gmail.com ｜ Phone：+886-926-189-353',
-      ctaEmail: 'メールを送る',
-      ctaInstagram: 'Instagram'
+      description: 'Instagram：@weika_58<br>Email：weikaphotography@gmail.com<br>Phone：+886-926-189-353<br>LINE公式アカウント：<a href="https://lin.ee/fQCRhPV" target="_blank" rel="noopener noreferrer">https://lin.ee/fQCRhPV</a>',
+      ctaEmail: '📧 メールを送る',
+      ctaInstagram: 'Instagram',
+      ctaLine: 'LINE公式アカウント'
     },
     faq: {
       title: 'よくある質問',
@@ -523,7 +526,7 @@ const I18N = {
     meta: {
       home: { title: 'WEIKAフォトスタジオ｜ホーム', desc: '台湾を拠点に、ポートレート・ウェディング・イベントを温かく撮影します。' },
       pricing: { title: '料金プラン｜WEIKAフォトスタジオ', desc: 'ポートレート料金と、ウェディングやイベントのカスタムお見積もり。' },
-      contact: { title: 'お問い合わせ｜WEIKAフォトスタジオ', desc: 'Instagram・メール・電話でお気軽にご連絡ください。' },
+      contact: { title: 'お問い合わせ｜WEIKAフォトスタジオ', desc: 'Instagram・メール・電話・LINE公式アカウントでお気軽にご連絡ください。' },
       faq: { title: 'よくある質問｜WEIKAフォトスタジオ', desc: '準備・予約・ロケーション・撮影内容に関するQ&A。' },
       solo: { title: 'ソロポートレート｜WEIKAフォトスタジオ', desc: 'あなたらしさを引き出すポートレート撮影。' },
       couple: { title: 'カップルフォト｜WEIKAフォトスタジオ', desc: '自然な表情と距離感を大切にした撮影。' },
@@ -698,9 +701,10 @@ const I18N = {
     contact: {
       title: '문의하기',
       subtitle: '연락처',
-      description: 'Instagram: @weika_58 ｜ Email: weikaphotography@gmail.com ｜ Phone: +886-926-189-353',
-      ctaEmail: '이메일 보내기',
-      ctaInstagram: 'Instagram'
+      description: 'Instagram: @weika_58<br>Email: weikaphotography@gmail.com<br>Phone: +886-926-189-353<br>LINE 공식 계정: <a href="https://lin.ee/fQCRhPV" target="_blank" rel="noopener noreferrer">https://lin.ee/fQCRhPV</a>',
+      ctaEmail: '📧 이메일 보내기',
+      ctaInstagram: 'Instagram',
+      ctaLine: 'LINE 공식 계정'
     },
     faq: {
       title: '자주 묻는 질문',
@@ -730,7 +734,7 @@ const I18N = {
     meta: {
       home: { title: 'WEIKA 사진 스튜디오 | 홈', desc: '대만을 기반으로 한 따뜻하고 전문적인 인물, 웨딩, 이벤트 촬영.' },
       pricing: { title: '가격 안내 | WEIKA 사진 스튜디오', desc: '포트레이트 요금과 맞춤 웨딩·이벤트 견적 안내.' },
-      contact: { title: '문의하기 | WEIKA 사진 스튜디오', desc: 'Instagram, 이메일, 전화로 상담을 예약하세요.' },
+      contact: { title: '문의하기 | WEIKA 사진 스튜디오', desc: 'Instagram, 이메일, 전화, LINE 공식 계정으로 상담을 예약하세요.' },
       faq: { title: '자주 묻는 질문 | WEIKA 사진 스튜디오', desc: '준비 과정, 예약, 장소, 촬영 내용에 대한 답변.' },
       solo: { title: '개인 프로필 | WEIKA 사진 스튜디오', desc: '자신감과 개성을 담는 포트레이트 세션.' },
       couple: { title: '커플 촬영 | WEIKA 사진 스튜디오', desc: '두 사람의 케미를 자연스럽게 이끌어내는 촬영.' },
