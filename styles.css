@@ -182,8 +182,10 @@ img {
 }
 
 .navbar-logo {
-  height: 48px;
-  width: auto;
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+  max-height: 48px;
   display: block;
   user-select: none;
   -webkit-user-drag: none;
@@ -959,7 +961,8 @@ img {
   }
 
   .navbar-logo {
-    height: 42px;
+    width: 132px;
+    max-height: 42px;
   }
 
   .navbar-brand-text {
@@ -1059,7 +1062,8 @@ img {
   }
 
   .navbar-logo {
-    height: 36px;
+    width: 112px;
+    max-height: 36px;
   }
 
   .navbar-brand-text {
