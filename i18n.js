@@ -2,7 +2,7 @@ const LANG_OPTIONS = [
   { code: 'en', label: 'English' },
   { code: 'ja', label: '日本語' },
   { code: 'ko', label: '한국어' },
-  { code: 'zh', label: '繁體中文' }
+  { code: 'zh', label: '中文' }
 ];
 
 const I18N = {
@@ -11,7 +11,7 @@ const I18N = {
     navBrandAria: '衛卡攝影影像工作室首頁',
     skipLink: '跳到主要內容',
     toastNotFound: '找不到頁面，已帶你回主頁',
-    languageName: '繁體中文',
+    languageName: '中文',
     currency: { prefix: 'NT$', locale: 'zh-TW' },
     buttons: {
       viewPlan: '查看方案',
