@@ -35,12 +35,12 @@ const I18N = {
       },
       sectionIntro: {
         eyebrow: 'DAYLIGHT STORIES',
-        heading: '以日系日常感，留住你柔軟的光影節奏',
-        description: '擅長運用自然光與簡潔配色，記錄細微表情與呼吸；從前置溝通、服裝建議到拍攝引導，都以輕鬆節奏陪你完成耐看的生活影像。',
+        heading: '日常感的拍攝風格，留住屬於你們的光影紀錄',
+        description: '擅長運用自然光與簡潔配色，用鏡頭記錄下一切；從前置溝通、地點建議到拍攝引導，都用輕鬆節奏陪伴你。',
         features: [
-          { title: '柔光構圖', desc: '善用窗邊與戶外自然光，搭配留白構圖，畫面乾淨透亮又充滿空氣感。' },
-          { title: '舒服節奏', desc: '聊天式引導幫你放鬆，不必擔心姿勢，真實互動即可留下細膩神情。' },
-          { title: '溫度調色', desc: '維持霧感色調與自然膚色，附上沖印與佈置建議，讓影像融入日常。' }
+          { title: '光影構圖', desc: '善用自然光，搭配不同的構圖，畫面乾淨透亮又充滿日系感。' },
+          { title: '舒服節奏', desc: '聊天式引導幫你放鬆，不必擔心姿勢，即使你從來不會擺姿。' },
+          { title: '風格調色', desc: '配合風格化的調色，使你的照片更加具有保存價值。' }
         ]
       },
       planGuideEyebrow: 'PORTFOLIO ROUTES',
@@ -108,7 +108,7 @@ const I18N = {
     footer: '© {{year}} 衛卡攝影影像工作室 · Instagram @weika_58',
     backTop: { label: '回到頂端', title: '回到頂端' },
     meta: {
-      home: { title: '衛卡攝影影像工作室｜首頁', desc: '捕捉生活中的每一個光影故事。專業、有溫度的影像紀錄。' },
+      home: { title: '衛卡攝影影像工作室', desc: '情侶寫真、婚紗寫真、婚禮紀錄、個人寫真、閨蜜寫真、旅遊隨行攝影、親子寫真及產品攝影等。我致力於以專業的技術和熱忱，為您呈現最完美的影像作品。' },
       pricing: { title: '服務報價｜衛卡攝影影像工作室', desc: '個人寫真、雙人寫真、團體寫真與客製化專案之費用說明。' },
       contact: { title: '聯絡我們｜衛卡攝影影像工作室', desc: 'Instagram、Email、電話與 LINE 官方帳號等聯絡方式。' },
       faq: { title: '常見問題 Q&A｜衛卡攝影影像工作室', desc: '拍攝前準備、改期、地點、預約與服務內容等常見問答。' },
@@ -243,12 +243,12 @@ const I18N = {
       },
       sectionIntro: {
         eyebrow: 'DAYLIGHT STORIES',
-        heading: 'Soft, everyday imagery crafted in a gentle palette',
-        description: 'Natural light and minimal styling keep every frame honest. From mood-boarding and wardrobe notes to relaxed directing on set, each session flows like an easy conversation.',
+        heading: 'Everyday-style imagery that captures your shared light',
+        description: 'We embrace natural light and soft color palettes to capture every detail—from pre-shoot chats and location ideas to gentle directing, every session flows effortlessly.',
         features: [
-          { title: 'Soft Light Framing', desc: 'Windows and quiet streets become diffused light sources for airy, balanced compositions.' },
-          { title: 'Calm Pacing', desc: 'Prompt-led guidance keeps you at ease—no rigid posing, just natural movements and real expressions.' },
-          { title: 'Warm-Toned Finish', desc: 'Mist-hued grading with true-to-skin tones, plus display suggestions so every image lives beautifully at home.' }
+          { title: 'Light & Shadow Framing', desc: 'Natural light meets varied compositions for clean, luminous frames with an everyday aesthetic.' },
+          { title: 'Relaxed Flow', desc: 'Conversation-led guidance keeps you at ease—no need to worry about posing, even if it is your first time.' },
+          { title: 'Style-based Color Work', desc: 'Tailored color work gives your photographs a polished finish with lasting value.' }
         ]
       },
       planGuideEyebrow: 'PORTFOLIO ROUTES',
@@ -451,12 +451,12 @@ const I18N = {
       },
       sectionIntro: {
         eyebrow: 'DAYLIGHT STORIES',
-        heading: 'やわらかな日常を淡い色でそっと写し出す',
-        description: '自然光とミニマルなスタイリングで、さりげない表情や呼吸感まで丁寧に記録。事前ヒアリングや衣装アドバイスから当日のリードまで、リラックスしたテンポで進めます。',
+        heading: '日常感のある撮影で、あなたの光を残す',
+        description: '自然光とシンプルな配色でありのままを写し、事前のヒアリングやロケーション提案から当日の撮影まで、リラックスしたテンポで寄り添います。',
         features: [
-          { title: 'ソフトライティング', desc: '窓辺や街角の光を生かし、余白を活かしたクリーンな構図で空気感を残します。' },
-          { title: '穏やかな進行', desc: '会話を交え自然な動きを引き出すことで、緊張がほどけた柔らかな表情に。' },
-          { title: 'やさしい色調整', desc: '透明感のある色合いと肌色を整え、プリントや飾り方のヒントもお届けします。' }
+          { title: '光と影の構図', desc: '自然光を活かし、多彩な構図でクリーンかつ日常感のあるトーンに仕上げます。' },
+          { title: 'リラックスした撮影進行', desc: '会話を交えながら緊張をほぐし、ポーズが苦手でも心配いりません。' },
+          { title: 'スタイルに合わせたカラー調整', desc: 'テイストに合わせたカラー調整で、長く残したくなる写真に仕上げます。' }
         ]
       },
       planGuideEyebrow: 'PORTFOLIO ROUTES',
@@ -659,12 +659,12 @@ const I18N = {
       },
       sectionIntro: {
         eyebrow: 'DAYLIGHT STORIES',
-        heading: '은은한 파스텔 감도로 기록하는 일상의 결',
-        description: '자연광과 미니멀한 스타일링으로 사소한 표정과 숨결까지 담아냅니다. 사전 상담과 의상 제안, 현장 리드까지 편안한 흐름으로 진행합니다.',
+        heading: '일상 감성의 촬영으로 당신의 빛을 담아냅니다',
+        description: '자연광과 담백한 컬러 팔레트로 모든 순간을 기록하며, 사전 상담과 장소 제안, 현장 디렉팅까지 편안한 흐름으로 함께합니다.',
         features: [
-          { title: '소프트 라이팅', desc: '창가와 거리의 자연광을 활용해 투명한 여백과 균형감 있는 구도를 만듭니다.' },
-          { title: '편안한 진행', desc: '대화하듯 촬영을 이끌어 긴장 없이 자연스러운 표정과 움직임을 담습니다.' },
-          { title: '따뜻한 색 보정', desc: '안개빛 색감과 자연스러운 피부 톤을 유지하고, 출력·전시 팁까지 함께 안내합니다.' }
+          { title: '빛과 그림자 구도', desc: '자연광과 다양한 구도로 깨끗하고 따뜻한 일상 감성의 이미지를 완성합니다.' },
+          { title: '편안한 흐름', desc: '대화형 디렉팅으로 긴장을 풀어 드려요. 포즈가 익숙하지 않아도 전혀 걱정하지 않으셔도 됩니다.' },
+          { title: '스타일 컬러 보정', desc: '스타일에 맞춘 색 보정으로 오래 간직하고 싶은 사진을 만들어 드립니다.' }
         ]
       },
       planGuideEyebrow: 'PORTFOLIO ROUTES',
