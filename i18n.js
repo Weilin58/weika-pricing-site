@@ -69,7 +69,7 @@ const I18N = {
         { route: 'group', name: '3–6 人團體', price: 5000, hours: '1~1.5 小時', desc: '適合家庭、朋友團體。' }
       ],
       customPlans: {
-        prewedding: '依拍攝時數、地點、禮服等需求客製報價，歡迎洽詢。',
+        prewedding: '自助婚紗拍攝｜Self Wedding Photography\n我主要提供的是「自助婚紗」拍攝服務，著重於拍攝本身。\n新人可自由選擇禮服與造型老師，我負責拍攝與成品照片交付。\n若有需要，我可協助媒合合作的造型師，及推薦禮服店，\n讓您在最划算的價格拍到最滿意的作品。',
         event: '商業活動、講座、展演與派對，依規模 / 時數 / 流程提供精準報價。',
         wedding: '單 / 雙儀式、宴客、迎娶等皆可彈性安排，完整保存動人時刻。'
       }
@@ -149,13 +149,11 @@ const I18N = {
           <h4>成品內容（專案訂製）</h4>
           <ul>
             <li><strong>精修張數：</strong> 依方案客製（建議至少 20 張），提供風格統一之精修。</li>
-            <li><strong>相本／成冊：</strong> 可加購 10×10 或 12×12 相本、裱框與謝卡套組。</li>
             <li><strong>拍攝配置：</strong> 禮服件數、造型次數、外景點數、棚租等皆可彈性調整。</li>
           </ul>
           <h4>成品交付（專案訂製）</h4>
           <ul>
             <li><strong>雲端交付：</strong> 精修與風格調色檔案提供雲端下載（保留 30 日）。</li>
-            <li><strong>實體交付：</strong> 相本／相框依客製品項製作，交期視廠商作業而定（約 21–45 天）。</li>
             <li><strong>媒體備份：</strong> 可加購 USB／行動硬碟備份。</li>
           </ul>
           <h4>預約與費用</h4>
@@ -277,7 +275,7 @@ const I18N = {
         { route: 'group', name: 'Group Portraits (3–6 ppl)', price: 5000, hours: '1–1.5 hours', desc: 'Perfect for families, teams, and friend groups.' }
       ],
       customPlans: {
-        prewedding: 'Tailored by shooting hours, locations, outfits, and styling preferences.',
+        prewedding: 'Self Wedding Photography\nThis service focuses on self wedding shoots and keeps the spotlight on the photography itself.\nYou are free to choose gowns and stylists while I handle the session and final images.\nIf you need support, I can connect you with trusted stylists and recommend dress boutiques.\nTogether we will capture what you love at the best value.',
         event: 'Quotes are based on schedule, duration, and the scale of your event.',
         wedding: 'Flexible coverage for ceremonies, receptions, and tea ceremonies to preserve every moment.'
       }
@@ -357,13 +355,11 @@ const I18N = {
           <h4>Custom deliverables</h4>
           <ul>
             <li><strong>Retouched images:</strong> Tailored to your plan (recommended 20+ images) with consistent styling.</li>
-            <li><strong>Albums & prints:</strong> Optional 10×10 or 12×12 albums, frames, and thank-you cards.</li>
             <li><strong>Shoot setup:</strong> Flexible outfit counts, makeup looks, locations, and studio rentals.</li>
           </ul>
           <h4>Delivery</h4>
           <ul>
             <li><strong>Cloud delivery:</strong> Edited and retouched files via cloud download (available for 30 days).</li>
-            <li><strong>Physical delivery:</strong> Albums and frames follow the vendor’s lead time (about 21–45 days).</li>
             <li><strong>Backup:</strong> USB or portable drive backups available as add-ons.</li>
           </ul>
           <h4>Booking & fees</h4>
@@ -485,7 +481,7 @@ const I18N = {
         { route: 'group', name: 'グループフォト（3〜6名）', price: 5000, hours: '約1〜1.5時間', desc: '家族写真やチーム撮影に最適。' }
       ],
       customPlans: {
-        prewedding: '撮影時間、衣装、ヘアメイク、ロケーションなどを組み合わせてご提案します。',
+        prewedding: 'セルフウェディングフォト｜Self Wedding Photography\n撮影そのものにフォーカスした「セルフウェディング」撮影を中心にご提供しています。\n衣装やヘアメイクはおふたりで自由にお選びいただき、私は撮影と仕上がりデータの納品を担当します。\nご希望があれば提携ヘアメイクのご紹介やドレスショップのご案内も可能です。\nご予算を抑えつつ、満足のいく作品づくりを一緒に叶えましょう。',
         event: 'イベントの規模・スケジュール・必要カットに合わせてお見積もりいたします。',
         wedding: '挙式、披露宴、二次会など、ご希望のタイムラインに合わせて柔軟に対応します。'
       }
@@ -565,13 +561,11 @@ const I18N = {
           <h4>カスタム納品</h4>
           <ul>
             <li><strong>レタッチ枚数：</strong> ご希望に合わせて（目安20枚以上）統一感のある仕上がりに整えます。</li>
-            <li><strong>アルバム・プリント：</strong> 10×10／12×12アルバム、額装、サンクスカードなどをご用意できます。</li>
             <li><strong>撮影構成：</strong> 衣装数、ヘアメイク回数、ロケーション、スタジオ手配など柔軟に調整します。</li>
           </ul>
           <h4>納品方法</h4>
           <ul>
             <li><strong>オンライン納品：</strong> レタッチ済みデータをクラウドで共有（30日間ダウンロード可能）。</li>
-            <li><strong>物理納品：</strong> アルバムや額装は制作会社の納期に準じます（約21〜45日）。</li>
             <li><strong>バックアップ：</strong> USBやポータブルHDDの追加納品も承ります。</li>
           </ul>
           <h4>予約・料金について</h4>
@@ -693,7 +687,7 @@ const I18N = {
         { route: 'group', name: '그룹 촬영 (3~6인)', price: 5000, hours: '약 1~1.5시간', desc: '가족, 팀, 친구들과 함께하는 촬영에 좋아요.' }
       ],
       customPlans: {
-        prewedding: '촬영 시간, 의상, 헤어·메이크업, 장소 등에 따라 맞춤 구성해 드립니다.',
+        prewedding: '셀프 웨딩 촬영｜Self Wedding Photography\n촬영 본연에 집중하는 셀프 웨딩 촬영을 중심으로 진행합니다.\n의상과 헤어·메이크업은 신랑신부가 자유롭게 선택하시고, 저는 촬영과 결과물 납품을 책임집니다.\n필요하다면 함께하는 메이크업 아티스트 연계와 드레스 숍 추천도 도와드려요.\n합리적인 비용으로 가장 만족스러운 결과물을 남기세요.',
         event: '행사의 규모, 일정, 촬영 범위를 고려해 견적을 제안합니다.',
         wedding: '본식 일정에 맞춰 유연하게 촬영하며, 예식과 연출 순간을 모두 담아드립니다.'
       }
@@ -773,13 +767,11 @@ const I18N = {
           <h4>맞춤 납품</h4>
           <ul>
             <li><strong>보정 컷:</strong> 최소 20컷 이상 권장, 플랜에 맞춰 통일감 있게 보정합니다.</li>
-            <li><strong>앨범·인화:</strong> 10×10 / 12×12 앨범, 액자, 감사 카드 등을 옵션으로 제작합니다.</li>
             <li><strong>촬영 구성:</strong> 의상 수, 헤어·메이크업 횟수, 장소, 스튜디오 대관 등을 유연하게 조정합니다.</li>
           </ul>
           <h4>납품 방법</h4>
           <ul>
             <li><strong>클라우드 전달:</strong> 보정본과 컬러 보정본을 30일 동안 다운로드할 수 있습니다.</li>
-            <li><strong>실물 납품:</strong> 앨범과 액자는 제작사 일정에 따라 약 21~45일이 소요됩니다.</li>
             <li><strong>백업:</strong> USB 또는 외장하드 추가 납품이 가능합니다.</li>
           </ul>
           <h4>예약 및 비용</h4>
