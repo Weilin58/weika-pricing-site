@@ -26,7 +26,7 @@ const I18N = {
     ],
     home: {
       title: '衛卡攝影影像工作室',
-      subtitle: '捕捉生活中的每一個光影故事。專業、有溫度的影像紀錄。',
+      subtitle: '台南攝影師提供人像攝影、情侶寫真、婚紗寫真與親子寫真服務，捕捉自然真實的光影故事。',
       scrollCue: '向下滑動探索方案導覽',
       heroCard: {
         label: 'Signature Portraits',
@@ -35,8 +35,8 @@ const I18N = {
       },
       sectionIntro: {
         eyebrow: 'DAYLIGHT STORIES',
-        heading: '日常感的拍攝風格，留住屬於你們的光影紀錄',
-        description: '擅長運用自然光與簡潔配色，用鏡頭記錄下一切；從前置溝通、地點建議到拍攝引導，都用輕鬆節奏陪伴你。',
+        heading: '台南攝影與人像攝影服務，留住屬於你們的光影紀錄',
+        description: '我以台南攝影為主要服務據點，提供人像攝影、情侶寫真、婚紗寫真與親子寫真；從前置溝通、地點建議到拍攝引導，都以自然放鬆的節奏完成耐看的影像。',
         features: [
           { title: '光影構圖', desc: '善用自然光，搭配不同的構圖，畫面乾淨透亮又充滿日系感。' },
           { title: '舒服節奏', desc: '聊天式引導幫你放鬆，不必擔心姿勢，即使你從來不會擺姿。' },
@@ -47,10 +47,10 @@ const I18N = {
       planGuideTitle: '方案導覽',
       planGuideDescription: '點擊取得方案報價資訊。',
       cards: [
-        { route: 'solo', title: '個人寫真', desc: '紀錄屬於自己的獨特時刻。' },
-        { route: 'couple', title: '雙人寫真', desc: '捕捉您們之間的甜蜜互動。' },
-        { route: 'group', title: '團體寫真', desc: '留下充滿歡笑的共同回憶。' },
-        { route: 'prewedding', title: '婚紗攝影', desc: '規劃您們的夢想婚紗照。' },
+        { route: 'solo', title: '個人寫真', desc: '台南人像攝影，紀錄屬於自己的獨特時刻。' },
+        { route: 'couple', title: '雙人寫真', desc: '台南情侶寫真，捕捉你們之間的甜蜜互動。' },
+        { route: 'group', title: '團體寫真', desc: '親子寫真與家庭合照，留下充滿歡笑的共同回憶。' },
+        { route: 'prewedding', title: '婚紗攝影', desc: '台南婚紗寫真，規劃屬於你們的夢想婚紗照。' },
         { route: 'event', title: '活動紀錄', desc: '專業的動態與靜態活動紀錄。' },
         { route: 'wedding', title: '婚禮紀錄', desc: '紀實生命中最重要的一天。' }
       ]
@@ -98,24 +98,24 @@ const I18N = {
       ]
     },
     sections: {
-      solo: { title: '個人寫真' },
-      couple: { title: '雙人寫真' },
-      group: { title: '3–6 人團體' },
-      prewedding: { title: '婚紗攝影' },
+      solo: { title: '個人寫真｜台南人像攝影' },
+      couple: { title: '雙人寫真｜台南情侶寫真' },
+      group: { title: '3–6 人團體｜親子寫真與家庭攝影' },
+      prewedding: { title: '婚紗攝影｜台南婚紗寫真' },
       event: { title: '活動紀錄' },
       wedding: { title: '婚禮紀錄' }
     },
     footer: '© {{year}} 衛卡攝影影像工作室 · Instagram @weika_58',
     backTop: { label: '回到頂端', title: '回到頂端' },
     meta: {
-      home: { title: '衛卡攝影影像工作室', desc: '情侶寫真、婚紗寫真、婚禮紀錄、個人寫真、閨蜜寫真、旅遊隨行攝影、親子寫真及產品攝影等。我致力於以專業的技術和熱忱，為您呈現最完美的影像作品。' },
+      home: { title: '台南攝影師｜人像攝影・情侶寫真・婚紗寫真｜衛卡攝影', desc: '衛卡攝影提供台南攝影與台南攝影師服務，包含人像攝影、情侶寫真、婚紗寫真與親子寫真，記錄自然真實的影像。' },
       pricing: { title: '服務報價｜衛卡攝影影像工作室', desc: '個人寫真、雙人寫真、團體寫真與客製化專案之費用說明。' },
       contact: { title: '聯絡我們｜衛卡攝影影像工作室', desc: 'Instagram、Email、電話與 LINE 官方帳號等聯絡方式。' },
       faq: { title: '常見問題 Q&A｜衛卡攝影影像工作室', desc: '拍攝前準備、改期、地點、預約與服務內容等常見問答。' },
-      solo: { title: '個人寫真｜衛卡攝影影像工作室', desc: '自然互動、氣質寫真，打造你的專屬形象。' },
-      couple: { title: '雙人寫真｜衛卡攝影影像工作室', desc: '以互動畫面記錄兩人默契與情感的流動。' },
-      group: { title: '3–6 人團體｜衛卡攝影影像工作室', desc: '朋友、家庭、團隊合照，愉快而自然的群像時刻。' },
-      prewedding: { title: '婚紗攝影｜衛卡攝影影像工作室', desc: '以光影與場景述說兩人的篇章，可全案客製。' },
+      solo: { title: '台南人像攝影｜個人寫真｜衛卡攝影', desc: '台南人像攝影與個人寫真服務，適合形象照、紀念拍攝與自然風格 portrait，打造專屬於你的影像。' },
+      couple: { title: '台南情侶寫真｜雙人寫真｜衛卡攝影', desc: '台南情侶寫真與雙人寫真拍攝，以自然互動與輕鬆引導，記錄兩人之間真實又耐看的情感畫面。' },
+      group: { title: '台南親子寫真｜家庭與團體攝影｜衛卡攝影', desc: '台南親子寫真、家庭合照與團體攝影服務，保留家人與朋友之間自然、有溫度的互動畫面。' },
+      prewedding: { title: '台南婚紗寫真｜婚紗攝影｜衛卡攝影', desc: '台南婚紗寫真與婚紗攝影服務，依拍攝風格、地點與造型需求客製規劃，留下屬於你們的故事感畫面。' },
       event: { title: '活動紀錄｜衛卡攝影影像工作室', desc: '商業活動、講座、展演與派對，完整保存重點瞬間。' },
       wedding: { title: '婚禮紀錄｜衛卡攝影影像工作室', desc: '以紀實視角捕捉儀式與宴客的每個感動片刻。' }
     },
@@ -232,7 +232,7 @@ const I18N = {
     ],
     home: {
       title: 'Weika Photography Studio',
-      subtitle: 'Capturing every chapter of your story with warm, professional imagery.',
+      subtitle: 'Tainan photographer for portrait photography, couple photoshoots, pre-wedding photography, and family sessions with a warm, natural style.',
       scrollCue: 'Scroll to explore the plan guide',
       heroCard: {
         label: 'Signature Portraits',
@@ -241,8 +241,8 @@ const I18N = {
       },
       sectionIntro: {
         eyebrow: 'DAYLIGHT STORIES',
-        heading: 'Everyday-style imagery that captures your shared light',
-        description: 'We embrace natural light and soft color palettes to capture every detail—from pre-shoot chats and location ideas to gentle directing, every session flows effortlessly.',
+        heading: 'Tainan photography for portraits, couples, pre-weddings, and families',
+        description: 'Based in Tainan, I provide portrait photography, couple photoshoots, pre-wedding photography, and family photography with natural light, relaxed guidance, and story-driven images.',
         features: [
           { title: 'Light & Shadow Framing', desc: 'Natural light meets varied compositions for clean, luminous frames with an everyday aesthetic.' },
           { title: 'Relaxed Flow', desc: 'Conversation-led guidance keeps you at ease—no need to worry about posing, even if it is your first time.' },
@@ -253,10 +253,10 @@ const I18N = {
       planGuideTitle: 'Plan Guide',
       planGuideDescription: 'Tap a narrative card to view plan details and pricing.',
       cards: [
-        { route: 'solo', title: 'Solo Portraits', desc: 'Celebrate your unique personality.' },
-        { route: 'couple', title: 'Couple Portraits', desc: 'Freeze the sweet moments between you two.' },
-        { route: 'group', title: 'Group Portraits', desc: 'Preserve memories filled with laughter.' },
-        { route: 'prewedding', title: 'Pre-wedding', desc: 'Design the dream shoot that matches your love story.' },
+        { route: 'solo', title: 'Solo Portraits', desc: 'Tainan portrait photography for your personal story.' },
+        { route: 'couple', title: 'Couple Portraits', desc: 'Tainan couple photoshoots full of natural chemistry.' },
+        { route: 'group', title: 'Group Portraits', desc: 'Family photography and group sessions with warmth.' },
+        { route: 'prewedding', title: 'Pre-wedding', desc: 'Tainan pre-wedding photography tailored to your love story.' },
         { route: 'event', title: 'Event Coverage', desc: 'Professional coverage for talks, launches, and more.' },
         { route: 'wedding', title: 'Wedding Day', desc: 'Document every heartfelt moment of the big day.' }
       ]
@@ -304,24 +304,24 @@ const I18N = {
       ]
     },
     sections: {
-      solo: { title: 'Solo Portraits' },
-      couple: { title: 'Couple Portraits' },
-      group: { title: 'Group Portraits' },
-      prewedding: { title: 'Pre-wedding' },
+      solo: { title: 'Solo Portraits | Tainan Portrait Photography' },
+      couple: { title: 'Couple Portraits | Tainan Couple Photoshoot' },
+      group: { title: 'Group Portraits | Tainan Family Photography' },
+      prewedding: { title: 'Pre-wedding | Tainan Pre-wedding Photography' },
       event: { title: 'Event Coverage' },
       wedding: { title: 'Wedding Day' }
     },
     footer: '© {{year}} Weika Photography Studio · Instagram @weika_58',
     backTop: { label: 'Back to top', title: 'Back to top' },
     meta: {
-      home: { title: 'Weika Photography Studio | Home', desc: 'Warm, professional photography for portraits, weddings, and events in Taiwan.' },
+      home: { title: 'Tainan Photographer | Portrait, Couple, Pre-wedding | Weika Studio', desc: 'Tainan photographer offering portrait photography, couple photoshoots, pre-wedding photography, and family sessions in Taiwan.' },
       pricing: { title: 'Pricing | Weika Photography Studio', desc: 'Rates for portraits plus bespoke quotes for weddings and events.' },
       contact: { title: 'Contact | Weika Photography Studio', desc: 'Reach Weika on Instagram, email, phone, or the LINE Official Account to plan your shoot.' },
       faq: { title: 'FAQ | Weika Photography Studio', desc: 'Answers about preparation, booking, locations, and coverage.' },
-      solo: { title: 'Solo Portraits | Weika Photography Studio', desc: 'Portrait sessions that highlight your personality and confidence.' },
-      couple: { title: 'Couple Portraits | Weika Photography Studio', desc: 'Celebrate the chemistry between you with relaxed, guided posing.' },
-      group: { title: 'Group Portraits | Weika Photography Studio', desc: 'Fun, vibrant portraits for families, friends, or teams.' },
-      prewedding: { title: 'Pre-wedding | Weika Photography Studio', desc: 'Tailor-made pre-wedding photography that narrates your love story.' },
+      solo: { title: 'Tainan Portrait Photography | Solo Portraits | Weika Studio', desc: 'Solo portrait photography in Tainan for personal branding, milestones, and natural lifestyle portraits.' },
+      couple: { title: 'Tainan Couple Photoshoot | Couple Portraits | Weika Studio', desc: 'Tainan couple photoshoots with relaxed direction and natural interaction for authentic, lasting images.' },
+      group: { title: 'Tainan Family Photography | Group Portraits | Weika Studio', desc: 'Family photography and small group portrait sessions in Tainan with a warm, natural visual style.' },
+      prewedding: { title: 'Tainan Pre-wedding Photography | Weika Studio', desc: 'Pre-wedding photography in Tainan with tailored planning for outfits, locations, and storytelling images.' },
       event: { title: 'Event Coverage | Weika Photography Studio', desc: 'Professional coverage for corporate events, talks, and celebrations.' },
       wedding: { title: 'Wedding Day | Weika Photography Studio', desc: 'Story-driven photography for ceremonies, receptions, and every highlight.' }
     },
@@ -438,7 +438,7 @@ const I18N = {
     ],
     home: {
       title: 'WEIKAフォトスタジオ',
-      subtitle: '物語のひとコマひとコマを、あたたかく丁寧な写真で残します。',
+      subtitle: '台南のカメラマンとして、ポートレート撮影・カップルフォト・前撮り・家族写真を自然な雰囲気で残します。',
       scrollCue: '下へスクロールしてプラン案内へ',
       heroCard: {
         label: 'Signature Portraits',
@@ -447,8 +447,8 @@ const I18N = {
       },
       sectionIntro: {
         eyebrow: 'DAYLIGHT STORIES',
-        heading: '日常感のある撮影で、あなたの光を残す',
-        description: '自然光とシンプルな配色でありのままを写し、事前のヒアリングやロケーション提案から当日の撮影まで、リラックスしたテンポで寄り添います。',
+        heading: '台南でのポートレート撮影・カップルフォト・前撮りに対応',
+        description: '台南を拠点に、ポートレート撮影、カップルフォト、前撮り、家族写真を提供しています。自然光を活かし、事前相談から撮影当日までリラックスした流れで進めます。',
         features: [
           { title: '光と影の構図', desc: '自然光を活かし、多彩な構図でクリーンかつ日常感のあるトーンに仕上げます。' },
           { title: 'リラックスした撮影進行', desc: '会話を交えながら緊張をほぐし、ポーズが苦手でも心配いりません。' },
@@ -459,10 +459,10 @@ const I18N = {
       planGuideTitle: 'プランガイド',
       planGuideDescription: '気になるカードをタップして料金の詳細をご覧ください。',
       cards: [
-        { route: 'solo', title: 'ソロポートレート', desc: '自分らしさを美しく残すプラン。' },
-        { route: 'couple', title: 'カップルフォト', desc: 'ふたりの距離感や空気感をそのままに。' },
-        { route: 'group', title: 'グループフォト', desc: '家族や友人との楽しい瞬間を共有。' },
-        { route: 'prewedding', title: '前撮り・フォトウェディング', desc: '理想のロケーションで叶えるウェディングフォト。' },
+        { route: 'solo', title: 'ソロポートレート', desc: '台南でのポートレート撮影で自分らしさを残す。' },
+        { route: 'couple', title: 'カップルフォト', desc: '台南のカップルフォトで自然な空気感を残す。' },
+        { route: 'group', title: 'グループフォト', desc: '家族写真やグループ撮影におすすめ。' },
+        { route: 'prewedding', title: '前撮り・フォトウェディング', desc: '台南で叶える前撮り・フォトウェディング。' },
         { route: 'event', title: 'イベント撮影', desc: '講演会・展示会・パーティーなどをプロが撮影。' },
         { route: 'wedding', title: '結婚式当日撮影', desc: '大切な1日をストーリーとして記録します。' }
       ]
@@ -510,24 +510,24 @@ const I18N = {
       ]
     },
     sections: {
-      solo: { title: 'ソロポートレート' },
-      couple: { title: 'カップルフォト' },
-      group: { title: 'グループフォト' },
-      prewedding: { title: '前撮り・フォトウェディング' },
+      solo: { title: 'ソロポートレート｜台南 ポートレート撮影' },
+      couple: { title: 'カップルフォト｜台南 カップルフォト' },
+      group: { title: 'グループフォト｜台南 家族写真' },
+      prewedding: { title: '前撮り・フォトウェディング｜台南 前撮り' },
       event: { title: 'イベント撮影' },
       wedding: { title: '結婚式当日撮影' }
     },
     footer: '© {{year}} WEIKAフォトスタジオ · Instagram @weika_58',
     backTop: { label: 'ページトップへ', title: 'ページトップへ' },
     meta: {
-      home: { title: 'WEIKAフォトスタジオ｜ホーム', desc: '台湾を拠点に、ポートレート・ウェディング・イベントを温かく撮影します。' },
+      home: { title: '台南 カメラマン｜ポートレート・カップルフォト・前撮り｜WEIKA', desc: '台南のカメラマンによるポートレート撮影、カップルフォト、前撮り、家族写真。自然な雰囲気で大切な瞬間を残します。' },
       pricing: { title: '料金プラン｜WEIKAフォトスタジオ', desc: 'ポートレート料金と、ウェディングやイベントのカスタムお見積もり。' },
       contact: { title: 'お問い合わせ｜WEIKAフォトスタジオ', desc: 'Instagram・メール・電話・LINE公式アカウントでお気軽にご連絡ください。' },
       faq: { title: 'よくある質問｜WEIKAフォトスタジオ', desc: '準備・予約・ロケーション・撮影内容に関するQ&A。' },
-      solo: { title: 'ソロポートレート｜WEIKAフォトスタジオ', desc: 'あなたらしさを引き出すポートレート撮影。' },
-      couple: { title: 'カップルフォト｜WEIKAフォトスタジオ', desc: '自然な表情と距離感を大切にした撮影。' },
-      group: { title: 'グループフォト｜WEIKAフォトスタジオ', desc: '家族や友人との楽しい時間を彩る写真。' },
-      prewedding: { title: '前撮り・フォトウェディング｜WEIKAフォトスタジオ', desc: 'おふたりの物語に合わせた特別なウェディングフォト。' },
+      solo: { title: '台南 ポートレート撮影｜ソロポートレート｜WEIKA', desc: '台南でのポートレート撮影。プロフィール写真や記念撮影を自然でやわらかな雰囲気で残します。' },
+      couple: { title: '台南 カップルフォト｜WEIKAフォトスタジオ', desc: '台南でのカップルフォト撮影。自然な会話や距離感を大切にしながら、おふたりらしい写真を残します。' },
+      group: { title: '台南 家族写真｜グループフォト｜WEIKA', desc: '台南での家族写真・グループ撮影。親子や家族、友人との温かな時間を自然に記録します。' },
+      prewedding: { title: '台南 前撮り｜フォトウェディング｜WEIKA', desc: '台南での前撮り・フォトウェディング撮影。衣装やロケーションに合わせて特別な一日を形にします。' },
       event: { title: 'イベント撮影｜WEIKAフォトスタジオ', desc: '企業イベント、講演、展示会などの記録撮影。' },
       wedding: { title: '結婚式当日撮影｜WEIKAフォトスタジオ', desc: '挙式から披露宴まで感動の瞬間を逃さず記録。' }
     },
@@ -644,7 +644,7 @@ const I18N = {
     ],
     home: {
       title: 'WEIKA 사진 스튜디오',
-      subtitle: '따뜻하고 전문적인 촬영으로 당신의 순간을 이야기로 남깁니다.',
+      subtitle: '타이난 사진작가가 인물사진, 커플 촬영, 프리웨딩 촬영, 가족사진을 자연스럽고 따뜻하게 기록합니다.',
       scrollCue: '아래로 스크롤하여 플랜 가이드를 살펴보세요',
       heroCard: {
         label: 'Signature Portraits',
@@ -653,8 +653,8 @@ const I18N = {
       },
       sectionIntro: {
         eyebrow: 'DAYLIGHT STORIES',
-        heading: '일상 감성의 촬영으로 당신의 빛을 담아냅니다',
-        description: '자연광과 담백한 컬러 팔레트로 모든 순간을 기록하며, 사전 상담과 장소 제안, 현장 디렉팅까지 편안한 흐름으로 함께합니다.',
+        heading: '타이난에서 인물사진, 커플 촬영, 프리웨딩 촬영 진행',
+        description: '타이난을 기반으로 인물사진, 커플 촬영, 프리웨딩 촬영, 가족사진을 제공합니다. 자연광과 편안한 디렉팅으로 오래 남을 장면을 만들어 드립니다.',
         features: [
           { title: '빛과 그림자 구도', desc: '자연광과 다양한 구도로 깨끗하고 따뜻한 일상 감성의 이미지를 완성합니다.' },
           { title: '편안한 흐름', desc: '대화형 디렉팅으로 긴장을 풀어 드려요. 포즈가 익숙하지 않아도 전혀 걱정하지 않으셔도 됩니다.' },
@@ -665,10 +665,10 @@ const I18N = {
       planGuideTitle: '플랜 가이드',
       planGuideDescription: '관심 있는 카드를 눌러 상세 가격 정보를 확인하세요.',
       cards: [
-        { route: 'solo', title: '개인 프로필', desc: '나만의 매력을 담는 포트레이트.' },
-        { route: 'couple', title: '커플 촬영', desc: '둘만의 분위기와 애정을 자연스럽게 담아요.' },
-        { route: 'group', title: '그룹 촬영', desc: '가족과 친구의 즐거운 시간을 기록합니다.' },
-        { route: 'prewedding', title: '스튜디오/스냅 웨딩', desc: '러브스토리에 맞춘 프리웨딩 촬영.' },
+        { route: 'solo', title: '개인 프로필', desc: '타이난 인물사진으로 나만의 매력을 담아요.' },
+        { route: 'couple', title: '커플 촬영', desc: '타이난 커플 촬영으로 둘만의 분위기를 자연스럽게 기록해요.' },
+        { route: 'group', title: '그룹 촬영', desc: '가족사진과 소규모 그룹 촬영에 잘 어울립니다.' },
+        { route: 'prewedding', title: '스튜디오/스냅 웨딩', desc: '타이난 프리웨딩 촬영으로 러브스토리를 남겨요.' },
         { route: 'event', title: '행사 스냅', desc: '강연, 전시, 파티 등 이벤트 전문 촬영.' },
         { route: 'wedding', title: '본식 스냅', desc: '하루의 감동을 빠짐없이 담아드립니다.' }
       ]
@@ -716,24 +716,24 @@ const I18N = {
       ]
     },
     sections: {
-      solo: { title: '개인 프로필' },
-      couple: { title: '커플 촬영' },
-      group: { title: '그룹 촬영' },
-      prewedding: { title: '스튜디오/스냅 웨딩' },
+      solo: { title: '개인 프로필 | 타이난 인물사진' },
+      couple: { title: '커플 촬영 | 타이난 커플 촬영' },
+      group: { title: '그룹 촬영 | 타이난 가족사진' },
+      prewedding: { title: '스튜디오/스냅 웨딩 | 타이난 프리웨딩 촬영' },
       event: { title: '행사 스냅' },
       wedding: { title: '본식 스냅' }
     },
     footer: '© {{year}} WEIKA 사진 스튜디오 · Instagram @weika_58',
     backTop: { label: '맨 위로', title: '맨 위로' },
     meta: {
-      home: { title: 'WEIKA 사진 스튜디오 | 홈', desc: '대만을 기반으로 한 따뜻하고 전문적인 인물, 웨딩, 이벤트 촬영.' },
+      home: { title: '타이난 사진작가 | 인물사진, 커플 촬영, 프리웨딩 | WEIKA', desc: '타이난 사진작가가 인물사진, 커플 촬영, 프리웨딩 촬영, 가족사진을 자연스럽고 따뜻한 스타일로 제공합니다.' },
       pricing: { title: '가격 안내 | WEIKA 사진 스튜디오', desc: '포트레이트 요금과 맞춤 웨딩·이벤트 견적 안내.' },
       contact: { title: '문의하기 | WEIKA 사진 스튜디오', desc: 'Instagram, 이메일, 전화, LINE 공식 계정으로 상담을 예약하세요.' },
       faq: { title: '자주 묻는 질문 | WEIKA 사진 스튜디오', desc: '준비 과정, 예약, 장소, 촬영 내용에 대한 답변.' },
-      solo: { title: '개인 프로필 | WEIKA 사진 스튜디오', desc: '자신감과 개성을 담는 포트레이트 세션.' },
-      couple: { title: '커플 촬영 | WEIKA 사진 스튜디오', desc: '두 사람의 케미를 자연스럽게 이끌어내는 촬영.' },
-      group: { title: '그룹 촬영 | WEIKA 사진 스튜디오', desc: '가족과 친구, 팀을 위한 즐거운 단체 촬영.' },
-      prewedding: { title: '스튜디오/스냅 웨딩 | WEIKA 사진 스튜디오', desc: '러브스토리를 담은 맞춤형 프리웨딩 촬영.' },
+      solo: { title: '타이난 인물사진 | 개인 프로필 | WEIKA', desc: '타이난 인물사진 촬영으로 자연스러운 프로필, 개인 브랜딩, 기념 사진을 남겨 보세요.' },
+      couple: { title: '타이난 커플 촬영 | WEIKA 사진 스튜디오', desc: '타이난 커플 촬영으로 두 사람의 자연스러운 케미와 감정을 따뜻하게 기록합니다.' },
+      group: { title: '타이난 가족사진 | 그룹 촬영 | WEIKA', desc: '타이난 가족사진과 소규모 그룹 촬영으로 가족과 친구의 소중한 시간을 자연스럽게 담아냅니다.' },
+      prewedding: { title: '타이난 프리웨딩 촬영 | WEIKA 사진 스튜디오', desc: '타이난 프리웨딩 촬영으로 의상, 장소, 무드에 맞춘 스토리 있는 웨딩 사진을 완성합니다.' },
       event: { title: '행사 스냅 | WEIKA 사진 스튜디오', desc: '기업 행사, 강연, 전시 등 다양한 이벤트 촬영.' },
       wedding: { title: '본식 스냅 | WEIKA 사진 스튜디오', desc: '예식과 연출 순간을 스토리텔링 방식으로 담습니다.' }
     },

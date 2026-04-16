@@ -24,7 +24,55 @@ const footerEl = document.getElementById('site-footer');
 const backTopButton = document.getElementById('backTop');
 
 const DEFAULT_LANG = 'zh';
-let currentLang = DEFAULT_LANG;
+const ROUTE_PATH_MAP = {
+  zh: {
+    home: 'index.html',
+    contact: 'contact.html',
+    faq: 'faq.html',
+    solo: 'solo.html',
+    couple: 'couple.html',
+    group: 'group.html',
+    prewedding: 'prewedding.html',
+    event: 'event.html',
+    wedding: 'wedding.html'
+  },
+  en: {
+    home: 'en.html',
+    contact: 'en-contact.html',
+    faq: 'en-faq.html',
+    solo: 'en-solo.html',
+    couple: 'en-couple.html',
+    group: 'en-group.html',
+    prewedding: 'en-prewedding.html',
+    event: 'en-event.html',
+    wedding: 'en-wedding.html'
+  },
+  ja: {
+    home: 'ja.html',
+    contact: 'ja-contact.html',
+    faq: 'ja-faq.html',
+    solo: 'ja-solo.html',
+    couple: 'ja-couple.html',
+    group: 'ja-group.html',
+    prewedding: 'ja-prewedding.html',
+    event: 'ja-event.html',
+    wedding: 'ja-wedding.html'
+  },
+  ko: {
+    home: 'ko.html',
+    contact: 'ko-contact.html',
+    faq: 'ko-faq.html',
+    solo: 'ko-solo.html',
+    couple: 'ko-couple.html',
+    group: 'ko-group.html',
+    prewedding: 'ko-prewedding.html',
+    event: 'ko-event.html',
+    wedding: 'ko-wedding.html'
+  }
+};
+
+let currentLang = document.documentElement.dataset.lang || DEFAULT_LANG;
+let currentRoute = document.body.dataset.route || 'home';
 let languageMenuOpen = false;
 let defaultToastMessage = '';
 let revealObserver = null;
@@ -95,27 +143,14 @@ function formatCurrency(value){
   return `${prefix}${Number(value).toLocaleString(locale)}`;
 }
 
-function mapLanguageCode(code){
-  if(!code) return null;
-  const normalized = code.toLowerCase();
-  if(normalized.startsWith('en')) return 'en';
-  if(normalized.startsWith('ja')) return 'ja';
-  if(normalized.startsWith('ko')) return 'ko';
-  if(normalized.startsWith('zh')) return 'zh';
-  return null;
+function getRoutePath(lang, route = currentRoute){
+  const languageRoutes = ROUTE_PATH_MAP[lang] || ROUTE_PATH_MAP[DEFAULT_LANG];
+  return languageRoutes[route] || languageRoutes.home;
 }
 
-function detectInitialLanguage(){
-  try {
-    const stored = localStorage.getItem('preferredLanguage');
-    if(stored && I18N[stored]) return stored;
-  } catch(e){}
-  const candidates = navigator.languages || [navigator.language || navigator.userLanguage];
-  for(const lang of candidates){
-    const mapped = mapLanguageCode(lang);
-    if(mapped && I18N[mapped]) return mapped;
-  }
-  return DEFAULT_LANG;
+function navigateToLanguage(lang){
+  const targetLang = I18N[lang] ? lang : DEFAULT_LANG;
+  window.location.href = getRoutePath(targetLang, currentRoute);
 }
 
 function renderLanguageButton(){
@@ -188,9 +223,7 @@ function setupLanguageSelector(){
     const btn = e.target.closest('button[data-lang]');
     if(!btn) return;
     const lang = btn.dataset.lang;
-    setLanguage(lang);
-    closeLanguageMenu();
-    languageButton.focus();
+    navigateToLanguage(lang);
   });
 
   languageMenu.addEventListener('keydown', (e)=>{
@@ -233,6 +266,7 @@ function updateSkipLink(){
 function updateNavbarBrand(){
   if(!navbarBrand) return;
   const data = getLangData();
+  navbarBrand.setAttribute('href', getRoutePath(currentLang, 'home'));
   if(navbarBrandText){
     navbarBrandText.textContent = data.navBrand;
   } else {
@@ -354,6 +388,7 @@ function updateBackToHomeLinks(){
   const data = getLangData();
   document.querySelectorAll('.back-to-home').forEach(link => {
     link.textContent = data.buttons.backToHome;
+    link.setAttribute('href', getRoutePath(currentLang, 'home'));
   });
 }
 
@@ -361,6 +396,7 @@ function updateBookButtons(){
   const data = getLangData();
   document.querySelectorAll('.js-book-trigger').forEach(btn => {
     btn.textContent = data.buttons.bookNow;
+    btn.setAttribute('href', getRoutePath(currentLang, 'contact'));
   });
 }
 
@@ -403,7 +439,7 @@ function buildNav(){
     if(item.external){
       li.innerHTML = `<a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.text}</a>`;
     } else {
-      li.innerHTML = `<a href="#${item.route}" role="menuitem">${item.text}</a>`;
+      li.innerHTML = `<a href="${getRoutePath(currentLang, item.route)}" role="menuitem">${item.text}</a>`;
     }
     navLinksContainer.appendChild(li);
   });
@@ -415,7 +451,7 @@ function buildHomeCards(){
   homeCardGrid.innerHTML = '';
   data.home.cards.forEach((card, index) => {
     const a = document.createElement('a');
-    a.href = `#${card.route}`;
+    a.href = getRoutePath(currentLang, card.route);
     a.className = 'card reveal-on-scroll';
     a.classList.add(`delay-${(index % 4) + 1}`);
     a.setAttribute('role','button');
@@ -583,14 +619,14 @@ function buildPricing(){
   const sec = document.getElementById('pricing-table');
   if(sec){
     sec.innerHTML = pricing.plans.map((p, index) => `
-      <div class="pricing-card reveal-on-scroll delay-${(index % 4) + 1}" role="button" tabindex="0" data-link="#${p.route}">
+      <div class="pricing-card reveal-on-scroll delay-${(index % 4) + 1}" role="button" tabindex="0" data-link="${getRoutePath(currentLang, p.route)}">
         <h3>${p.name}</h3>
         <div class="price">${formatCurrency(p.price)} <small>/ ${p.hours}</small></div>
         <p>${p.desc}</p>
       </div>
     `).join('');
     sec.querySelectorAll('[role="button"]').forEach(el=>{
-      el.addEventListener('click', ()=> location.hash = el.dataset.link);
+      el.addEventListener('click', ()=> { window.location.href = el.dataset.link; });
       el.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); el.click(); } });
     });
   }
@@ -687,11 +723,21 @@ function applyRouteMeta(route){
   document.title = meta.title;
   const m = document.querySelector('meta[name="description"]');
   if(m) m.setAttribute('content', meta.desc);
+  const pageUrl = new URL(getRoutePath(currentLang, route), window.location.href).toString();
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if(canonical) canonical.setAttribute('href', pageUrl);
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  if(ogUrl) ogUrl.setAttribute('content', pageUrl);
+  document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(link => {
+    const hreflang = link.getAttribute('hreflang');
+    const lang = hreflang === 'zh-Hant' ? 'zh' : hreflang === 'x-default' ? DEFAULT_LANG : hreflang;
+    link.setAttribute('href', new URL(getRoutePath(lang, route), window.location.href).toString());
+  });
 }
 
 function updateNavActiveState(activeRoute) {
   document.querySelectorAll('#nav-links a').forEach(link => {
-    if (link.getAttribute('href') === `#${activeRoute}`) {
+    if (link.getAttribute('href') === getRoutePath(currentLang, activeRoute)) {
       link.classList.add('active'); link.setAttribute('aria-current','page');
     } else {
       link.classList.remove('active'); link.removeAttribute('aria-current');
@@ -705,26 +751,20 @@ function scrollToTop(){
   document.documentElement.scrollTop = 0;
 }
 
-function getRouteFromHash(){
-  return (location.hash || '#home').replace('#','');
-}
-
 const allRoutes = routes.slice();
 let currentActiveSection = null;
 
 function showRoute(route){
   if(!allRoutes.includes(route)){
-    toast(); route='home'; location.hash = '#home';
+    toast();
+    route = 'home';
   }
   const target = document.querySelector(`.page-section[data-route="${route}"]`);
   if(!target || target===currentActiveSection) { applyRouteMeta(route); updateNavActiveState(route); return; }
 
-  if(currentActiveSection){
-    currentActiveSection.classList.add('is-leaving');
-    currentActiveSection.classList.remove('is-active');
-    setTimeout(()=> currentActiveSection.classList.remove('is-leaving'),
-      parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--transition-speed')));
-  }
+  document.querySelectorAll('.page-section').forEach(section => {
+    section.classList.remove('is-active', 'is-leaving');
+  });
   target.classList.add('is-active');
   currentActiveSection = target;
 
@@ -737,21 +777,13 @@ function showRoute(route){
   }
 
   requestAnimationFrame(scrollToTop);
-
-  try{ sessionStorage.setItem('lastVisitedRoute', route); }catch(e){}
   setupRevealObserver();
-}
-
-function handleRouteChange(){
-  let hash = getRouteFromHash();
-  if(!allRoutes.includes(hash)) hash='home';
-  showRoute(hash);
 }
 
 function applyQueryOptions(){
   const u = new URL(location.href);
   const r = u.searchParams.get('route');
-  if(r && allRoutes.includes(r)){ location.hash = `#${r}`; }
+  if(r && allRoutes.includes(r)){ currentRoute = r; }
   if(u.searchParams.get('print')==='1'){ setTimeout(()=> window.print(), 400); }
 }
 
@@ -857,35 +889,27 @@ function applyLanguageContent(){
   updateStaticText();
   renderLanguageButton();
   renderLanguageMenu();
-  applyRouteMeta(getRouteFromHash());
+  applyRouteMeta(currentRoute);
   setupRevealObserver();
 }
 
 function setLanguage(lang, { save = true } = {}){
   if(!I18N[lang]) lang = DEFAULT_LANG;
   currentLang = lang;
-  if(save){
-    try { localStorage.setItem('preferredLanguage', lang); } catch(e){}
-  }
   closeLanguageMenu();
   applyLanguageContent();
-  handleRouteChange();
+  showRoute(currentRoute);
 }
 
 function init(){
   setupLanguageSelector();
-  setLanguage(detectInitialLanguage(), { save:false });
+  setLanguage(currentLang, { save:false });
   setupMobileMenu();
   setupBackTop();
   setupHeroCardTilt();
 
-  const lastVisited = sessionStorage.getItem('lastVisitedRoute');
-  if(!location.hash && lastVisited && routes.includes(lastVisited)){
-    location.hash = `#${lastVisited}`;
-  }
   applyQueryOptions();
-  handleRouteChange();
-  window.addEventListener('hashchange', handleRouteChange);
+  showRoute(currentRoute);
 }
 
 document.addEventListener('DOMContentLoaded', init);
