@@ -26,7 +26,7 @@ const I18N = {
     ],
     home: {
       title: '衛卡攝影影像工作室',
-      subtitle: '台南攝影師提供人像攝影、情侶寫真、婚紗寫真與親子寫真服務，捕捉自然真實的光影故事。',
+      subtitle: '衛卡攝影（WeikaPhoto）由台南攝影師提供人像攝影、情侶寫真、婚紗寫真與親子寫真服務，捕捉自然真實的光影故事。',
       scrollCue: '向下滑動探索方案導覽',
       heroCard: {
         label: 'Signature Portraits',
@@ -108,7 +108,7 @@ const I18N = {
     footer: '© {{year}} 衛卡攝影影像工作室 · Instagram @weika_58',
     backTop: { label: '回到頂端', title: '回到頂端' },
     meta: {
-      home: { title: '台南攝影師｜人像攝影・情侶寫真・婚紗寫真｜衛卡攝影', desc: '衛卡攝影提供台南攝影與台南攝影師服務，包含人像攝影、情侶寫真、婚紗寫真與親子寫真，記錄自然真實的影像。' },
+      home: { title: '台南攝影師｜人像攝影・情侶寫真・婚紗寫真｜衛卡攝影 WeikaPhoto', desc: '衛卡攝影（WeikaPhoto）提供台南攝影與台南攝影師服務，包含人像攝影、情侶寫真、婚紗寫真與親子寫真，記錄自然真實的影像。' },
       pricing: { title: '服務報價｜衛卡攝影影像工作室', desc: '個人寫真、雙人寫真、團體寫真與客製化專案之費用說明。' },
       contact: { title: '聯絡我們｜衛卡攝影影像工作室', desc: 'Instagram、Email、電話與 LINE 官方帳號等聯絡方式。' },
       faq: { title: '常見問題 Q&A｜衛卡攝影影像工作室', desc: '拍攝前準備、改期、地點、預約與服務內容等常見問答。' },
@@ -232,7 +232,7 @@ const I18N = {
     ],
     home: {
       title: 'Weika Photography Studio',
-      subtitle: 'Tainan photographer for portrait photography, couple photoshoots, pre-wedding photography, and family sessions with a warm, natural style.',
+      subtitle: 'WeikaPhoto is a Tainan photographer for portrait photography, couple photoshoots, pre-wedding photography, and family sessions with a warm, natural style.',
       scrollCue: 'Scroll to explore the plan guide',
       heroCard: {
         label: 'Signature Portraits',
@@ -314,7 +314,7 @@ const I18N = {
     footer: '© {{year}} Weika Photography Studio · Instagram @weika_58',
     backTop: { label: 'Back to top', title: 'Back to top' },
     meta: {
-      home: { title: 'Tainan Photographer | Portrait, Couple, Pre-wedding | Weika Studio', desc: 'Tainan photographer offering portrait photography, couple photoshoots, pre-wedding photography, and family sessions in Taiwan.' },
+      home: { title: 'WeikaPhoto | Tainan Photographer | Portrait, Couple, Pre-wedding', desc: 'WeikaPhoto is a Tainan photographer offering portrait photography, couple photoshoots, pre-wedding photography, and family sessions in Taiwan.' },
       pricing: { title: 'Pricing | Weika Photography Studio', desc: 'Rates for portraits plus bespoke quotes for weddings and events.' },
       contact: { title: 'Contact | Weika Photography Studio', desc: 'Reach Weika on Instagram, email, phone, or the LINE Official Account to plan your shoot.' },
       faq: { title: 'FAQ | Weika Photography Studio', desc: 'Answers about preparation, booking, locations, and coverage.' },
@@ -438,7 +438,7 @@ const I18N = {
     ],
     home: {
       title: 'WEIKAフォトスタジオ',
-      subtitle: '台南のカメラマンとして、ポートレート撮影・カップルフォト・前撮り・家族写真を自然な雰囲気で残します。',
+      subtitle: '衛卡攝影（WeikaPhoto）は、台南のカメラマンとしてポートレート撮影・カップルフォト・前撮り・家族写真を自然な雰囲気で残します。',
       scrollCue: '下へスクロールしてプラン案内へ',
       heroCard: {
         label: 'Signature Portraits',
@@ -520,7 +520,7 @@ const I18N = {
     footer: '© {{year}} WEIKAフォトスタジオ · Instagram @weika_58',
     backTop: { label: 'ページトップへ', title: 'ページトップへ' },
     meta: {
-      home: { title: '台南 カメラマン｜ポートレート・カップルフォト・前撮り｜WEIKA', desc: '台南のカメラマンによるポートレート撮影、カップルフォト、前撮り、家族写真。自然な雰囲気で大切な瞬間を残します。' },
+      home: { title: 'WeikaPhoto｜台南 カメラマン｜ポートレート・カップルフォト・前撮り', desc: '衛卡攝影（WeikaPhoto）は台南のカメラマンとして、ポートレート撮影、カップルフォト、前撮り、家族写真を自然な雰囲気で残します。' },
       pricing: { title: '料金プラン｜WEIKAフォトスタジオ', desc: 'ポートレート料金と、ウェディングやイベントのカスタムお見積もり。' },
       contact: { title: 'お問い合わせ｜WEIKAフォトスタジオ', desc: 'Instagram・メール・電話・LINE公式アカウントでお気軽にご連絡ください。' },
       faq: { title: 'よくある質問｜WEIKAフォトスタジオ', desc: '準備・予約・ロケーション・撮影内容に関するQ&A。' },
@@ -644,7 +644,7 @@ const I18N = {
     ],
     home: {
       title: 'WEIKA 사진 스튜디오',
-      subtitle: '타이난 사진작가가 인물사진, 커플 촬영, 프리웨딩 촬영, 가족사진을 자연스럽고 따뜻하게 기록합니다.',
+      subtitle: 'WeikaPhoto는 타이난 사진작가로서 인물사진, 커플 촬영, 프리웨딩 촬영, 가족사진을 자연스럽고 따뜻하게 기록합니다.',
       scrollCue: '아래로 스크롤하여 플랜 가이드를 살펴보세요',
       heroCard: {
         label: 'Signature Portraits',
@@ -726,7 +726,7 @@ const I18N = {
     footer: '© {{year}} WEIKA 사진 스튜디오 · Instagram @weika_58',
     backTop: { label: '맨 위로', title: '맨 위로' },
     meta: {
-      home: { title: '타이난 사진작가 | 인물사진, 커플 촬영, 프리웨딩 | WEIKA', desc: '타이난 사진작가가 인물사진, 커플 촬영, 프리웨딩 촬영, 가족사진을 자연스럽고 따뜻한 스타일로 제공합니다.' },
+      home: { title: 'WeikaPhoto | 타이난 사진작가 | 인물사진, 커플 촬영, 프리웨딩', desc: 'WeikaPhoto는 타이난 사진작가로서 인물사진, 커플 촬영, 프리웨딩 촬영, 가족사진을 자연스럽고 따뜻한 스타일로 제공합니다.' },
       pricing: { title: '가격 안내 | WEIKA 사진 스튜디오', desc: '포트레이트 요금과 맞춤 웨딩·이벤트 견적 안내.' },
       contact: { title: '문의하기 | WEIKA 사진 스튜디오', desc: 'Instagram, 이메일, 전화, LINE 공식 계정으로 상담을 예약하세요.' },
       faq: { title: '자주 묻는 질문 | WEIKA 사진 스튜디오', desc: '준비 과정, 예약, 장소, 촬영 내용에 대한 답변.' },
